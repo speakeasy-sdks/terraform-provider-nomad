@@ -1,4 +1,9 @@
 configVersion: 1.0.0
+management:
+  docChecksum: bdeef570b0419e1bea21741ccac9ae77
+  docVersion: 1.1.4
+  speakeasyVersion: 1.59.0
+  generationVersion: 2.65.0
 generation:
   comments:
     disableComments: false
@@ -8,6 +13,6 @@ generation:
   singleTagPerOp: false
   tagNamespacingDisabled: false
 terraform:
-  version: 0.0.1
+  version: 1.0.0
   author: hashicorp
   packageName: nomad
