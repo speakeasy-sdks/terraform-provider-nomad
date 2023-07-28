@@ -2,7 +2,7 @@ terraform {
   required_providers {
     nomad = {
       source  = "hashicorp/nomad"
-      version = "1.4.1"
+      version = "1.5.0"
     }
   }
 }
