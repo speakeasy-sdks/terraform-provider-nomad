@@ -14,9 +14,9 @@ import (
 // ServerList contains the list of servers available to the SDK
 var ServerList = []string{
 	// dev-agent
-	"https://{scheme}://{address}:{port}/v1",
+	"{scheme}://{address}:{port}/v1",
 	// agent
-	"https://{scheme}://{address}:{port}/v1",
+	"{scheme}://{address}:{port}/v1",
 }
 
 // HTTPClient provides an interface for suplying the SDK with a custom HTTP client
@@ -204,8 +204,8 @@ func New(opts ...SDKOption) *Nomad {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "terraform",
 			OpenAPIDocVersion: "1.1.4",
-			SDKVersion:        "1.9.0",
-			GenVersion:        "2.83.3",
+			SDKVersion:        "1.10.0",
+			GenVersion:        "2.84.1",
 			ServerDefaults: []map[string]string{
 				{
 					"address": "127.0.0.1",

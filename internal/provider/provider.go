@@ -38,7 +38,7 @@ func (p *NomadProvider) Schema(ctx context.Context, req provider.SchemaRequest, 
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"server_url": schema.StringAttribute{
-				MarkdownDescription: "Server URL (defaults to https://{scheme}://{address}:{port}/v1)",
+				MarkdownDescription: "Server URL (defaults to {scheme}://{address}:{port}/v1)",
 				Optional:            true,
 				Required:            false,
 			},
@@ -62,7 +62,7 @@ func (p *NomadProvider) Configure(ctx context.Context, req provider.ConfigureReq
 	ServerURL := data.ServerURL.ValueString()
 
 	if ServerURL == "" {
-		ServerURL = "https://{scheme}://{address}:{port}/v1"
+		ServerURL = "{scheme}://{address}:{port}/v1"
 	}
 
 	xNomadToken := data.XNomadToken.ValueString()
