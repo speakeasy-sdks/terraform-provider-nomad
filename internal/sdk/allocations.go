@@ -76,7 +76,7 @@ func (s *allocations) GetAllocation(ctx context.Context, request operations.GetA
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Allocation
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.Allocation = out
@@ -145,7 +145,7 @@ func (s *allocations) GetAllocationServices(ctx context.Context, request operati
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.ServiceRegistration
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.ServiceRegistrations = out
@@ -211,7 +211,7 @@ func (s *allocations) GetAllocations(ctx context.Context, request operations.Get
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.AllocationListStub
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.AllocationListStubs = out
@@ -280,7 +280,7 @@ func (s *allocations) PostAllocationStop(ctx context.Context, request operations
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.AllocStopResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.AllocStopResponse = out

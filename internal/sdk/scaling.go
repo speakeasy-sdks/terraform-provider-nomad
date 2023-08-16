@@ -73,7 +73,7 @@ func (s *scaling) GetScalingPolicies(ctx context.Context, request operations.Get
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.ScalingPolicyListStub
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.ScalingPolicyListStubs = out
@@ -142,7 +142,7 @@ func (s *scaling) GetScalingPolicy(ctx context.Context, request operations.GetSc
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ScalingPolicy
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.ScalingPolicy = out

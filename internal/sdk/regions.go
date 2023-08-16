@@ -64,7 +64,7 @@ func (s *regions) GetRegions(ctx context.Context) (*operations.GetRegionsRespons
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []string
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.GetRegions200ApplicationJSONStrings = out

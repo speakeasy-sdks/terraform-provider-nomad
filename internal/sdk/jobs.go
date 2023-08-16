@@ -76,7 +76,7 @@ func (s *jobs) DeleteJob(ctx context.Context, request operations.DeleteJobReques
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.JobDeregisterResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobDeregisterResponse = out
@@ -145,7 +145,7 @@ func (s *jobs) GetJob(ctx context.Context, request operations.GetJobRequest, sec
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Job
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.Job = out
@@ -214,7 +214,7 @@ func (s *jobs) GetJobAllocations(ctx context.Context, request operations.GetJobA
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.AllocationListStub
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.AllocationListStubs = out
@@ -283,7 +283,7 @@ func (s *jobs) GetJobDeployment(ctx context.Context, request operations.GetJobDe
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Deployment
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.Deployment = out
@@ -352,7 +352,7 @@ func (s *jobs) GetJobDeployments(ctx context.Context, request operations.GetJobD
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.Deployment
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.Deployments = out
@@ -421,7 +421,7 @@ func (s *jobs) GetJobEvaluations(ctx context.Context, request operations.GetJobE
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.Evaluation
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.Evaluations = out
@@ -490,7 +490,7 @@ func (s *jobs) GetJobScaleStatus(ctx context.Context, request operations.GetJobS
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.JobScaleStatusResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobScaleStatusResponse = out
@@ -559,7 +559,7 @@ func (s *jobs) GetJobSummary(ctx context.Context, request operations.GetJobSumma
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.JobSummary
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobSummary = out
@@ -628,7 +628,7 @@ func (s *jobs) GetJobVersions(ctx context.Context, request operations.GetJobVers
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.JobVersionsResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobVersionsResponse = out
@@ -694,7 +694,7 @@ func (s *jobs) GetJobs(ctx context.Context, request operations.GetJobsRequest, s
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.JobListStub
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobListStubs = out
@@ -726,7 +726,10 @@ func (s *jobs) PostJob(ctx context.Context, request operations.PostJobRequest, s
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -755,6 +758,7 @@ func (s *jobs) PostJob(ctx context.Context, request operations.PostJobRequest, s
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -773,7 +777,7 @@ func (s *jobs) PostJob(ctx context.Context, request operations.PostJobRequest, s
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.JobRegisterResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobRegisterResponse = out
@@ -805,7 +809,10 @@ func (s *jobs) PostJobDispatch(ctx context.Context, request operations.PostJobDi
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -834,6 +841,7 @@ func (s *jobs) PostJobDispatch(ctx context.Context, request operations.PostJobDi
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -852,7 +860,7 @@ func (s *jobs) PostJobDispatch(ctx context.Context, request operations.PostJobDi
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.JobDispatchResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobDispatchResponse = out
@@ -884,7 +892,10 @@ func (s *jobs) PostJobEvaluate(ctx context.Context, request operations.PostJobEv
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -913,6 +924,7 @@ func (s *jobs) PostJobEvaluate(ctx context.Context, request operations.PostJobEv
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -931,7 +943,7 @@ func (s *jobs) PostJobEvaluate(ctx context.Context, request operations.PostJobEv
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.JobRegisterResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobRegisterResponse = out
@@ -960,7 +972,10 @@ func (s *jobs) PostJobParse(ctx context.Context, request shared.JobsParseRequest
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -983,6 +998,7 @@ func (s *jobs) PostJobParse(ctx context.Context, request shared.JobsParseRequest
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -999,7 +1015,7 @@ func (s *jobs) PostJobParse(ctx context.Context, request shared.JobsParseRequest
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Job
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.Job = out
@@ -1068,7 +1084,7 @@ func (s *jobs) PostJobPeriodicForce(ctx context.Context, request operations.Post
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.PeriodicForceResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.PeriodicForceResponse = out
@@ -1100,7 +1116,10 @@ func (s *jobs) PostJobPlan(ctx context.Context, request operations.PostJobPlanRe
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -1129,6 +1148,7 @@ func (s *jobs) PostJobPlan(ctx context.Context, request operations.PostJobPlanRe
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -1147,7 +1167,7 @@ func (s *jobs) PostJobPlan(ctx context.Context, request operations.PostJobPlanRe
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.JobPlanResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobPlanResponse = out
@@ -1179,7 +1199,10 @@ func (s *jobs) PostJobRevert(ctx context.Context, request operations.PostJobReve
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -1208,6 +1231,7 @@ func (s *jobs) PostJobRevert(ctx context.Context, request operations.PostJobReve
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -1226,7 +1250,7 @@ func (s *jobs) PostJobRevert(ctx context.Context, request operations.PostJobReve
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.JobRegisterResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobRegisterResponse = out
@@ -1258,7 +1282,10 @@ func (s *jobs) PostJobScalingRequest(ctx context.Context, request operations.Pos
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -1287,6 +1314,7 @@ func (s *jobs) PostJobScalingRequest(ctx context.Context, request operations.Pos
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -1305,7 +1333,7 @@ func (s *jobs) PostJobScalingRequest(ctx context.Context, request operations.Pos
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.JobRegisterResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobRegisterResponse = out
@@ -1337,7 +1365,10 @@ func (s *jobs) PostJobStability(ctx context.Context, request operations.PostJobS
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -1366,6 +1397,7 @@ func (s *jobs) PostJobStability(ctx context.Context, request operations.PostJobS
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -1384,7 +1416,7 @@ func (s *jobs) PostJobStability(ctx context.Context, request operations.PostJobS
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.JobStabilityResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobStabilityResponse = out
@@ -1413,7 +1445,10 @@ func (s *jobs) PostJobValidateRequest(ctx context.Context, request operations.Po
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -1442,6 +1477,7 @@ func (s *jobs) PostJobValidateRequest(ctx context.Context, request operations.Po
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -1460,7 +1496,7 @@ func (s *jobs) PostJobValidateRequest(ctx context.Context, request operations.Po
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.JobValidateResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobValidateResponse = out
@@ -1489,7 +1525,10 @@ func (s *jobs) RegisterJob(ctx context.Context, request operations.RegisterJobRe
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -1518,6 +1557,7 @@ func (s *jobs) RegisterJob(ctx context.Context, request operations.RegisterJobRe
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -1536,7 +1576,7 @@ func (s *jobs) RegisterJob(ctx context.Context, request operations.RegisterJobRe
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.JobRegisterResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.JobRegisterResponse = out

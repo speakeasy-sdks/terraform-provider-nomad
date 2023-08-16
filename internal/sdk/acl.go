@@ -193,7 +193,7 @@ func (s *acl) GetACLPolicies(ctx context.Context, request operations.GetACLPolic
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.ACLPolicyListStub
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.ACLPolicyListStubs = out
@@ -262,7 +262,7 @@ func (s *acl) GetACLPolicy(ctx context.Context, request operations.GetACLPolicyR
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ACLPolicy
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.ACLPolicy = out
@@ -331,7 +331,7 @@ func (s *acl) GetACLToken(ctx context.Context, request operations.GetACLTokenReq
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ACLToken
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.ACLToken = out
@@ -397,7 +397,7 @@ func (s *acl) GetACLTokenSelf(ctx context.Context, request operations.GetACLToke
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ACLToken
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.ACLToken = out
@@ -463,7 +463,7 @@ func (s *acl) GetACLTokens(ctx context.Context, request operations.GetACLTokensR
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.ACLTokenListStub
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.ACLTokenListStubs = out
@@ -529,7 +529,7 @@ func (s *acl) PostACLBootstrap(ctx context.Context, request operations.PostACLBo
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ACLToken
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.ACLToken = out
@@ -561,7 +561,10 @@ func (s *acl) PostACLPolicy(ctx context.Context, request operations.PostACLPolic
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -590,6 +593,7 @@ func (s *acl) PostACLPolicy(ctx context.Context, request operations.PostACLPolic
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -631,7 +635,10 @@ func (s *acl) PostACLToken(ctx context.Context, request operations.PostACLTokenR
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -660,6 +667,7 @@ func (s *acl) PostACLToken(ctx context.Context, request operations.PostACLTokenR
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -678,7 +686,7 @@ func (s *acl) PostACLToken(ctx context.Context, request operations.PostACLTokenR
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ACLToken
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.ACLToken = out
@@ -744,7 +752,7 @@ func (s *acl) PostACLTokenOnetime(ctx context.Context, request operations.PostAC
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.OneTimeToken
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.OneTimeToken = out
@@ -773,7 +781,10 @@ func (s *acl) PostACLTokenOnetimeExchange(ctx context.Context, request operation
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -802,6 +813,7 @@ func (s *acl) PostACLTokenOnetimeExchange(ctx context.Context, request operation
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -820,7 +832,7 @@ func (s *acl) PostACLTokenOnetimeExchange(ctx context.Context, request operation
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ACLToken
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.ACLToken = out

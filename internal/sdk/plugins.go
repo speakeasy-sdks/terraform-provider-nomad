@@ -76,7 +76,7 @@ func (s *plugins) GetPluginCSI(ctx context.Context, request operations.GetPlugin
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.CSIPlugin
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.CSIPlugins = out
@@ -140,7 +140,7 @@ func (s *plugins) GetPlugins(ctx context.Context, request operations.GetPluginsR
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.CSIPluginListStub
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.CSIPluginListStubs = out

@@ -39,7 +39,10 @@ func (s *variables) DeleteVariable(ctx context.Context, request operations.Delet
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "DELETE", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "DELETE", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -68,6 +71,7 @@ func (s *variables) DeleteVariable(ctx context.Context, request operations.Delet
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -146,7 +150,7 @@ func (s *variables) GetVariableQuery(ctx context.Context, request operations.Get
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Variable
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.Variable = out
@@ -212,7 +216,7 @@ func (s *variables) GetVariablesListRequest(ctx context.Context, request operati
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.VariableMetadata
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.VariableMetadata = out
@@ -244,7 +248,10 @@ func (s *variables) PostVariable(ctx context.Context, request operations.PostVar
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -273,6 +280,7 @@ func (s *variables) PostVariable(ctx context.Context, request operations.PostVar
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -291,7 +299,7 @@ func (s *variables) PostVariable(ctx context.Context, request operations.PostVar
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Variable
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.Variable = out
@@ -323,7 +331,10 @@ func (s *variables) PutVariable(ctx context.Context, request operations.PutVaria
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "PUT", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -352,6 +363,7 @@ func (s *variables) PutVariable(ctx context.Context, request operations.PutVaria
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -370,7 +382,7 @@ func (s *variables) PutVariable(ctx context.Context, request operations.PutVaria
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Variable
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.Variable = out

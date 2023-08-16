@@ -39,7 +39,10 @@ func (s *volumes) CreateVolume(ctx context.Context, request operations.CreateVol
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -68,6 +71,7 @@ func (s *volumes) CreateVolume(ctx context.Context, request operations.CreateVol
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -320,7 +324,7 @@ func (s *volumes) GetExternalVolumes(ctx context.Context, request operations.Get
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.CSIVolumeListExternalResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.CSIVolumeListExternalResponse = out
@@ -386,7 +390,7 @@ func (s *volumes) GetSnapshots(ctx context.Context, request operations.GetSnapsh
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.CSISnapshotListResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.CSISnapshotListResponse = out
@@ -455,7 +459,7 @@ func (s *volumes) GetVolume(ctx context.Context, request operations.GetVolumeReq
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.CSIVolume
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.CSIVolume = out
@@ -521,7 +525,7 @@ func (s *volumes) GetVolumes(ctx context.Context, request operations.GetVolumesR
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.CSIVolumeListStub
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.CSIVolumeListStubs = out
@@ -550,7 +554,10 @@ func (s *volumes) PostSnapshot(ctx context.Context, request operations.PostSnaps
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -579,6 +586,7 @@ func (s *volumes) PostSnapshot(ctx context.Context, request operations.PostSnaps
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -597,7 +605,7 @@ func (s *volumes) PostSnapshot(ctx context.Context, request operations.PostSnaps
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.CSISnapshotCreateResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.CSISnapshotCreateResponse = out
@@ -626,7 +634,10 @@ func (s *volumes) PostVolume(ctx context.Context, request operations.PostVolumeR
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -655,6 +666,7 @@ func (s *volumes) PostVolume(ctx context.Context, request operations.PostVolumeR
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -696,7 +708,10 @@ func (s *volumes) PostVolumeRegistration(ctx context.Context, request operations
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -725,6 +740,7 @@ func (s *volumes) PostVolumeRegistration(ctx context.Context, request operations
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 

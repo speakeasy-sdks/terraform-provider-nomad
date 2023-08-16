@@ -127,7 +127,7 @@ func (s *operator) GetOperatorAutopilotConfiguration(ctx context.Context, reques
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.AutopilotConfiguration
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.AutopilotConfiguration = out
@@ -191,7 +191,7 @@ func (s *operator) GetOperatorAutopilotHealth(ctx context.Context, request opera
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.OperatorHealthReply
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.OperatorHealthReply = out
@@ -255,7 +255,7 @@ func (s *operator) GetOperatorRaftConfiguration(ctx context.Context, request ope
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.RaftConfiguration
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.RaftConfiguration = out
@@ -321,7 +321,7 @@ func (s *operator) GetOperatorSchedulerConfiguration(ctx context.Context, reques
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.SchedulerConfigurationResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.SchedulerConfigurationResponse = out
@@ -350,7 +350,10 @@ func (s *operator) PostOperatorSchedulerConfiguration(ctx context.Context, reque
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -379,6 +382,7 @@ func (s *operator) PostOperatorSchedulerConfiguration(ctx context.Context, reque
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -397,7 +401,7 @@ func (s *operator) PostOperatorSchedulerConfiguration(ctx context.Context, reque
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.SchedulerSetConfigurationResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.SchedulerSetConfigurationResponse = out
@@ -426,7 +430,10 @@ func (s *operator) PutOperatorAutopilotConfiguration(ctx context.Context, reques
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "PUT", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -455,6 +462,7 @@ func (s *operator) PutOperatorAutopilotConfiguration(ctx context.Context, reques
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -471,7 +479,7 @@ func (s *operator) PutOperatorAutopilotConfiguration(ctx context.Context, reques
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *bool
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.PutOperatorAutopilotConfiguration200ApplicationJSONBoolean = out

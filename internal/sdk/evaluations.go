@@ -76,7 +76,7 @@ func (s *evaluations) GetEvaluation(ctx context.Context, request operations.GetE
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Evaluation
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.Evaluation = out
@@ -145,7 +145,7 @@ func (s *evaluations) GetEvaluationAllocations(ctx context.Context, request oper
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.AllocationListStub
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.AllocationListStubs = out
@@ -211,7 +211,7 @@ func (s *evaluations) GetEvaluations(ctx context.Context, request operations.Get
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.Evaluation
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.Evaluations = out

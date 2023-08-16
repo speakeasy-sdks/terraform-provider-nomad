@@ -36,7 +36,10 @@ func (s *search) GetFuzzySearch(ctx context.Context, request operations.GetFuzzy
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -65,6 +68,7 @@ func (s *search) GetFuzzySearch(ctx context.Context, request operations.GetFuzzy
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -83,7 +87,7 @@ func (s *search) GetFuzzySearch(ctx context.Context, request operations.GetFuzzy
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.FuzzySearchResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.FuzzySearchResponse = out
@@ -112,7 +116,10 @@ func (s *search) GetSearch(ctx context.Context, request operations.GetSearchRequ
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -141,6 +148,7 @@ func (s *search) GetSearch(ctx context.Context, request operations.GetSearchRequ
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -159,7 +167,7 @@ func (s *search) GetSearch(ctx context.Context, request operations.GetSearchRequ
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.SearchResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.SearchResponse = out

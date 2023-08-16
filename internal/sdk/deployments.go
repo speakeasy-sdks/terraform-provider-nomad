@@ -76,7 +76,7 @@ func (s *deployments) GetDeployment(ctx context.Context, request operations.GetD
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Deployment
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.Deployment = out
@@ -145,7 +145,7 @@ func (s *deployments) GetDeploymentAllocations(ctx context.Context, request oper
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.AllocationListStub
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.AllocationListStubs = out
@@ -211,7 +211,7 @@ func (s *deployments) GetDeployments(ctx context.Context, request operations.Get
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []shared.Deployment
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.Deployments = out
@@ -243,7 +243,10 @@ func (s *deployments) PostDeploymentAllocationHealth(ctx context.Context, reques
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -272,6 +275,7 @@ func (s *deployments) PostDeploymentAllocationHealth(ctx context.Context, reques
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -288,7 +292,7 @@ func (s *deployments) PostDeploymentAllocationHealth(ctx context.Context, reques
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DeploymentUpdateResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.DeploymentUpdateResponse = out
@@ -355,7 +359,7 @@ func (s *deployments) PostDeploymentFail(ctx context.Context, request operations
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DeploymentUpdateResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.DeploymentUpdateResponse = out
@@ -387,7 +391,10 @@ func (s *deployments) PostDeploymentPause(ctx context.Context, request operation
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -416,6 +423,7 @@ func (s *deployments) PostDeploymentPause(ctx context.Context, request operation
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -432,7 +440,7 @@ func (s *deployments) PostDeploymentPause(ctx context.Context, request operation
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DeploymentUpdateResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.DeploymentUpdateResponse = out
@@ -464,7 +472,10 @@ func (s *deployments) PostDeploymentPromote(ctx context.Context, request operati
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -493,6 +504,7 @@ func (s *deployments) PostDeploymentPromote(ctx context.Context, request operati
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -509,7 +521,7 @@ func (s *deployments) PostDeploymentPromote(ctx context.Context, request operati
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DeploymentUpdateResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.DeploymentUpdateResponse = out
@@ -541,7 +553,10 @@ func (s *deployments) PostDeploymentUnblock(ctx context.Context, request operati
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	debugBody := bytes.NewBuffer([]byte{})
+	debugReader := io.TeeReader(bodyReader, debugBody)
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, debugReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -570,6 +585,7 @@ func (s *deployments) PostDeploymentUnblock(ctx context.Context, request operati
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
+	httpRes.Request.Body = io.NopCloser(debugBody)
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
@@ -586,7 +602,7 @@ func (s *deployments) PostDeploymentUnblock(ctx context.Context, request operati
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DeploymentUpdateResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
+				return res, err
 			}
 
 			res.DeploymentUpdateResponse = out
