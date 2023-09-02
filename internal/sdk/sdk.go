@@ -204,8 +204,8 @@ func New(opts ...SDKOption) *Nomad {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "terraform",
 			OpenAPIDocVersion: "1.1.4",
-			SDKVersion:        "1.13.0",
-			GenVersion:        "2.91.2",
+			SDKVersion:        "1.13.1",
+			GenVersion:        "2.93.0",
 			ServerDefaults: []map[string]string{
 				{
 					"address": "127.0.0.1",
