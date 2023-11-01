@@ -9,3 +9,38 @@ type NodeDrainUpdateResponse struct {
 	NodeModifyIndex *int64   `json:"NodeModifyIndex,omitempty"`
 	RequestTime     *int64   `json:"RequestTime,omitempty"`
 }
+
+func (o *NodeDrainUpdateResponse) GetEvalCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EvalCreateIndex
+}
+
+func (o *NodeDrainUpdateResponse) GetEvalIDs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.EvalIDs
+}
+
+func (o *NodeDrainUpdateResponse) GetLastIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastIndex
+}
+
+func (o *NodeDrainUpdateResponse) GetNodeModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NodeModifyIndex
+}
+
+func (o *NodeDrainUpdateResponse) GetRequestTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RequestTime
+}

@@ -9,3 +9,38 @@ type ConsulProxy struct {
 	LocalServicePort    *int64                 `json:"LocalServicePort,omitempty"`
 	Upstreams           []ConsulUpstream       `json:"Upstreams,omitempty"`
 }
+
+func (o *ConsulProxy) GetConfig() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Config
+}
+
+func (o *ConsulProxy) GetExposeConfig() *ConsulExposeConfig {
+	if o == nil {
+		return nil
+	}
+	return o.ExposeConfig
+}
+
+func (o *ConsulProxy) GetLocalServiceAddress() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LocalServiceAddress
+}
+
+func (o *ConsulProxy) GetLocalServicePort() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LocalServicePort
+}
+
+func (o *ConsulProxy) GetUpstreams() []ConsulUpstream {
+	if o == nil {
+		return nil
+	}
+	return o.Upstreams
+}

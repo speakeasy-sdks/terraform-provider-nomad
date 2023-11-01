@@ -11,6 +11,13 @@ type GetJobSummarySecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *GetJobSummarySecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type GetJobSummaryRequest struct {
 	// A Nomad ACL token.
 	XNomadToken *string `header:"style=simple,explode=false,name=X-Nomad-Token"`
@@ -34,6 +41,76 @@ type GetJobSummaryRequest struct {
 	Wait *string `queryParam:"style=form,explode=true,name=wait"`
 }
 
+func (o *GetJobSummaryRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *GetJobSummaryRequest) GetIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *GetJobSummaryRequest) GetJobName() string {
+	if o == nil {
+		return ""
+	}
+	return o.JobName
+}
+
+func (o *GetJobSummaryRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *GetJobSummaryRequest) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *GetJobSummaryRequest) GetPerPage() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PerPage
+}
+
+func (o *GetJobSummaryRequest) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *GetJobSummaryRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *GetJobSummaryRequest) GetStale() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Stale
+}
+
+func (o *GetJobSummaryRequest) GetWait() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Wait
+}
+
 type GetJobSummaryResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -43,4 +120,39 @@ type GetJobSummaryResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *GetJobSummaryResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetJobSummaryResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *GetJobSummaryResponse) GetJobSummary() *shared.JobSummary {
+	if o == nil {
+		return nil
+	}
+	return o.JobSummary
+}
+
+func (o *GetJobSummaryResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetJobSummaryResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

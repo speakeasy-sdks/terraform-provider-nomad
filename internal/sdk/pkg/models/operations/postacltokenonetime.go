@@ -11,6 +11,13 @@ type PostACLTokenOnetimeSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PostACLTokenOnetimeSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PostACLTokenOnetimeRequest struct {
 	// A Nomad ACL token.
 	XNomadToken *string `header:"style=simple,explode=false,name=X-Nomad-Token"`
@@ -22,6 +29,34 @@ type PostACLTokenOnetimeRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *PostACLTokenOnetimeRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PostACLTokenOnetimeRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PostACLTokenOnetimeRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PostACLTokenOnetimeRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type PostACLTokenOnetimeResponse struct {
 	// HTTP response content type for this operation
 	ContentType  string
@@ -31,4 +66,39 @@ type PostACLTokenOnetimeResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *PostACLTokenOnetimeResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PostACLTokenOnetimeResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *PostACLTokenOnetimeResponse) GetOneTimeToken() *shared.OneTimeToken {
+	if o == nil {
+		return nil
+	}
+	return o.OneTimeToken
+}
+
+func (o *PostACLTokenOnetimeResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PostACLTokenOnetimeResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

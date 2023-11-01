@@ -7,3 +7,24 @@ type NodePurgeResponse struct {
 	EvalIDs         []string `json:"EvalIDs,omitempty"`
 	NodeModifyIndex *int64   `json:"NodeModifyIndex,omitempty"`
 }
+
+func (o *NodePurgeResponse) GetEvalCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EvalCreateIndex
+}
+
+func (o *NodePurgeResponse) GetEvalIDs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.EvalIDs
+}
+
+func (o *NodePurgeResponse) GetNodeModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NodeModifyIndex
+}

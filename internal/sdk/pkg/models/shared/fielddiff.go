@@ -9,3 +9,38 @@ type FieldDiff struct {
 	Old         *string  `json:"Old,omitempty"`
 	Type        *string  `json:"Type,omitempty"`
 }
+
+func (o *FieldDiff) GetAnnotations() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Annotations
+}
+
+func (o *FieldDiff) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *FieldDiff) GetNew() *string {
+	if o == nil {
+		return nil
+	}
+	return o.New
+}
+
+func (o *FieldDiff) GetOld() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Old
+}
+
+func (o *FieldDiff) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}

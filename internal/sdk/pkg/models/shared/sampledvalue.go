@@ -13,3 +13,66 @@ type SampledValue struct {
 	Stddev *float64          `json:"Stddev,omitempty"`
 	Sum    *float64          `json:"Sum,omitempty"`
 }
+
+func (o *SampledValue) GetCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Count
+}
+
+func (o *SampledValue) GetLabels() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Labels
+}
+
+func (o *SampledValue) GetMax() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Max
+}
+
+func (o *SampledValue) GetMean() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Mean
+}
+
+func (o *SampledValue) GetMin() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Min
+}
+
+func (o *SampledValue) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *SampledValue) GetRate() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Rate
+}
+
+func (o *SampledValue) GetStddev() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Stddev
+}
+
+func (o *SampledValue) GetSum() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Sum
+}

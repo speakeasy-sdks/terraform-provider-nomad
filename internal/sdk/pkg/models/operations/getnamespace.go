@@ -11,6 +11,13 @@ type GetNamespaceSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *GetNamespaceSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type GetNamespaceRequest struct {
 	// A Nomad ACL token.
 	XNomadToken *string `header:"style=simple,explode=false,name=X-Nomad-Token"`
@@ -34,6 +41,76 @@ type GetNamespaceRequest struct {
 	Wait *string `queryParam:"style=form,explode=true,name=wait"`
 }
 
+func (o *GetNamespaceRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *GetNamespaceRequest) GetIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *GetNamespaceRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *GetNamespaceRequest) GetNamespaceName() string {
+	if o == nil {
+		return ""
+	}
+	return o.NamespaceName
+}
+
+func (o *GetNamespaceRequest) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *GetNamespaceRequest) GetPerPage() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PerPage
+}
+
+func (o *GetNamespaceRequest) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *GetNamespaceRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *GetNamespaceRequest) GetStale() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Stale
+}
+
+func (o *GetNamespaceRequest) GetWait() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Wait
+}
+
 type GetNamespaceResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -43,4 +120,39 @@ type GetNamespaceResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *GetNamespaceResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetNamespaceResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *GetNamespaceResponse) GetNamespace() *shared.Namespace {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *GetNamespaceResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetNamespaceResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

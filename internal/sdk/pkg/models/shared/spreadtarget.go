@@ -6,3 +6,17 @@ type SpreadTarget struct {
 	Percent *int64  `json:"Percent,omitempty"`
 	Value   *string `json:"Value,omitempty"`
 }
+
+func (o *SpreadTarget) GetPercent() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Percent
+}
+
+func (o *SpreadTarget) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

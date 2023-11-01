@@ -5,3 +5,10 @@ package shared
 type RescheduleTracker struct {
 	Events []RescheduleEvent `json:"Events,omitempty"`
 }
+
+func (o *RescheduleTracker) GetEvents() []RescheduleEvent {
+	if o == nil {
+		return nil
+	}
+	return o.Events
+}

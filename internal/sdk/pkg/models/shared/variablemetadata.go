@@ -10,3 +10,45 @@ type VariableMetadata struct {
 	Namespace   *string `json:"Namespace,omitempty"`
 	Path        *string `json:"Path,omitempty"`
 }
+
+func (o *VariableMetadata) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *VariableMetadata) GetCreateTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateTime
+}
+
+func (o *VariableMetadata) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *VariableMetadata) GetModifyTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyTime
+}
+
+func (o *VariableMetadata) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *VariableMetadata) GetPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Path
+}

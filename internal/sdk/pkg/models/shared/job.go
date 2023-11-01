@@ -41,3 +41,262 @@ type Job struct {
 	VaultToken               *string                 `json:"VaultToken,omitempty"`
 	Version                  *int64                  `json:"Version,omitempty"`
 }
+
+func (o *Job) GetAffinities() []Affinity {
+	if o == nil {
+		return nil
+	}
+	return o.Affinities
+}
+
+func (o *Job) GetAllAtOnce() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AllAtOnce
+}
+
+func (o *Job) GetConstraints() []Constraint {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *Job) GetConsulNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConsulNamespace
+}
+
+func (o *Job) GetConsulToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConsulToken
+}
+
+func (o *Job) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *Job) GetDatacenters() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Datacenters
+}
+
+func (o *Job) GetDispatchIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DispatchIdempotencyToken
+}
+
+func (o *Job) GetDispatched() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Dispatched
+}
+
+func (o *Job) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Job) GetJobModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobModifyIndex
+}
+
+func (o *Job) GetMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}
+
+func (o *Job) GetMigrate() *MigrateStrategy {
+	if o == nil {
+		return nil
+	}
+	return o.Migrate
+}
+
+func (o *Job) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *Job) GetMultiregion() *Multiregion {
+	if o == nil {
+		return nil
+	}
+	return o.Multiregion
+}
+
+func (o *Job) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *Job) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *Job) GetNomadTokenID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NomadTokenID
+}
+
+func (o *Job) GetParameterizedJob() *ParameterizedJobConfig {
+	if o == nil {
+		return nil
+	}
+	return o.ParameterizedJob
+}
+
+func (o *Job) GetParentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ParentID
+}
+
+func (o *Job) GetPayload() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Payload
+}
+
+func (o *Job) GetPeriodic() *PeriodicConfig {
+	if o == nil {
+		return nil
+	}
+	return o.Periodic
+}
+
+func (o *Job) GetPriority() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Priority
+}
+
+func (o *Job) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *Job) GetReschedule() *ReschedulePolicy {
+	if o == nil {
+		return nil
+	}
+	return o.Reschedule
+}
+
+func (o *Job) GetSpreads() []Spread {
+	if o == nil {
+		return nil
+	}
+	return o.Spreads
+}
+
+func (o *Job) GetStable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Stable
+}
+
+func (o *Job) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *Job) GetStatusDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StatusDescription
+}
+
+func (o *Job) GetStop() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Stop
+}
+
+func (o *Job) GetSubmitTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.SubmitTime
+}
+
+func (o *Job) GetTaskGroups() []TaskGroup {
+	if o == nil {
+		return nil
+	}
+	return o.TaskGroups
+}
+
+func (o *Job) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *Job) GetUpdate() *UpdateStrategy {
+	if o == nil {
+		return nil
+	}
+	return o.Update
+}
+
+func (o *Job) GetVaultNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.VaultNamespace
+}
+
+func (o *Job) GetVaultToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.VaultToken
+}
+
+func (o *Job) GetVersion() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Version
+}

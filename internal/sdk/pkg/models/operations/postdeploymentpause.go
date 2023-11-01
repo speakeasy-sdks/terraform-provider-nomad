@@ -11,6 +11,13 @@ type PostDeploymentPauseSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PostDeploymentPauseSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PostDeploymentPauseRequest struct {
 	DeploymentPauseRequest shared.DeploymentPauseRequest `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -25,6 +32,48 @@ type PostDeploymentPauseRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *PostDeploymentPauseRequest) GetDeploymentPauseRequest() shared.DeploymentPauseRequest {
+	if o == nil {
+		return shared.DeploymentPauseRequest{}
+	}
+	return o.DeploymentPauseRequest
+}
+
+func (o *PostDeploymentPauseRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PostDeploymentPauseRequest) GetDeploymentID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DeploymentID
+}
+
+func (o *PostDeploymentPauseRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PostDeploymentPauseRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PostDeploymentPauseRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type PostDeploymentPauseResponse struct {
 	// HTTP response content type for this operation
 	ContentType              string
@@ -33,4 +82,32 @@ type PostDeploymentPauseResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *PostDeploymentPauseResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PostDeploymentPauseResponse) GetDeploymentUpdateResponse() *shared.DeploymentUpdateResponse {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentUpdateResponse
+}
+
+func (o *PostDeploymentPauseResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PostDeploymentPauseResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

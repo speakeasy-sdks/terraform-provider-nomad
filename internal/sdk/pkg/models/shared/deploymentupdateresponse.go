@@ -10,3 +10,45 @@ type DeploymentUpdateResponse struct {
 	RequestTime           *int64  `json:"RequestTime,omitempty"`
 	RevertedJobVersion    *int64  `json:"RevertedJobVersion,omitempty"`
 }
+
+func (o *DeploymentUpdateResponse) GetDeploymentModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentModifyIndex
+}
+
+func (o *DeploymentUpdateResponse) GetEvalCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EvalCreateIndex
+}
+
+func (o *DeploymentUpdateResponse) GetEvalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EvalID
+}
+
+func (o *DeploymentUpdateResponse) GetLastIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastIndex
+}
+
+func (o *DeploymentUpdateResponse) GetRequestTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RequestTime
+}
+
+func (o *DeploymentUpdateResponse) GetRevertedJobVersion() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RevertedJobVersion
+}

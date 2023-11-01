@@ -8,3 +8,31 @@ type AllocatedDeviceResource struct {
 	Type      *string  `json:"Type,omitempty"`
 	Vendor    *string  `json:"Vendor,omitempty"`
 }
+
+func (o *AllocatedDeviceResource) GetDeviceIDs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.DeviceIDs
+}
+
+func (o *AllocatedDeviceResource) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *AllocatedDeviceResource) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *AllocatedDeviceResource) GetVendor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Vendor
+}

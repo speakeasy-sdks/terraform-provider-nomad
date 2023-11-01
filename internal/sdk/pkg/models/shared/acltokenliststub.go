@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"nomad/internal/sdk/pkg/utils"
 	"time"
 )
 
@@ -17,4 +18,85 @@ type ACLTokenListStub struct {
 	Roles          []ACLTokenRoleLink `json:"Roles,omitempty"`
 	Type           *string            `json:"Type,omitempty"`
 	ExpirationTime *time.Time         `json:"expiration_time,omitempty"`
+}
+
+func (a ACLTokenListStub) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ACLTokenListStub) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ACLTokenListStub) GetAccessorID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AccessorID
+}
+
+func (o *ACLTokenListStub) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *ACLTokenListStub) GetCreateTime() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.CreateTime
+}
+
+func (o *ACLTokenListStub) GetGlobal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Global
+}
+
+func (o *ACLTokenListStub) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *ACLTokenListStub) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *ACLTokenListStub) GetPolicies() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Policies
+}
+
+func (o *ACLTokenListStub) GetRoles() []ACLTokenRoleLink {
+	if o == nil {
+		return nil
+	}
+	return o.Roles
+}
+
+func (o *ACLTokenListStub) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *ACLTokenListStub) GetExpirationTime() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ExpirationTime
 }

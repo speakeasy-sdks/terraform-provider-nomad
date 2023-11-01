@@ -24,3 +24,143 @@ type TaskGroup struct {
 	Update                    *UpdateStrategy          `json:"Update,omitempty"`
 	Volumes                   map[string]VolumeRequest `json:"Volumes,omitempty"`
 }
+
+func (o *TaskGroup) GetAffinities() []Affinity {
+	if o == nil {
+		return nil
+	}
+	return o.Affinities
+}
+
+func (o *TaskGroup) GetConstraints() []Constraint {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *TaskGroup) GetConsul() *Consul {
+	if o == nil {
+		return nil
+	}
+	return o.Consul
+}
+
+func (o *TaskGroup) GetCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Count
+}
+
+func (o *TaskGroup) GetEphemeralDisk() *EphemeralDisk {
+	if o == nil {
+		return nil
+	}
+	return o.EphemeralDisk
+}
+
+func (o *TaskGroup) GetMaxClientDisconnect() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxClientDisconnect
+}
+
+func (o *TaskGroup) GetMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}
+
+func (o *TaskGroup) GetMigrate() *MigrateStrategy {
+	if o == nil {
+		return nil
+	}
+	return o.Migrate
+}
+
+func (o *TaskGroup) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *TaskGroup) GetNetworks() []NetworkResource {
+	if o == nil {
+		return nil
+	}
+	return o.Networks
+}
+
+func (o *TaskGroup) GetReschedulePolicy() *ReschedulePolicy {
+	if o == nil {
+		return nil
+	}
+	return o.ReschedulePolicy
+}
+
+func (o *TaskGroup) GetRestartPolicy() *RestartPolicy {
+	if o == nil {
+		return nil
+	}
+	return o.RestartPolicy
+}
+
+func (o *TaskGroup) GetScaling() *ScalingPolicy {
+	if o == nil {
+		return nil
+	}
+	return o.Scaling
+}
+
+func (o *TaskGroup) GetServices() []Service {
+	if o == nil {
+		return nil
+	}
+	return o.Services
+}
+
+func (o *TaskGroup) GetShutdownDelay() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ShutdownDelay
+}
+
+func (o *TaskGroup) GetSpreads() []Spread {
+	if o == nil {
+		return nil
+	}
+	return o.Spreads
+}
+
+func (o *TaskGroup) GetStopAfterClientDisconnect() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.StopAfterClientDisconnect
+}
+
+func (o *TaskGroup) GetTasks() []Task {
+	if o == nil {
+		return nil
+	}
+	return o.Tasks
+}
+
+func (o *TaskGroup) GetUpdate() *UpdateStrategy {
+	if o == nil {
+		return nil
+	}
+	return o.Update
+}
+
+func (o *TaskGroup) GetVolumes() map[string]VolumeRequest {
+	if o == nil {
+		return nil
+	}
+	return o.Volumes
+}

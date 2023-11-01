@@ -11,6 +11,13 @@ type GetACLTokensSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *GetACLTokensSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type GetACLTokensRequest struct {
 	// A Nomad ACL token.
 	XNomadToken *string `header:"style=simple,explode=false,name=X-Nomad-Token"`
@@ -32,6 +39,69 @@ type GetACLTokensRequest struct {
 	Wait *string `queryParam:"style=form,explode=true,name=wait"`
 }
 
+func (o *GetACLTokensRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *GetACLTokensRequest) GetIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *GetACLTokensRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *GetACLTokensRequest) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *GetACLTokensRequest) GetPerPage() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PerPage
+}
+
+func (o *GetACLTokensRequest) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *GetACLTokensRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *GetACLTokensRequest) GetStale() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Stale
+}
+
+func (o *GetACLTokensRequest) GetWait() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Wait
+}
+
 type GetACLTokensResponse struct {
 	ACLTokenListStubs []shared.ACLTokenListStub
 	// HTTP response content type for this operation
@@ -41,4 +111,39 @@ type GetACLTokensResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *GetACLTokensResponse) GetACLTokenListStubs() []shared.ACLTokenListStub {
+	if o == nil {
+		return nil
+	}
+	return o.ACLTokenListStubs
+}
+
+func (o *GetACLTokensResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetACLTokensResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *GetACLTokensResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetACLTokensResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

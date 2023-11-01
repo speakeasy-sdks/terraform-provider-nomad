@@ -12,3 +12,59 @@ type JobDeregisterResponse struct {
 	NextToken       *string `json:"NextToken,omitempty"`
 	RequestTime     *int64  `json:"RequestTime,omitempty"`
 }
+
+func (o *JobDeregisterResponse) GetEvalCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EvalCreateIndex
+}
+
+func (o *JobDeregisterResponse) GetEvalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EvalID
+}
+
+func (o *JobDeregisterResponse) GetJobModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobModifyIndex
+}
+
+func (o *JobDeregisterResponse) GetKnownLeader() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.KnownLeader
+}
+
+func (o *JobDeregisterResponse) GetLastContact() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastContact
+}
+
+func (o *JobDeregisterResponse) GetLastIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastIndex
+}
+
+func (o *JobDeregisterResponse) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *JobDeregisterResponse) GetRequestTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RequestTime
+}

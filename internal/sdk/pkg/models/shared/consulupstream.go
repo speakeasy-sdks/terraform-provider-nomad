@@ -10,3 +10,45 @@ type ConsulUpstream struct {
 	LocalBindPort        *int64             `json:"LocalBindPort,omitempty"`
 	MeshGateway          *ConsulMeshGateway `json:"MeshGateway,omitempty"`
 }
+
+func (o *ConsulUpstream) GetDatacenter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Datacenter
+}
+
+func (o *ConsulUpstream) GetDestinationName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationName
+}
+
+func (o *ConsulUpstream) GetDestinationNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationNamespace
+}
+
+func (o *ConsulUpstream) GetLocalBindAddress() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LocalBindAddress
+}
+
+func (o *ConsulUpstream) GetLocalBindPort() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LocalBindPort
+}
+
+func (o *ConsulUpstream) GetMeshGateway() *ConsulMeshGateway {
+	if o == nil {
+		return nil
+	}
+	return o.MeshGateway
+}

@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"nomad/internal/sdk/pkg/utils"
 	"time"
 )
 
@@ -25,4 +26,141 @@ type EvaluationStub struct {
 	TriggeredBy       *string    `json:"TriggeredBy,omitempty"`
 	Type              *string    `json:"Type,omitempty"`
 	WaitUntil         *time.Time `json:"WaitUntil,omitempty"`
+}
+
+func (e EvaluationStub) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EvaluationStub) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *EvaluationStub) GetBlockedEval() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedEval
+}
+
+func (o *EvaluationStub) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *EvaluationStub) GetCreateTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateTime
+}
+
+func (o *EvaluationStub) GetDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentID
+}
+
+func (o *EvaluationStub) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *EvaluationStub) GetJobID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.JobID
+}
+
+func (o *EvaluationStub) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *EvaluationStub) GetModifyTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyTime
+}
+
+func (o *EvaluationStub) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *EvaluationStub) GetNextEval() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextEval
+}
+
+func (o *EvaluationStub) GetNodeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NodeID
+}
+
+func (o *EvaluationStub) GetPreviousEval() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviousEval
+}
+
+func (o *EvaluationStub) GetPriority() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Priority
+}
+
+func (o *EvaluationStub) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *EvaluationStub) GetStatusDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StatusDescription
+}
+
+func (o *EvaluationStub) GetTriggeredBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TriggeredBy
+}
+
+func (o *EvaluationStub) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *EvaluationStub) GetWaitUntil() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.WaitUntil
 }

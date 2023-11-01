@@ -12,3 +12,59 @@ type DesiredUpdates struct {
 	Preemptions       *int64 `json:"Preemptions,omitempty"`
 	Stop              *int64 `json:"Stop,omitempty"`
 }
+
+func (o *DesiredUpdates) GetCanary() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Canary
+}
+
+func (o *DesiredUpdates) GetDestructiveUpdate() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.DestructiveUpdate
+}
+
+func (o *DesiredUpdates) GetIgnore() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Ignore
+}
+
+func (o *DesiredUpdates) GetInPlaceUpdate() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.InPlaceUpdate
+}
+
+func (o *DesiredUpdates) GetMigrate() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Migrate
+}
+
+func (o *DesiredUpdates) GetPlace() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Place
+}
+
+func (o *DesiredUpdates) GetPreemptions() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Preemptions
+}
+
+func (o *DesiredUpdates) GetStop() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Stop
+}

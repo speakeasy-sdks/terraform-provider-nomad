@@ -8,3 +8,31 @@ type ConsulExposePath struct {
 	Path          *string `json:"Path,omitempty"`
 	Protocol      *string `json:"Protocol,omitempty"`
 }
+
+func (o *ConsulExposePath) GetListenerPort() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ListenerPort
+}
+
+func (o *ConsulExposePath) GetLocalPathPort() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LocalPathPort
+}
+
+func (o *ConsulExposePath) GetPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Path
+}
+
+func (o *ConsulExposePath) GetProtocol() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Protocol
+}

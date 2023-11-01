@@ -6,3 +6,17 @@ type RaftConfiguration struct {
 	Index   *int64       `json:"Index,omitempty"`
 	Servers []RaftServer `json:"Servers,omitempty"`
 }
+
+func (o *RaftConfiguration) GetIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *RaftConfiguration) GetServers() []RaftServer {
+	if o == nil {
+		return nil
+	}
+	return o.Servers
+}

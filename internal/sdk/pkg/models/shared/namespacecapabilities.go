@@ -6,3 +6,17 @@ type NamespaceCapabilities struct {
 	DisabledTaskDrivers []string `json:"DisabledTaskDrivers,omitempty"`
 	EnabledTaskDrivers  []string `json:"EnabledTaskDrivers,omitempty"`
 }
+
+func (o *NamespaceCapabilities) GetDisabledTaskDrivers() []string {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledTaskDrivers
+}
+
+func (o *NamespaceCapabilities) GetEnabledTaskDrivers() []string {
+	if o == nil {
+		return nil
+	}
+	return o.EnabledTaskDrivers
+}

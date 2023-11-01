@@ -10,3 +10,45 @@ type JobScaleStatusResponse struct {
 	Namespace      *string                         `json:"Namespace,omitempty"`
 	TaskGroups     map[string]TaskGroupScaleStatus `json:"TaskGroups,omitempty"`
 }
+
+func (o *JobScaleStatusResponse) GetJobCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobCreateIndex
+}
+
+func (o *JobScaleStatusResponse) GetJobID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.JobID
+}
+
+func (o *JobScaleStatusResponse) GetJobModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobModifyIndex
+}
+
+func (o *JobScaleStatusResponse) GetJobStopped() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.JobStopped
+}
+
+func (o *JobScaleStatusResponse) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *JobScaleStatusResponse) GetTaskGroups() map[string]TaskGroupScaleStatus {
+	if o == nil {
+		return nil
+	}
+	return o.TaskGroups
+}

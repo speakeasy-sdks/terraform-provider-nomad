@@ -11,3 +11,52 @@ type TaskGroupSummary struct {
 	Starting *int64 `json:"Starting,omitempty"`
 	Unknown  *int64 `json:"Unknown,omitempty"`
 }
+
+func (o *TaskGroupSummary) GetComplete() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Complete
+}
+
+func (o *TaskGroupSummary) GetFailed() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Failed
+}
+
+func (o *TaskGroupSummary) GetLost() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lost
+}
+
+func (o *TaskGroupSummary) GetQueued() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Queued
+}
+
+func (o *TaskGroupSummary) GetRunning() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Running
+}
+
+func (o *TaskGroupSummary) GetStarting() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Starting
+}
+
+func (o *TaskGroupSummary) GetUnknown() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Unknown
+}

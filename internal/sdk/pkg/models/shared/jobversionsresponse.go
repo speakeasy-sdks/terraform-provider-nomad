@@ -11,3 +11,52 @@ type JobVersionsResponse struct {
 	RequestTime *int64    `json:"RequestTime,omitempty"`
 	Versions    []Job     `json:"Versions,omitempty"`
 }
+
+func (o *JobVersionsResponse) GetDiffs() []JobDiff {
+	if o == nil {
+		return nil
+	}
+	return o.Diffs
+}
+
+func (o *JobVersionsResponse) GetKnownLeader() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.KnownLeader
+}
+
+func (o *JobVersionsResponse) GetLastContact() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastContact
+}
+
+func (o *JobVersionsResponse) GetLastIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastIndex
+}
+
+func (o *JobVersionsResponse) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *JobVersionsResponse) GetRequestTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RequestTime
+}
+
+func (o *JobVersionsResponse) GetVersions() []Job {
+	if o == nil {
+		return nil
+	}
+	return o.Versions
+}

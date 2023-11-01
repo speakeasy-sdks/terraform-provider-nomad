@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"nomad/internal/sdk/pkg/models/operations"
+	"nomad/internal/sdk/pkg/models/sdkerrors"
 	"nomad/internal/sdk/pkg/models/shared"
 	"nomad/internal/sdk/pkg/utils"
 	"strings"
@@ -28,7 +29,7 @@ func (s *enterprise) CreateQuotaSpec(ctx context.Context, request operations.Cre
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/quota"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "QuotaSpec", "json")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "QuotaSpec", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -54,7 +55,7 @@ func (s *enterprise) CreateQuotaSpec(ctx context.Context, request operations.Cre
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -115,7 +116,7 @@ func (s *enterprise) DeleteQuotaSpec(ctx context.Context, request operations.Del
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -175,7 +176,7 @@ func (s *enterprise) GetQuotaSpec(ctx context.Context, request operations.GetQuo
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -205,12 +206,14 @@ func (s *enterprise) GetQuotaSpec(ctx context.Context, request operations.GetQuo
 
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.QuotaSpec
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return res, err
+			var out shared.QuotaSpec
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
 			}
 
-			res.QuotaSpec = out
+			res.QuotaSpec = &out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -241,7 +244,7 @@ func (s *enterprise) GetQuotas(ctx context.Context, request operations.GetQuotas
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -272,11 +275,13 @@ func (s *enterprise) GetQuotas(ctx context.Context, request operations.GetQuotas
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []interface{}
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return res, err
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
 			}
 
 			res.GetQuotas200ApplicationJSONAnies = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -297,7 +302,7 @@ func (s *enterprise) PostQuotaSpec(ctx context.Context, request operations.PostQ
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "QuotaSpec", "json")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "QuotaSpec", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -323,7 +328,7 @@ func (s *enterprise) PostQuotaSpec(ctx context.Context, request operations.PostQ
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {

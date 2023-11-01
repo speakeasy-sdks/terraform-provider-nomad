@@ -8,3 +8,31 @@ type ConsulGatewayTLSConfig struct {
 	TLSMaxVersion *string  `json:"TLSMaxVersion,omitempty"`
 	TLSMinVersion *string  `json:"TLSMinVersion,omitempty"`
 }
+
+func (o *ConsulGatewayTLSConfig) GetCipherSuites() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CipherSuites
+}
+
+func (o *ConsulGatewayTLSConfig) GetEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Enabled
+}
+
+func (o *ConsulGatewayTLSConfig) GetTLSMaxVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TLSMaxVersion
+}
+
+func (o *ConsulGatewayTLSConfig) GetTLSMinVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TLSMinVersion
+}

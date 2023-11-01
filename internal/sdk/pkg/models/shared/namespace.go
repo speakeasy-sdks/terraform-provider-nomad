@@ -11,3 +11,52 @@ type Namespace struct {
 	Name         *string                `json:"Name,omitempty"`
 	Quota        *string                `json:"Quota,omitempty"`
 }
+
+func (o *Namespace) GetCapabilities() *NamespaceCapabilities {
+	if o == nil {
+		return nil
+	}
+	return o.Capabilities
+}
+
+func (o *Namespace) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *Namespace) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *Namespace) GetMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}
+
+func (o *Namespace) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *Namespace) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *Namespace) GetQuota() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Quota
+}

@@ -10,6 +10,13 @@ type PutSystemGCSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PutSystemGCSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PutSystemGCRequest struct {
 	// A Nomad ACL token.
 	XNomadToken *string `header:"style=simple,explode=false,name=X-Nomad-Token"`
@@ -21,6 +28,34 @@ type PutSystemGCRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *PutSystemGCRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PutSystemGCRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PutSystemGCRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PutSystemGCRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type PutSystemGCResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -28,4 +63,25 @@ type PutSystemGCResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *PutSystemGCResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PutSystemGCResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PutSystemGCResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

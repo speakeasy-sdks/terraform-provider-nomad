@@ -28,3 +28,171 @@ type ServiceCheck struct {
 	Timeout                *int64              `json:"Timeout,omitempty"`
 	Type                   *string             `json:"Type,omitempty"`
 }
+
+func (o *ServiceCheck) GetAddressMode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AddressMode
+}
+
+func (o *ServiceCheck) GetAdvertise() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Advertise
+}
+
+func (o *ServiceCheck) GetArgs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Args
+}
+
+func (o *ServiceCheck) GetBody() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *ServiceCheck) GetCheckRestart() *CheckRestart {
+	if o == nil {
+		return nil
+	}
+	return o.CheckRestart
+}
+
+func (o *ServiceCheck) GetCommand() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Command
+}
+
+func (o *ServiceCheck) GetExpose() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Expose
+}
+
+func (o *ServiceCheck) GetFailuresBeforeCritical() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.FailuresBeforeCritical
+}
+
+func (o *ServiceCheck) GetGRPCService() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GRPCService
+}
+
+func (o *ServiceCheck) GetGRPCUseTLS() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.GRPCUseTLS
+}
+
+func (o *ServiceCheck) GetHeader() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Header
+}
+
+func (o *ServiceCheck) GetInitialStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.InitialStatus
+}
+
+func (o *ServiceCheck) GetInterval() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Interval
+}
+
+func (o *ServiceCheck) GetMethod() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Method
+}
+
+func (o *ServiceCheck) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *ServiceCheck) GetOnUpdate() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OnUpdate
+}
+
+func (o *ServiceCheck) GetPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Path
+}
+
+func (o *ServiceCheck) GetPortLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PortLabel
+}
+
+func (o *ServiceCheck) GetProtocol() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Protocol
+}
+
+func (o *ServiceCheck) GetSuccessBeforePassing() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.SuccessBeforePassing
+}
+
+func (o *ServiceCheck) GetTLSSkipVerify() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.TLSSkipVerify
+}
+
+func (o *ServiceCheck) GetTaskName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TaskName
+}
+
+func (o *ServiceCheck) GetTimeout() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Timeout
+}
+
+func (o *ServiceCheck) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}

@@ -10,6 +10,13 @@ type DetachOrDeleteVolumeSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *DetachOrDeleteVolumeSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type DetachOrDeleteVolumeRequest struct {
 	// A Nomad ACL token.
 	XNomadToken *string `header:"style=simple,explode=false,name=X-Nomad-Token"`
@@ -27,6 +34,55 @@ type DetachOrDeleteVolumeRequest struct {
 	VolumeID string `pathParam:"style=simple,explode=false,name=volumeId"`
 }
 
+func (o *DetachOrDeleteVolumeRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *DetachOrDeleteVolumeRequest) GetAction() string {
+	if o == nil {
+		return ""
+	}
+	return o.Action
+}
+
+func (o *DetachOrDeleteVolumeRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *DetachOrDeleteVolumeRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *DetachOrDeleteVolumeRequest) GetNode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Node
+}
+
+func (o *DetachOrDeleteVolumeRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *DetachOrDeleteVolumeRequest) GetVolumeID() string {
+	if o == nil {
+		return ""
+	}
+	return o.VolumeID
+}
+
 type DetachOrDeleteVolumeResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -35,4 +91,32 @@ type DetachOrDeleteVolumeResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *DetachOrDeleteVolumeResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DetachOrDeleteVolumeResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *DetachOrDeleteVolumeResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DetachOrDeleteVolumeResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

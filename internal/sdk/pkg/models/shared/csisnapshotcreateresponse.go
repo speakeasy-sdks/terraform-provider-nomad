@@ -10,3 +10,45 @@ type CSISnapshotCreateResponse struct {
 	RequestTime *int64        `json:"RequestTime,omitempty"`
 	Snapshots   []CSISnapshot `json:"Snapshots,omitempty"`
 }
+
+func (o *CSISnapshotCreateResponse) GetKnownLeader() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.KnownLeader
+}
+
+func (o *CSISnapshotCreateResponse) GetLastContact() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastContact
+}
+
+func (o *CSISnapshotCreateResponse) GetLastIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastIndex
+}
+
+func (o *CSISnapshotCreateResponse) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *CSISnapshotCreateResponse) GetRequestTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RequestTime
+}
+
+func (o *CSISnapshotCreateResponse) GetSnapshots() []CSISnapshot {
+	if o == nil {
+		return nil
+	}
+	return o.Snapshots
+}

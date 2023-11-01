@@ -7,3 +7,24 @@ type GaugeValue struct {
 	Name   *string           `json:"Name,omitempty"`
 	Value  *float32          `json:"Value,omitempty"`
 }
+
+func (o *GaugeValue) GetLabels() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Labels
+}
+
+func (o *GaugeValue) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *GaugeValue) GetValue() *float32 {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

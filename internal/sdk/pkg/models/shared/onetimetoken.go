@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"nomad/internal/sdk/pkg/utils"
 	"time"
 )
 
@@ -12,4 +13,50 @@ type OneTimeToken struct {
 	ExpiresAt       *time.Time `json:"ExpiresAt,omitempty"`
 	ModifyIndex     *int64     `json:"ModifyIndex,omitempty"`
 	OneTimeSecretID *string    `json:"OneTimeSecretID,omitempty"`
+}
+
+func (o OneTimeToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OneTimeToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *OneTimeToken) GetAccessorID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AccessorID
+}
+
+func (o *OneTimeToken) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *OneTimeToken) GetExpiresAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ExpiresAt
+}
+
+func (o *OneTimeToken) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *OneTimeToken) GetOneTimeSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OneTimeSecretID
 }

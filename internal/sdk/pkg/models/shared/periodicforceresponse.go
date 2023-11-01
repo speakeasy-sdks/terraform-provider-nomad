@@ -7,3 +7,24 @@ type PeriodicForceResponse struct {
 	EvalID          *string `json:"EvalID,omitempty"`
 	Index           *int64  `json:"Index,omitempty"`
 }
+
+func (o *PeriodicForceResponse) GetEvalCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EvalCreateIndex
+}
+
+func (o *PeriodicForceResponse) GetEvalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EvalID
+}
+
+func (o *PeriodicForceResponse) GetIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}

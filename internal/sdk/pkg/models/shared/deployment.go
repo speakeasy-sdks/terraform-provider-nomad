@@ -17,3 +17,94 @@ type Deployment struct {
 	StatusDescription  *string                    `json:"StatusDescription,omitempty"`
 	TaskGroups         map[string]DeploymentState `json:"TaskGroups,omitempty"`
 }
+
+func (o *Deployment) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *Deployment) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Deployment) GetIsMultiregion() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsMultiregion
+}
+
+func (o *Deployment) GetJobCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobCreateIndex
+}
+
+func (o *Deployment) GetJobID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.JobID
+}
+
+func (o *Deployment) GetJobModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobModifyIndex
+}
+
+func (o *Deployment) GetJobSpecModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobSpecModifyIndex
+}
+
+func (o *Deployment) GetJobVersion() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobVersion
+}
+
+func (o *Deployment) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *Deployment) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *Deployment) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *Deployment) GetStatusDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StatusDescription
+}
+
+func (o *Deployment) GetTaskGroups() map[string]DeploymentState {
+	if o == nil {
+		return nil
+	}
+	return o.TaskGroups
+}

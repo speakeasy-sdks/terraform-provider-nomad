@@ -10,3 +10,45 @@ type DeploymentAllocHealthRequest struct {
 	SecretID               *string  `json:"SecretID,omitempty"`
 	UnhealthyAllocationIDs []string `json:"UnhealthyAllocationIDs,omitempty"`
 }
+
+func (o *DeploymentAllocHealthRequest) GetDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentID
+}
+
+func (o *DeploymentAllocHealthRequest) GetHealthyAllocationIDs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.HealthyAllocationIDs
+}
+
+func (o *DeploymentAllocHealthRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *DeploymentAllocHealthRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *DeploymentAllocHealthRequest) GetSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretID
+}
+
+func (o *DeploymentAllocHealthRequest) GetUnhealthyAllocationIDs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.UnhealthyAllocationIDs
+}

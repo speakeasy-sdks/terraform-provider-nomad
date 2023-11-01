@@ -12,3 +12,59 @@ type VolumeRequest struct {
 	Source         *string          `json:"Source,omitempty"`
 	Type           *string          `json:"Type,omitempty"`
 }
+
+func (o *VolumeRequest) GetAccessMode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AccessMode
+}
+
+func (o *VolumeRequest) GetAttachmentMode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AttachmentMode
+}
+
+func (o *VolumeRequest) GetMountOptions() *CSIMountOptions {
+	if o == nil {
+		return nil
+	}
+	return o.MountOptions
+}
+
+func (o *VolumeRequest) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *VolumeRequest) GetPerAlloc() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PerAlloc
+}
+
+func (o *VolumeRequest) GetReadOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ReadOnly
+}
+
+func (o *VolumeRequest) GetSource() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Source
+}
+
+func (o *VolumeRequest) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}

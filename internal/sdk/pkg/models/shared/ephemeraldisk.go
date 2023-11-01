@@ -7,3 +7,24 @@ type EphemeralDisk struct {
 	SizeMB  *int64 `json:"SizeMB,omitempty"`
 	Sticky  *bool  `json:"Sticky,omitempty"`
 }
+
+func (o *EphemeralDisk) GetMigrate() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Migrate
+}
+
+func (o *EphemeralDisk) GetSizeMB() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.SizeMB
+}
+
+func (o *EphemeralDisk) GetSticky() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sticky
+}

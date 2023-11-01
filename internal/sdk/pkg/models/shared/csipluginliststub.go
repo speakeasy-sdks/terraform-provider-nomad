@@ -13,3 +13,66 @@ type CSIPluginListStub struct {
 	NodesHealthy        *int64  `json:"NodesHealthy,omitempty"`
 	Provider            *string `json:"Provider,omitempty"`
 }
+
+func (o *CSIPluginListStub) GetControllerRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ControllerRequired
+}
+
+func (o *CSIPluginListStub) GetControllersExpected() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ControllersExpected
+}
+
+func (o *CSIPluginListStub) GetControllersHealthy() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ControllersHealthy
+}
+
+func (o *CSIPluginListStub) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *CSIPluginListStub) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *CSIPluginListStub) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *CSIPluginListStub) GetNodesExpected() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NodesExpected
+}
+
+func (o *CSIPluginListStub) GetNodesHealthy() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NodesHealthy
+}
+
+func (o *CSIPluginListStub) GetProvider() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Provider
+}

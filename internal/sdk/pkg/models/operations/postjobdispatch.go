@@ -11,6 +11,13 @@ type PostJobDispatchSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PostJobDispatchSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PostJobDispatchRequest struct {
 	JobDispatchRequest shared.JobDispatchRequest `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -25,6 +32,48 @@ type PostJobDispatchRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *PostJobDispatchRequest) GetJobDispatchRequest() shared.JobDispatchRequest {
+	if o == nil {
+		return shared.JobDispatchRequest{}
+	}
+	return o.JobDispatchRequest
+}
+
+func (o *PostJobDispatchRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PostJobDispatchRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PostJobDispatchRequest) GetJobName() string {
+	if o == nil {
+		return ""
+	}
+	return o.JobName
+}
+
+func (o *PostJobDispatchRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PostJobDispatchRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type PostJobDispatchResponse struct {
 	// HTTP response content type for this operation
 	ContentType         string
@@ -34,4 +83,39 @@ type PostJobDispatchResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *PostJobDispatchResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PostJobDispatchResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *PostJobDispatchResponse) GetJobDispatchResponse() *shared.JobDispatchResponse {
+	if o == nil {
+		return nil
+	}
+	return o.JobDispatchResponse
+}
+
+func (o *PostJobDispatchResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PostJobDispatchResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

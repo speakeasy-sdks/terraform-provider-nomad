@@ -11,6 +11,13 @@ type PostACLPolicySecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PostACLPolicySecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PostACLPolicyRequest struct {
 	ACLPolicy shared.ACLPolicy `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -25,6 +32,48 @@ type PostACLPolicyRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *PostACLPolicyRequest) GetACLPolicy() shared.ACLPolicy {
+	if o == nil {
+		return shared.ACLPolicy{}
+	}
+	return o.ACLPolicy
+}
+
+func (o *PostACLPolicyRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PostACLPolicyRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PostACLPolicyRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PostACLPolicyRequest) GetPolicyName() string {
+	if o == nil {
+		return ""
+	}
+	return o.PolicyName
+}
+
+func (o *PostACLPolicyRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type PostACLPolicyResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -33,4 +82,32 @@ type PostACLPolicyResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *PostACLPolicyResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PostACLPolicyResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *PostACLPolicyResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PostACLPolicyResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

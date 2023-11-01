@@ -9,3 +9,38 @@ type Attribute struct {
 	String *string  `json:"String,omitempty"`
 	Unit   *string  `json:"Unit,omitempty"`
 }
+
+func (o *Attribute) GetBool() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Bool
+}
+
+func (o *Attribute) GetFloat() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Float
+}
+
+func (o *Attribute) GetInt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Int
+}
+
+func (o *Attribute) GetString() *string {
+	if o == nil {
+		return nil
+	}
+	return o.String
+}
+
+func (o *Attribute) GetUnit() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Unit
+}

@@ -19,3 +19,108 @@ type Template struct {
 	VaultGrace   *int64        `json:"VaultGrace,omitempty"`
 	Wait         *WaitConfig   `json:"Wait,omitempty"`
 }
+
+func (o *Template) GetChangeMode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ChangeMode
+}
+
+func (o *Template) GetChangeScript() *ChangeScript {
+	if o == nil {
+		return nil
+	}
+	return o.ChangeScript
+}
+
+func (o *Template) GetChangeSignal() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ChangeSignal
+}
+
+func (o *Template) GetDestPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestPath
+}
+
+func (o *Template) GetEmbeddedTmpl() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EmbeddedTmpl
+}
+
+func (o *Template) GetEnvvars() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Envvars
+}
+
+func (o *Template) GetGid() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gid
+}
+
+func (o *Template) GetLeftDelim() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LeftDelim
+}
+
+func (o *Template) GetPerms() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Perms
+}
+
+func (o *Template) GetRightDelim() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RightDelim
+}
+
+func (o *Template) GetSourcePath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourcePath
+}
+
+func (o *Template) GetSplay() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Splay
+}
+
+func (o *Template) GetUID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.UID
+}
+
+func (o *Template) GetVaultGrace() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.VaultGrace
+}
+
+func (o *Template) GetWait() *WaitConfig {
+	if o == nil {
+		return nil
+	}
+	return o.Wait
+}

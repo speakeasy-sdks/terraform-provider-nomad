@@ -9,3 +9,38 @@ type MetricsSummary struct {
 	Samples   []SampledValue `json:"Samples,omitempty"`
 	Timestamp *string        `json:"Timestamp,omitempty"`
 }
+
+func (o *MetricsSummary) GetCounters() []SampledValue {
+	if o == nil {
+		return nil
+	}
+	return o.Counters
+}
+
+func (o *MetricsSummary) GetGauges() []GaugeValue {
+	if o == nil {
+		return nil
+	}
+	return o.Gauges
+}
+
+func (o *MetricsSummary) GetPoints() []PointValue {
+	if o == nil {
+		return nil
+	}
+	return o.Points
+}
+
+func (o *MetricsSummary) GetSamples() []SampledValue {
+	if o == nil {
+		return nil
+	}
+	return o.Samples
+}
+
+func (o *MetricsSummary) GetTimestamp() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Timestamp
+}

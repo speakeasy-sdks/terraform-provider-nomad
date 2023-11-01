@@ -7,3 +7,24 @@ type ConsulIngressListener struct {
 	Protocol *string                `json:"Protocol,omitempty"`
 	Services []ConsulIngressService `json:"Services,omitempty"`
 }
+
+func (o *ConsulIngressListener) GetPort() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Port
+}
+
+func (o *ConsulIngressListener) GetProtocol() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Protocol
+}
+
+func (o *ConsulIngressListener) GetServices() []ConsulIngressService {
+	if o == nil {
+		return nil
+	}
+	return o.Services
+}

@@ -10,3 +10,45 @@ type DeploymentPromoteRequest struct {
 	Region       *string  `json:"Region,omitempty"`
 	SecretID     *string  `json:"SecretID,omitempty"`
 }
+
+func (o *DeploymentPromoteRequest) GetAll() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.All
+}
+
+func (o *DeploymentPromoteRequest) GetDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentID
+}
+
+func (o *DeploymentPromoteRequest) GetGroups() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Groups
+}
+
+func (o *DeploymentPromoteRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *DeploymentPromoteRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *DeploymentPromoteRequest) GetSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretID
+}

@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"nomad/internal/sdk/pkg/models/operations"
+	"nomad/internal/sdk/pkg/models/sdkerrors"
 	"nomad/internal/sdk/pkg/utils"
 	"strings"
 )
@@ -63,11 +64,13 @@ func (s *regions) GetRegions(ctx context.Context) (*operations.GetRegionsRespons
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []string
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return res, err
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
 			}
 
 			res.GetRegions200ApplicationJSONStrings = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough

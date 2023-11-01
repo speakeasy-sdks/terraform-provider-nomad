@@ -11,6 +11,13 @@ type GetSnapshotsSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *GetSnapshotsSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type GetSnapshotsRequest struct {
 	// A Nomad ACL token.
 	XNomadToken *string `header:"style=simple,explode=false,name=X-Nomad-Token"`
@@ -34,6 +41,76 @@ type GetSnapshotsRequest struct {
 	Wait *string `queryParam:"style=form,explode=true,name=wait"`
 }
 
+func (o *GetSnapshotsRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *GetSnapshotsRequest) GetIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *GetSnapshotsRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *GetSnapshotsRequest) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *GetSnapshotsRequest) GetPerPage() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PerPage
+}
+
+func (o *GetSnapshotsRequest) GetPluginID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PluginID
+}
+
+func (o *GetSnapshotsRequest) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *GetSnapshotsRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *GetSnapshotsRequest) GetStale() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Stale
+}
+
+func (o *GetSnapshotsRequest) GetWait() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Wait
+}
+
 type GetSnapshotsResponse struct {
 	CSISnapshotListResponse *shared.CSISnapshotListResponse
 	// HTTP response content type for this operation
@@ -43,4 +120,39 @@ type GetSnapshotsResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *GetSnapshotsResponse) GetCSISnapshotListResponse() *shared.CSISnapshotListResponse {
+	if o == nil {
+		return nil
+	}
+	return o.CSISnapshotListResponse
+}
+
+func (o *GetSnapshotsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetSnapshotsResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *GetSnapshotsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetSnapshotsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

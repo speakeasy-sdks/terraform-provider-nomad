@@ -11,6 +11,13 @@ type UpdateNodeDrainSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *UpdateNodeDrainSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type UpdateNodeDrainRequest struct {
 	NodeUpdateDrainRequest shared.NodeUpdateDrainRequest `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -35,6 +42,83 @@ type UpdateNodeDrainRequest struct {
 	Wait *string `queryParam:"style=form,explode=true,name=wait"`
 }
 
+func (o *UpdateNodeDrainRequest) GetNodeUpdateDrainRequest() shared.NodeUpdateDrainRequest {
+	if o == nil {
+		return shared.NodeUpdateDrainRequest{}
+	}
+	return o.NodeUpdateDrainRequest
+}
+
+func (o *UpdateNodeDrainRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *UpdateNodeDrainRequest) GetIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *UpdateNodeDrainRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *UpdateNodeDrainRequest) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *UpdateNodeDrainRequest) GetNodeID() string {
+	if o == nil {
+		return ""
+	}
+	return o.NodeID
+}
+
+func (o *UpdateNodeDrainRequest) GetPerPage() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PerPage
+}
+
+func (o *UpdateNodeDrainRequest) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *UpdateNodeDrainRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *UpdateNodeDrainRequest) GetStale() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Stale
+}
+
+func (o *UpdateNodeDrainRequest) GetWait() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Wait
+}
+
 type UpdateNodeDrainResponse struct {
 	// HTTP response content type for this operation
 	ContentType             string
@@ -44,4 +128,39 @@ type UpdateNodeDrainResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *UpdateNodeDrainResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateNodeDrainResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *UpdateNodeDrainResponse) GetNodeDrainUpdateResponse() *shared.NodeDrainUpdateResponse {
+	if o == nil {
+		return nil
+	}
+	return o.NodeDrainUpdateResponse
+}
+
+func (o *UpdateNodeDrainResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateNodeDrainResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

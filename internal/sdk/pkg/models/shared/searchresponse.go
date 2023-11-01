@@ -11,3 +11,52 @@ type SearchResponse struct {
 	RequestTime *int64              `json:"RequestTime,omitempty"`
 	Truncations map[string]bool     `json:"Truncations,omitempty"`
 }
+
+func (o *SearchResponse) GetKnownLeader() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.KnownLeader
+}
+
+func (o *SearchResponse) GetLastContact() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastContact
+}
+
+func (o *SearchResponse) GetLastIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastIndex
+}
+
+func (o *SearchResponse) GetMatches() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Matches
+}
+
+func (o *SearchResponse) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *SearchResponse) GetRequestTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RequestTime
+}
+
+func (o *SearchResponse) GetTruncations() map[string]bool {
+	if o == nil {
+		return nil
+	}
+	return o.Truncations
+}

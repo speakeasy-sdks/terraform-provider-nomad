@@ -7,3 +7,24 @@ type DNSConfig struct {
 	Searches []string `json:"Searches,omitempty"`
 	Servers  []string `json:"Servers,omitempty"`
 }
+
+func (o *DNSConfig) GetOptions() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}
+
+func (o *DNSConfig) GetSearches() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Searches
+}
+
+func (o *DNSConfig) GetServers() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Servers
+}

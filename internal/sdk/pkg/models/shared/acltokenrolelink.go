@@ -6,3 +6,17 @@ type ACLTokenRoleLink struct {
 	ID   *string `json:"ID,omitempty"`
 	Name *string `json:"Name,omitempty"`
 }
+
+func (o *ACLTokenRoleLink) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *ACLTokenRoleLink) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

@@ -8,3 +8,31 @@ type ObjectDiff struct {
 	Objects []ObjectDiff `json:"Objects,omitempty"`
 	Type    *string      `json:"Type,omitempty"`
 }
+
+func (o *ObjectDiff) GetFields() []FieldDiff {
+	if o == nil {
+		return nil
+	}
+	return o.Fields
+}
+
+func (o *ObjectDiff) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *ObjectDiff) GetObjects() []ObjectDiff {
+	if o == nil {
+		return nil
+	}
+	return o.Objects
+}
+
+func (o *ObjectDiff) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}

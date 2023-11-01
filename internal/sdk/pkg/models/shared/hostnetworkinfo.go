@@ -8,3 +8,31 @@ type HostNetworkInfo struct {
 	Name          *string `json:"Name,omitempty"`
 	ReservedPorts *string `json:"ReservedPorts,omitempty"`
 }
+
+func (o *HostNetworkInfo) GetCidr() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Cidr
+}
+
+func (o *HostNetworkInfo) GetInterface() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Interface
+}
+
+func (o *HostNetworkInfo) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *HostNetworkInfo) GetReservedPorts() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ReservedPorts
+}

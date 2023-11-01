@@ -8,3 +8,31 @@ type DeploymentUnblockRequest struct {
 	Region       *string `json:"Region,omitempty"`
 	SecretID     *string `json:"SecretID,omitempty"`
 }
+
+func (o *DeploymentUnblockRequest) GetDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentID
+}
+
+func (o *DeploymentUnblockRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *DeploymentUnblockRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *DeploymentUnblockRequest) GetSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretID
+}

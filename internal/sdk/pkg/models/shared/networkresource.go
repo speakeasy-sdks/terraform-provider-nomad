@@ -13,3 +13,66 @@ type NetworkResource struct {
 	Mode          *string    `json:"Mode,omitempty"`
 	ReservedPorts []Port     `json:"ReservedPorts,omitempty"`
 }
+
+func (o *NetworkResource) GetCidr() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Cidr
+}
+
+func (o *NetworkResource) GetDNS() *DNSConfig {
+	if o == nil {
+		return nil
+	}
+	return o.DNS
+}
+
+func (o *NetworkResource) GetDevice() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Device
+}
+
+func (o *NetworkResource) GetDynamicPorts() []Port {
+	if o == nil {
+		return nil
+	}
+	return o.DynamicPorts
+}
+
+func (o *NetworkResource) GetHostname() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Hostname
+}
+
+func (o *NetworkResource) GetIP() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IP
+}
+
+func (o *NetworkResource) GetMBits() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MBits
+}
+
+func (o *NetworkResource) GetMode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Mode
+}
+
+func (o *NetworkResource) GetReservedPorts() []Port {
+	if o == nil {
+		return nil
+	}
+	return o.ReservedPorts
+}

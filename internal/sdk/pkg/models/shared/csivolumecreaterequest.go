@@ -8,3 +8,31 @@ type CSIVolumeCreateRequest struct {
 	SecretID  *string     `json:"SecretID,omitempty"`
 	Volumes   []CSIVolume `json:"Volumes,omitempty"`
 }
+
+func (o *CSIVolumeCreateRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *CSIVolumeCreateRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *CSIVolumeCreateRequest) GetSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretID
+}
+
+func (o *CSIVolumeCreateRequest) GetVolumes() []CSIVolume {
+	if o == nil {
+		return nil
+	}
+	return o.Volumes
+}

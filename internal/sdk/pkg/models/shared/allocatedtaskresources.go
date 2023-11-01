@@ -8,3 +8,31 @@ type AllocatedTaskResources struct {
 	Memory   *AllocatedMemoryResources `json:"Memory,omitempty"`
 	Networks []NetworkResource         `json:"Networks,omitempty"`
 }
+
+func (o *AllocatedTaskResources) GetCPU() *AllocatedCPUResources {
+	if o == nil {
+		return nil
+	}
+	return o.CPU
+}
+
+func (o *AllocatedTaskResources) GetDevices() []AllocatedDeviceResource {
+	if o == nil {
+		return nil
+	}
+	return o.Devices
+}
+
+func (o *AllocatedTaskResources) GetMemory() *AllocatedMemoryResources {
+	if o == nil {
+		return nil
+	}
+	return o.Memory
+}
+
+func (o *AllocatedTaskResources) GetNetworks() []NetworkResource {
+	if o == nil {
+		return nil
+	}
+	return o.Networks
+}

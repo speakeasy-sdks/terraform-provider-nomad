@@ -8,3 +8,31 @@ type NodeUpdateDrainRequest struct {
 	Meta         map[string]string `json:"Meta,omitempty"`
 	NodeID       *string           `json:"NodeID,omitempty"`
 }
+
+func (o *NodeUpdateDrainRequest) GetDrainSpec() *DrainSpec {
+	if o == nil {
+		return nil
+	}
+	return o.DrainSpec
+}
+
+func (o *NodeUpdateDrainRequest) GetMarkEligible() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.MarkEligible
+}
+
+func (o *NodeUpdateDrainRequest) GetMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}
+
+func (o *NodeUpdateDrainRequest) GetNodeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NodeID
+}

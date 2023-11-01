@@ -7,3 +7,24 @@ type SchedulerSetConfigurationResponse struct {
 	RequestTime *int64 `json:"RequestTime,omitempty"`
 	Updated     *bool  `json:"Updated,omitempty"`
 }
+
+func (o *SchedulerSetConfigurationResponse) GetLastIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastIndex
+}
+
+func (o *SchedulerSetConfigurationResponse) GetRequestTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RequestTime
+}
+
+func (o *SchedulerSetConfigurationResponse) GetUpdated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Updated
+}

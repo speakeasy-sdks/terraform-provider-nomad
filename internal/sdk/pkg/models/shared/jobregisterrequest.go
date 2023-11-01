@@ -13,3 +13,66 @@ type JobRegisterRequest struct {
 	Region         *string `json:"Region,omitempty"`
 	SecretID       *string `json:"SecretID,omitempty"`
 }
+
+func (o *JobRegisterRequest) GetEnforceIndex() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnforceIndex
+}
+
+func (o *JobRegisterRequest) GetEvalPriority() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EvalPriority
+}
+
+func (o *JobRegisterRequest) GetJob() *Job {
+	if o == nil {
+		return nil
+	}
+	return o.Job
+}
+
+func (o *JobRegisterRequest) GetJobModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobModifyIndex
+}
+
+func (o *JobRegisterRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *JobRegisterRequest) GetPolicyOverride() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PolicyOverride
+}
+
+func (o *JobRegisterRequest) GetPreserveCounts() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PreserveCounts
+}
+
+func (o *JobRegisterRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *JobRegisterRequest) GetSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretID
+}

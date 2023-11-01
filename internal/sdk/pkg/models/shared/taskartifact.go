@@ -9,3 +9,38 @@ type TaskArtifact struct {
 	GetterSource  *string           `json:"GetterSource,omitempty"`
 	RelativeDest  *string           `json:"RelativeDest,omitempty"`
 }
+
+func (o *TaskArtifact) GetGetterHeaders() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.GetterHeaders
+}
+
+func (o *TaskArtifact) GetGetterMode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GetterMode
+}
+
+func (o *TaskArtifact) GetGetterOptions() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.GetterOptions
+}
+
+func (o *TaskArtifact) GetGetterSource() *string {
+	if o == nil {
+		return nil
+	}
+	return o.GetterSource
+}
+
+func (o *TaskArtifact) GetRelativeDest() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RelativeDest
+}

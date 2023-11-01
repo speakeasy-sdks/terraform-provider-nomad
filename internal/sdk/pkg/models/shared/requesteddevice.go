@@ -8,3 +8,31 @@ type RequestedDevice struct {
 	Count       *int64       `json:"Count,omitempty"`
 	Name        *string      `json:"Name,omitempty"`
 }
+
+func (o *RequestedDevice) GetAffinities() []Affinity {
+	if o == nil {
+		return nil
+	}
+	return o.Affinities
+}
+
+func (o *RequestedDevice) GetConstraints() []Constraint {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *RequestedDevice) GetCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Count
+}
+
+func (o *RequestedDevice) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

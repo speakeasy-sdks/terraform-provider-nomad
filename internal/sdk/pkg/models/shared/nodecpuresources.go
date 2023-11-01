@@ -7,3 +7,24 @@ type NodeCPUResources struct {
 	ReservableCPUCores []int64 `json:"ReservableCpuCores,omitempty"`
 	TotalCPUCores      *int64  `json:"TotalCpuCores,omitempty"`
 }
+
+func (o *NodeCPUResources) GetCPUShares() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CPUShares
+}
+
+func (o *NodeCPUResources) GetReservableCPUCores() []int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ReservableCPUCores
+}
+
+func (o *NodeCPUResources) GetTotalCPUCores() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.TotalCPUCores
+}

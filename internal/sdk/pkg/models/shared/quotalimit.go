@@ -8,3 +8,31 @@ type QuotaLimit struct {
 	RegionLimit    *Resources `json:"RegionLimit,omitempty"`
 	VariablesLimit *int64     `json:"VariablesLimit,omitempty"`
 }
+
+func (o *QuotaLimit) GetHash() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Hash
+}
+
+func (o *QuotaLimit) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *QuotaLimit) GetRegionLimit() *Resources {
+	if o == nil {
+		return nil
+	}
+	return o.RegionLimit
+}
+
+func (o *QuotaLimit) GetVariablesLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.VariablesLimit
+}

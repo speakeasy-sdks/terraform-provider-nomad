@@ -10,3 +10,45 @@ type JobDispatchResponse struct {
 	LastIndex       *int64  `json:"LastIndex,omitempty"`
 	RequestTime     *int64  `json:"RequestTime,omitempty"`
 }
+
+func (o *JobDispatchResponse) GetDispatchedJobID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DispatchedJobID
+}
+
+func (o *JobDispatchResponse) GetEvalCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EvalCreateIndex
+}
+
+func (o *JobDispatchResponse) GetEvalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EvalID
+}
+
+func (o *JobDispatchResponse) GetJobCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobCreateIndex
+}
+
+func (o *JobDispatchResponse) GetLastIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastIndex
+}
+
+func (o *JobDispatchResponse) GetRequestTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RequestTime
+}

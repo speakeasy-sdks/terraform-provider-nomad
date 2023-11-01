@@ -16,3 +16,87 @@ type CSIControllerInfo struct {
 	SupportsListVolumesAttachedNodes *bool `json:"SupportsListVolumesAttachedNodes,omitempty"`
 	SupportsReadOnlyAttach           *bool `json:"SupportsReadOnlyAttach,omitempty"`
 }
+
+func (o *CSIControllerInfo) GetSupportsAttachDetach() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsAttachDetach
+}
+
+func (o *CSIControllerInfo) GetSupportsClone() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsClone
+}
+
+func (o *CSIControllerInfo) GetSupportsCondition() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsCondition
+}
+
+func (o *CSIControllerInfo) GetSupportsCreateDelete() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsCreateDelete
+}
+
+func (o *CSIControllerInfo) GetSupportsCreateDeleteSnapshot() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsCreateDeleteSnapshot
+}
+
+func (o *CSIControllerInfo) GetSupportsExpand() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsExpand
+}
+
+func (o *CSIControllerInfo) GetSupportsGet() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsGet
+}
+
+func (o *CSIControllerInfo) GetSupportsGetCapacity() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsGetCapacity
+}
+
+func (o *CSIControllerInfo) GetSupportsListSnapshots() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsListSnapshots
+}
+
+func (o *CSIControllerInfo) GetSupportsListVolumes() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsListVolumes
+}
+
+func (o *CSIControllerInfo) GetSupportsListVolumesAttachedNodes() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsListVolumesAttachedNodes
+}
+
+func (o *CSIControllerInfo) GetSupportsReadOnlyAttach() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SupportsReadOnlyAttach
+}

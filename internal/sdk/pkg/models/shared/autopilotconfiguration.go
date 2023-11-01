@@ -14,3 +14,73 @@ type AutopilotConfiguration struct {
 	ModifyIndex             *int64  `json:"ModifyIndex,omitempty"`
 	ServerStabilizationTime *string `json:"ServerStabilizationTime,omitempty"`
 }
+
+func (o *AutopilotConfiguration) GetCleanupDeadServers() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.CleanupDeadServers
+}
+
+func (o *AutopilotConfiguration) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *AutopilotConfiguration) GetDisableUpgradeMigration() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DisableUpgradeMigration
+}
+
+func (o *AutopilotConfiguration) GetEnableCustomUpgrades() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableCustomUpgrades
+}
+
+func (o *AutopilotConfiguration) GetEnableRedundancyZones() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableRedundancyZones
+}
+
+func (o *AutopilotConfiguration) GetLastContactThreshold() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastContactThreshold
+}
+
+func (o *AutopilotConfiguration) GetMaxTrailingLogs() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxTrailingLogs
+}
+
+func (o *AutopilotConfiguration) GetMinQuorum() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MinQuorum
+}
+
+func (o *AutopilotConfiguration) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *AutopilotConfiguration) GetServerStabilizationTime() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ServerStabilizationTime
+}

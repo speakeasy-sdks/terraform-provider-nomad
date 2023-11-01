@@ -6,3 +6,17 @@ type CSIMountOptions struct {
 	FSType     *string  `json:"FSType,omitempty"`
 	MountFlags []string `json:"MountFlags,omitempty"`
 }
+
+func (o *CSIMountOptions) GetFSType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FSType
+}
+
+func (o *CSIMountOptions) GetMountFlags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.MountFlags
+}

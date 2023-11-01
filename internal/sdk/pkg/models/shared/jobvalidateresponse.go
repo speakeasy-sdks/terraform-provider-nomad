@@ -8,3 +8,31 @@ type JobValidateResponse struct {
 	ValidationErrors      []string `json:"ValidationErrors,omitempty"`
 	Warnings              *string  `json:"Warnings,omitempty"`
 }
+
+func (o *JobValidateResponse) GetDriverConfigValidated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DriverConfigValidated
+}
+
+func (o *JobValidateResponse) GetError() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *JobValidateResponse) GetValidationErrors() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ValidationErrors
+}
+
+func (o *JobValidateResponse) GetWarnings() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Warnings
+}

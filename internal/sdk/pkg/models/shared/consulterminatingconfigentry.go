@@ -5,3 +5,10 @@ package shared
 type ConsulTerminatingConfigEntry struct {
 	Services []ConsulLinkedService `json:"Services,omitempty"`
 }
+
+func (o *ConsulTerminatingConfigEntry) GetServices() []ConsulLinkedService {
+	if o == nil {
+		return nil
+	}
+	return o.Services
+}

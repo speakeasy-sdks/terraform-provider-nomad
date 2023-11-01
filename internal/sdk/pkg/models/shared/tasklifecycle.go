@@ -6,3 +6,17 @@ type TaskLifecycle struct {
 	Hook    *string `json:"Hook,omitempty"`
 	Sidecar *bool   `json:"Sidecar,omitempty"`
 }
+
+func (o *TaskLifecycle) GetHook() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Hook
+}
+
+func (o *TaskLifecycle) GetSidecar() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Sidecar
+}

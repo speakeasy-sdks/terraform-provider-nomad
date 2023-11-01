@@ -8,3 +8,31 @@ type JobValidateRequest struct {
 	Region    *string `json:"Region,omitempty"`
 	SecretID  *string `json:"SecretID,omitempty"`
 }
+
+func (o *JobValidateRequest) GetJob() *Job {
+	if o == nil {
+		return nil
+	}
+	return o.Job
+}
+
+func (o *JobValidateRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *JobValidateRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *JobValidateRequest) GetSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretID
+}

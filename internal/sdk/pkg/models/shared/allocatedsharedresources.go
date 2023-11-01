@@ -7,3 +7,24 @@ type AllocatedSharedResources struct {
 	Networks []NetworkResource `json:"Networks,omitempty"`
 	Ports    []PortMapping     `json:"Ports,omitempty"`
 }
+
+func (o *AllocatedSharedResources) GetDiskMB() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.DiskMB
+}
+
+func (o *AllocatedSharedResources) GetNetworks() []NetworkResource {
+	if o == nil {
+		return nil
+	}
+	return o.Networks
+}
+
+func (o *AllocatedSharedResources) GetPorts() []PortMapping {
+	if o == nil {
+		return nil
+	}
+	return o.Ports
+}

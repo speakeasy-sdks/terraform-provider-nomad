@@ -8,3 +8,31 @@ type PreemptionConfig struct {
 	SysBatchSchedulerEnabled *bool `json:"SysBatchSchedulerEnabled,omitempty"`
 	SystemSchedulerEnabled   *bool `json:"SystemSchedulerEnabled,omitempty"`
 }
+
+func (o *PreemptionConfig) GetBatchSchedulerEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BatchSchedulerEnabled
+}
+
+func (o *PreemptionConfig) GetServiceSchedulerEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ServiceSchedulerEnabled
+}
+
+func (o *PreemptionConfig) GetSysBatchSchedulerEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SysBatchSchedulerEnabled
+}
+
+func (o *PreemptionConfig) GetSystemSchedulerEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SystemSchedulerEnabled
+}

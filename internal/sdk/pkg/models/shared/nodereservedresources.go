@@ -8,3 +8,31 @@ type NodeReservedResources struct {
 	Memory   *NodeReservedMemoryResources  `json:"Memory,omitempty"`
 	Networks *NodeReservedNetworkResources `json:"Networks,omitempty"`
 }
+
+func (o *NodeReservedResources) GetCPU() *NodeReservedCPUResources {
+	if o == nil {
+		return nil
+	}
+	return o.CPU
+}
+
+func (o *NodeReservedResources) GetDisk() *NodeReservedDiskResources {
+	if o == nil {
+		return nil
+	}
+	return o.Disk
+}
+
+func (o *NodeReservedResources) GetMemory() *NodeReservedMemoryResources {
+	if o == nil {
+		return nil
+	}
+	return o.Memory
+}
+
+func (o *NodeReservedResources) GetNetworks() *NodeReservedNetworkResources {
+	if o == nil {
+		return nil
+	}
+	return o.Networks
+}

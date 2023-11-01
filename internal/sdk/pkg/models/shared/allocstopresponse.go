@@ -6,3 +6,17 @@ type AllocStopResponse struct {
 	EvalID *string `json:"EvalID,omitempty"`
 	Index  *int64  `json:"Index,omitempty"`
 }
+
+func (o *AllocStopResponse) GetEvalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EvalID
+}
+
+func (o *AllocStopResponse) GetIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}

@@ -5,3 +5,10 @@ package shared
 type OneTimeTokenExchangeRequest struct {
 	OneTimeSecretID *string `json:"OneTimeSecretID,omitempty"`
 }
+
+func (o *OneTimeTokenExchangeRequest) GetOneTimeSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OneTimeSecretID
+}

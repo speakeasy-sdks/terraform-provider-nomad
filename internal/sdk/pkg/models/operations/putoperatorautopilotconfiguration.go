@@ -11,6 +11,13 @@ type PutOperatorAutopilotConfigurationSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PutOperatorAutopilotConfigurationSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PutOperatorAutopilotConfigurationRequest struct {
 	AutopilotConfiguration shared.AutopilotConfiguration `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -23,6 +30,41 @@ type PutOperatorAutopilotConfigurationRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *PutOperatorAutopilotConfigurationRequest) GetAutopilotConfiguration() shared.AutopilotConfiguration {
+	if o == nil {
+		return shared.AutopilotConfiguration{}
+	}
+	return o.AutopilotConfiguration
+}
+
+func (o *PutOperatorAutopilotConfigurationRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PutOperatorAutopilotConfigurationRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PutOperatorAutopilotConfigurationRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PutOperatorAutopilotConfigurationRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type PutOperatorAutopilotConfigurationResponse struct {
 	// HTTP response content type for this operation
 	ContentType                                                string
@@ -31,4 +73,32 @@ type PutOperatorAutopilotConfigurationResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *PutOperatorAutopilotConfigurationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PutOperatorAutopilotConfigurationResponse) GetPutOperatorAutopilotConfiguration200ApplicationJSONBoolean() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PutOperatorAutopilotConfiguration200ApplicationJSONBoolean
+}
+
+func (o *PutOperatorAutopilotConfigurationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PutOperatorAutopilotConfigurationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

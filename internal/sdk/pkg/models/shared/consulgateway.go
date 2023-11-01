@@ -8,3 +8,31 @@ type ConsulGateway struct {
 	Proxy       *ConsulGatewayProxy           `json:"Proxy,omitempty"`
 	Terminating *ConsulTerminatingConfigEntry `json:"Terminating,omitempty"`
 }
+
+func (o *ConsulGateway) GetIngress() *ConsulIngressConfigEntry {
+	if o == nil {
+		return nil
+	}
+	return o.Ingress
+}
+
+func (o *ConsulGateway) GetMesh() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Mesh
+}
+
+func (o *ConsulGateway) GetProxy() *ConsulGatewayProxy {
+	if o == nil {
+		return nil
+	}
+	return o.Proxy
+}
+
+func (o *ConsulGateway) GetTerminating() *ConsulTerminatingConfigEntry {
+	if o == nil {
+		return nil
+	}
+	return o.Terminating
+}

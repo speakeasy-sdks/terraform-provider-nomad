@@ -8,3 +8,31 @@ type Port struct {
 	To          *int64  `json:"To,omitempty"`
 	Value       *int64  `json:"Value,omitempty"`
 }
+
+func (o *Port) GetHostNetwork() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HostNetwork
+}
+
+func (o *Port) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *Port) GetTo() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.To
+}
+
+func (o *Port) GetValue() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

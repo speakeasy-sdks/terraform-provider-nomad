@@ -11,6 +11,13 @@ type UpdateNodeEligibilitySecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *UpdateNodeEligibilitySecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type UpdateNodeEligibilityRequest struct {
 	NodeUpdateEligibilityRequest shared.NodeUpdateEligibilityRequest `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -35,6 +42,83 @@ type UpdateNodeEligibilityRequest struct {
 	Wait *string `queryParam:"style=form,explode=true,name=wait"`
 }
 
+func (o *UpdateNodeEligibilityRequest) GetNodeUpdateEligibilityRequest() shared.NodeUpdateEligibilityRequest {
+	if o == nil {
+		return shared.NodeUpdateEligibilityRequest{}
+	}
+	return o.NodeUpdateEligibilityRequest
+}
+
+func (o *UpdateNodeEligibilityRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *UpdateNodeEligibilityRequest) GetIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *UpdateNodeEligibilityRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *UpdateNodeEligibilityRequest) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *UpdateNodeEligibilityRequest) GetNodeID() string {
+	if o == nil {
+		return ""
+	}
+	return o.NodeID
+}
+
+func (o *UpdateNodeEligibilityRequest) GetPerPage() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PerPage
+}
+
+func (o *UpdateNodeEligibilityRequest) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *UpdateNodeEligibilityRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *UpdateNodeEligibilityRequest) GetStale() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Stale
+}
+
+func (o *UpdateNodeEligibilityRequest) GetWait() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Wait
+}
+
 type UpdateNodeEligibilityResponse struct {
 	// HTTP response content type for this operation
 	ContentType                   string
@@ -44,4 +128,39 @@ type UpdateNodeEligibilityResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *UpdateNodeEligibilityResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateNodeEligibilityResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *UpdateNodeEligibilityResponse) GetNodeEligibilityUpdateResponse() *shared.NodeEligibilityUpdateResponse {
+	if o == nil {
+		return nil
+	}
+	return o.NodeEligibilityUpdateResponse
+}
+
+func (o *UpdateNodeEligibilityResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateNodeEligibilityResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

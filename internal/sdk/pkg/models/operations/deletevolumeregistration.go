@@ -10,6 +10,13 @@ type DeleteVolumeRegistrationSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *DeleteVolumeRegistrationSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type DeleteVolumeRegistrationRequest struct {
 	// A Nomad ACL token.
 	XNomadToken *string `header:"style=simple,explode=false,name=X-Nomad-Token"`
@@ -25,6 +32,48 @@ type DeleteVolumeRegistrationRequest struct {
 	VolumeID string `pathParam:"style=simple,explode=false,name=volumeId"`
 }
 
+func (o *DeleteVolumeRegistrationRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *DeleteVolumeRegistrationRequest) GetForce() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Force
+}
+
+func (o *DeleteVolumeRegistrationRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *DeleteVolumeRegistrationRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *DeleteVolumeRegistrationRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *DeleteVolumeRegistrationRequest) GetVolumeID() string {
+	if o == nil {
+		return ""
+	}
+	return o.VolumeID
+}
+
 type DeleteVolumeRegistrationResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -33,4 +82,32 @@ type DeleteVolumeRegistrationResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *DeleteVolumeRegistrationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DeleteVolumeRegistrationResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *DeleteVolumeRegistrationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DeleteVolumeRegistrationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

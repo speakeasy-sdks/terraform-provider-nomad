@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"nomad/internal/sdk/pkg/utils"
 	"time"
 )
 
@@ -12,4 +13,50 @@ type DrainMetadata struct {
 	StartedAt  *time.Time        `json:"StartedAt,omitempty"`
 	Status     *string           `json:"Status,omitempty"`
 	UpdatedAt  *time.Time        `json:"UpdatedAt,omitempty"`
+}
+
+func (d DrainMetadata) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DrainMetadata) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DrainMetadata) GetAccessorID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AccessorID
+}
+
+func (o *DrainMetadata) GetMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}
+
+func (o *DrainMetadata) GetStartedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.StartedAt
+}
+
+func (o *DrainMetadata) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *DrainMetadata) GetUpdatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
 }

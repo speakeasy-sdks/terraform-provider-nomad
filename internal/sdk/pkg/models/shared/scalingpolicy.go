@@ -14,3 +14,73 @@ type ScalingPolicy struct {
 	Target      map[string]string      `json:"Target,omitempty"`
 	Type        *string                `json:"Type,omitempty"`
 }
+
+func (o *ScalingPolicy) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *ScalingPolicy) GetEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Enabled
+}
+
+func (o *ScalingPolicy) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *ScalingPolicy) GetMax() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Max
+}
+
+func (o *ScalingPolicy) GetMin() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Min
+}
+
+func (o *ScalingPolicy) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *ScalingPolicy) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *ScalingPolicy) GetPolicy() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Policy
+}
+
+func (o *ScalingPolicy) GetTarget() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Target
+}
+
+func (o *ScalingPolicy) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}

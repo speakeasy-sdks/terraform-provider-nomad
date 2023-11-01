@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"nomad/internal/sdk/pkg/utils"
 	"time"
 )
 
@@ -36,4 +37,218 @@ type Evaluation struct {
 	Type                 *string                     `json:"Type,omitempty"`
 	Wait                 *int64                      `json:"Wait,omitempty"`
 	WaitUntil            *time.Time                  `json:"WaitUntil,omitempty"`
+}
+
+func (e Evaluation) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *Evaluation) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Evaluation) GetAnnotatePlan() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AnnotatePlan
+}
+
+func (o *Evaluation) GetBlockedEval() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BlockedEval
+}
+
+func (o *Evaluation) GetClassEligibility() map[string]bool {
+	if o == nil {
+		return nil
+	}
+	return o.ClassEligibility
+}
+
+func (o *Evaluation) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *Evaluation) GetCreateTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateTime
+}
+
+func (o *Evaluation) GetDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentID
+}
+
+func (o *Evaluation) GetEscapedComputedClass() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EscapedComputedClass
+}
+
+func (o *Evaluation) GetFailedTGAllocs() map[string]AllocationMetric {
+	if o == nil {
+		return nil
+	}
+	return o.FailedTGAllocs
+}
+
+func (o *Evaluation) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Evaluation) GetJobID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.JobID
+}
+
+func (o *Evaluation) GetJobModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobModifyIndex
+}
+
+func (o *Evaluation) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *Evaluation) GetModifyTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyTime
+}
+
+func (o *Evaluation) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *Evaluation) GetNextEval() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextEval
+}
+
+func (o *Evaluation) GetNodeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NodeID
+}
+
+func (o *Evaluation) GetNodeModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NodeModifyIndex
+}
+
+func (o *Evaluation) GetPreviousEval() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviousEval
+}
+
+func (o *Evaluation) GetPriority() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Priority
+}
+
+func (o *Evaluation) GetQueuedAllocations() map[string]int64 {
+	if o == nil {
+		return nil
+	}
+	return o.QueuedAllocations
+}
+
+func (o *Evaluation) GetQuotaLimitReached() *string {
+	if o == nil {
+		return nil
+	}
+	return o.QuotaLimitReached
+}
+
+func (o *Evaluation) GetRelatedEvals() []EvaluationStub {
+	if o == nil {
+		return nil
+	}
+	return o.RelatedEvals
+}
+
+func (o *Evaluation) GetSnapshotIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.SnapshotIndex
+}
+
+func (o *Evaluation) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *Evaluation) GetStatusDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StatusDescription
+}
+
+func (o *Evaluation) GetTriggeredBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TriggeredBy
+}
+
+func (o *Evaluation) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *Evaluation) GetWait() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Wait
+}
+
+func (o *Evaluation) GetWaitUntil() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.WaitUntil
 }

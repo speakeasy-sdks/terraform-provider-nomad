@@ -21,3 +21,122 @@ type NodeListStub struct {
 	StatusDescription     *string                `json:"StatusDescription,omitempty"`
 	Version               *string                `json:"Version,omitempty"`
 }
+
+func (o *NodeListStub) GetAddress() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Address
+}
+
+func (o *NodeListStub) GetAttributes() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Attributes
+}
+
+func (o *NodeListStub) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *NodeListStub) GetDatacenter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Datacenter
+}
+
+func (o *NodeListStub) GetDrain() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Drain
+}
+
+func (o *NodeListStub) GetDrivers() map[string]DriverInfo {
+	if o == nil {
+		return nil
+	}
+	return o.Drivers
+}
+
+func (o *NodeListStub) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *NodeListStub) GetLastDrain() *DrainMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.LastDrain
+}
+
+func (o *NodeListStub) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *NodeListStub) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *NodeListStub) GetNodeClass() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NodeClass
+}
+
+func (o *NodeListStub) GetNodeResources() *NodeResources {
+	if o == nil {
+		return nil
+	}
+	return o.NodeResources
+}
+
+func (o *NodeListStub) GetReservedResources() *NodeReservedResources {
+	if o == nil {
+		return nil
+	}
+	return o.ReservedResources
+}
+
+func (o *NodeListStub) GetSchedulingEligibility() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SchedulingEligibility
+}
+
+func (o *NodeListStub) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *NodeListStub) GetStatusDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StatusDescription
+}
+
+func (o *NodeListStub) GetVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Version
+}

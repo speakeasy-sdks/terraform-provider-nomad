@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"nomad/internal/sdk/pkg/utils"
 	"time"
 )
 
@@ -11,4 +12,43 @@ type AllocDeploymentStatus struct {
 	Healthy     *bool      `json:"Healthy,omitempty"`
 	ModifyIndex *int64     `json:"ModifyIndex,omitempty"`
 	Timestamp   *time.Time `json:"Timestamp,omitempty"`
+}
+
+func (a AllocDeploymentStatus) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AllocDeploymentStatus) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AllocDeploymentStatus) GetCanary() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Canary
+}
+
+func (o *AllocDeploymentStatus) GetHealthy() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Healthy
+}
+
+func (o *AllocDeploymentStatus) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *AllocDeploymentStatus) GetTimestamp() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Timestamp
 }

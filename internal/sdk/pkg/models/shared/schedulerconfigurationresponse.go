@@ -10,3 +10,45 @@ type SchedulerConfigurationResponse struct {
 	RequestTime     *int64                  `json:"RequestTime,omitempty"`
 	SchedulerConfig *SchedulerConfiguration `json:"SchedulerConfig,omitempty"`
 }
+
+func (o *SchedulerConfigurationResponse) GetKnownLeader() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.KnownLeader
+}
+
+func (o *SchedulerConfigurationResponse) GetLastContact() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastContact
+}
+
+func (o *SchedulerConfigurationResponse) GetLastIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastIndex
+}
+
+func (o *SchedulerConfigurationResponse) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *SchedulerConfigurationResponse) GetRequestTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RequestTime
+}
+
+func (o *SchedulerConfigurationResponse) GetSchedulerConfig() *SchedulerConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.SchedulerConfig
+}

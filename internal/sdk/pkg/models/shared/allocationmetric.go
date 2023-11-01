@@ -18,3 +18,101 @@ type AllocationMetric struct {
 	ScoreMetaData      []NodeScoreMeta      `json:"ScoreMetaData,omitempty"`
 	Scores             map[string]float64   `json:"Scores,omitempty"`
 }
+
+func (o *AllocationMetric) GetAllocationTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.AllocationTime
+}
+
+func (o *AllocationMetric) GetClassExhausted() map[string]int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ClassExhausted
+}
+
+func (o *AllocationMetric) GetClassFiltered() map[string]int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ClassFiltered
+}
+
+func (o *AllocationMetric) GetCoalescedFailures() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CoalescedFailures
+}
+
+func (o *AllocationMetric) GetConstraintFiltered() map[string]int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ConstraintFiltered
+}
+
+func (o *AllocationMetric) GetDimensionExhausted() map[string]int64 {
+	if o == nil {
+		return nil
+	}
+	return o.DimensionExhausted
+}
+
+func (o *AllocationMetric) GetNodesAvailable() map[string]int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NodesAvailable
+}
+
+func (o *AllocationMetric) GetNodesEvaluated() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NodesEvaluated
+}
+
+func (o *AllocationMetric) GetNodesExhausted() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NodesExhausted
+}
+
+func (o *AllocationMetric) GetNodesFiltered() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NodesFiltered
+}
+
+func (o *AllocationMetric) GetQuotaExhausted() []string {
+	if o == nil {
+		return nil
+	}
+	return o.QuotaExhausted
+}
+
+func (o *AllocationMetric) GetResourcesExhausted() map[string]Resources {
+	if o == nil {
+		return nil
+	}
+	return o.ResourcesExhausted
+}
+
+func (o *AllocationMetric) GetScoreMetaData() []NodeScoreMeta {
+	if o == nil {
+		return nil
+	}
+	return o.ScoreMetaData
+}
+
+func (o *AllocationMetric) GetScores() map[string]float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Scores
+}

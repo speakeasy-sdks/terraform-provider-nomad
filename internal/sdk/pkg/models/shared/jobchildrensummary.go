@@ -7,3 +7,24 @@ type JobChildrenSummary struct {
 	Pending *int64 `json:"Pending,omitempty"`
 	Running *int64 `json:"Running,omitempty"`
 }
+
+func (o *JobChildrenSummary) GetDead() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Dead
+}
+
+func (o *JobChildrenSummary) GetPending() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Pending
+}
+
+func (o *JobChildrenSummary) GetRunning() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Running
+}

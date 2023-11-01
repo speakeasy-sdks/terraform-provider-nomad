@@ -11,3 +11,52 @@ type Variable struct {
 	Namespace   *string           `json:"Namespace,omitempty"`
 	Path        *string           `json:"Path,omitempty"`
 }
+
+func (o *Variable) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *Variable) GetCreateTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateTime
+}
+
+func (o *Variable) GetItems() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Items
+}
+
+func (o *Variable) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *Variable) GetModifyTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyTime
+}
+
+func (o *Variable) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *Variable) GetPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Path
+}

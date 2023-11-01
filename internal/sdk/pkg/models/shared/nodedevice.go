@@ -8,3 +8,31 @@ type NodeDevice struct {
 	ID                *string             `json:"ID,omitempty"`
 	Locality          *NodeDeviceLocality `json:"Locality,omitempty"`
 }
+
+func (o *NodeDevice) GetHealthDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HealthDescription
+}
+
+func (o *NodeDevice) GetHealthy() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Healthy
+}
+
+func (o *NodeDevice) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *NodeDevice) GetLocality() *NodeDeviceLocality {
+	if o == nil {
+		return nil
+	}
+	return o.Locality
+}

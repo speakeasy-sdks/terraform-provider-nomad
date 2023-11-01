@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"nomad/internal/sdk/pkg/utils"
 	"time"
 )
 
@@ -17,4 +18,85 @@ type DeploymentState struct {
 	Promoted          *bool      `json:"Promoted,omitempty"`
 	RequireProgressBy *time.Time `json:"RequireProgressBy,omitempty"`
 	UnhealthyAllocs   *int64     `json:"UnhealthyAllocs,omitempty"`
+}
+
+func (d DeploymentState) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeploymentState) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeploymentState) GetAutoRevert() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AutoRevert
+}
+
+func (o *DeploymentState) GetDesiredCanaries() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.DesiredCanaries
+}
+
+func (o *DeploymentState) GetDesiredTotal() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.DesiredTotal
+}
+
+func (o *DeploymentState) GetHealthyAllocs() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.HealthyAllocs
+}
+
+func (o *DeploymentState) GetPlacedAllocs() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PlacedAllocs
+}
+
+func (o *DeploymentState) GetPlacedCanaries() []string {
+	if o == nil {
+		return nil
+	}
+	return o.PlacedCanaries
+}
+
+func (o *DeploymentState) GetProgressDeadline() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ProgressDeadline
+}
+
+func (o *DeploymentState) GetPromoted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Promoted
+}
+
+func (o *DeploymentState) GetRequireProgressBy() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.RequireProgressBy
+}
+
+func (o *DeploymentState) GetUnhealthyAllocs() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.UnhealthyAllocs
 }

@@ -5,3 +5,10 @@ package shared
 type CSITopology struct {
 	Segments map[string]string `json:"Segments,omitempty"`
 }
+
+func (o *CSITopology) GetSegments() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Segments
+}

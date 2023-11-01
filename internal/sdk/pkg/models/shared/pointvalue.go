@@ -6,3 +6,17 @@ type PointValue struct {
 	Name   *string   `json:"Name,omitempty"`
 	Points []float32 `json:"Points,omitempty"`
 }
+
+func (o *PointValue) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *PointValue) GetPoints() []float32 {
+	if o == nil {
+		return nil
+	}
+	return o.Points
+}

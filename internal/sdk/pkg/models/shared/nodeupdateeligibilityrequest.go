@@ -6,3 +6,17 @@ type NodeUpdateEligibilityRequest struct {
 	Eligibility *string `json:"Eligibility,omitempty"`
 	NodeID      *string `json:"NodeID,omitempty"`
 }
+
+func (o *NodeUpdateEligibilityRequest) GetEligibility() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Eligibility
+}
+
+func (o *NodeUpdateEligibilityRequest) GetNodeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NodeID
+}

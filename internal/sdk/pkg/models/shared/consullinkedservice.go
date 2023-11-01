@@ -9,3 +9,38 @@ type ConsulLinkedService struct {
 	Name     *string `json:"Name,omitempty"`
 	Sni      *string `json:"SNI,omitempty"`
 }
+
+func (o *ConsulLinkedService) GetCAFile() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CAFile
+}
+
+func (o *ConsulLinkedService) GetCertFile() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CertFile
+}
+
+func (o *ConsulLinkedService) GetKeyFile() *string {
+	if o == nil {
+		return nil
+	}
+	return o.KeyFile
+}
+
+func (o *ConsulLinkedService) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *ConsulLinkedService) GetSni() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sni
+}

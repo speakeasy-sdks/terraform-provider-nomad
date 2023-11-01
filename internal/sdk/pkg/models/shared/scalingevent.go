@@ -12,3 +12,59 @@ type ScalingEvent struct {
 	PreviousCount *int64                 `json:"PreviousCount,omitempty"`
 	Time          *int64                 `json:"Time,omitempty"`
 }
+
+func (o *ScalingEvent) GetCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Count
+}
+
+func (o *ScalingEvent) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *ScalingEvent) GetError() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *ScalingEvent) GetEvalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EvalID
+}
+
+func (o *ScalingEvent) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *ScalingEvent) GetMeta() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}
+
+func (o *ScalingEvent) GetPreviousCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PreviousCount
+}
+
+func (o *ScalingEvent) GetTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Time
+}

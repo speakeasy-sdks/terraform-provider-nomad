@@ -11,3 +11,52 @@ type NodeResources struct {
 	MinDynamicPort *int64               `json:"MinDynamicPort,omitempty"`
 	Networks       []NetworkResource    `json:"Networks,omitempty"`
 }
+
+func (o *NodeResources) GetCPU() *NodeCPUResources {
+	if o == nil {
+		return nil
+	}
+	return o.CPU
+}
+
+func (o *NodeResources) GetDevices() []NodeDeviceResource {
+	if o == nil {
+		return nil
+	}
+	return o.Devices
+}
+
+func (o *NodeResources) GetDisk() *NodeDiskResources {
+	if o == nil {
+		return nil
+	}
+	return o.Disk
+}
+
+func (o *NodeResources) GetMaxDynamicPort() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxDynamicPort
+}
+
+func (o *NodeResources) GetMemory() *NodeMemoryResources {
+	if o == nil {
+		return nil
+	}
+	return o.Memory
+}
+
+func (o *NodeResources) GetMinDynamicPort() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MinDynamicPort
+}
+
+func (o *NodeResources) GetNetworks() []NetworkResource {
+	if o == nil {
+		return nil
+	}
+	return o.Networks
+}

@@ -11,6 +11,13 @@ type PostJobStabilitySecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PostJobStabilitySecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PostJobStabilityRequest struct {
 	JobStabilityRequest shared.JobStabilityRequest `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -25,6 +32,48 @@ type PostJobStabilityRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *PostJobStabilityRequest) GetJobStabilityRequest() shared.JobStabilityRequest {
+	if o == nil {
+		return shared.JobStabilityRequest{}
+	}
+	return o.JobStabilityRequest
+}
+
+func (o *PostJobStabilityRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PostJobStabilityRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PostJobStabilityRequest) GetJobName() string {
+	if o == nil {
+		return ""
+	}
+	return o.JobName
+}
+
+func (o *PostJobStabilityRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PostJobStabilityRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type PostJobStabilityResponse struct {
 	// HTTP response content type for this operation
 	ContentType          string
@@ -34,4 +83,39 @@ type PostJobStabilityResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *PostJobStabilityResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PostJobStabilityResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *PostJobStabilityResponse) GetJobStabilityResponse() *shared.JobStabilityResponse {
+	if o == nil {
+		return nil
+	}
+	return o.JobStabilityResponse
+}
+
+func (o *PostJobStabilityResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PostJobStabilityResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

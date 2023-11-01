@@ -8,3 +8,31 @@ type RestartPolicy struct {
 	Interval *int64  `json:"Interval,omitempty"`
 	Mode     *string `json:"Mode,omitempty"`
 }
+
+func (o *RestartPolicy) GetAttempts() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Attempts
+}
+
+func (o *RestartPolicy) GetDelay() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Delay
+}
+
+func (o *RestartPolicy) GetInterval() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Interval
+}
+
+func (o *RestartPolicy) GetMode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Mode
+}

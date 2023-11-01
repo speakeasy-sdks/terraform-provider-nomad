@@ -11,6 +11,13 @@ type GetOperatorAutopilotConfigurationSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *GetOperatorAutopilotConfigurationSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type GetOperatorAutopilotConfigurationRequest struct {
 	// A Nomad ACL token.
 	XNomadToken *string `header:"style=simple,explode=false,name=X-Nomad-Token"`
@@ -32,6 +39,69 @@ type GetOperatorAutopilotConfigurationRequest struct {
 	Wait *string `queryParam:"style=form,explode=true,name=wait"`
 }
 
+func (o *GetOperatorAutopilotConfigurationRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *GetOperatorAutopilotConfigurationRequest) GetIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *GetOperatorAutopilotConfigurationRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *GetOperatorAutopilotConfigurationRequest) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *GetOperatorAutopilotConfigurationRequest) GetPerPage() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.PerPage
+}
+
+func (o *GetOperatorAutopilotConfigurationRequest) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *GetOperatorAutopilotConfigurationRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *GetOperatorAutopilotConfigurationRequest) GetStale() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Stale
+}
+
+func (o *GetOperatorAutopilotConfigurationRequest) GetWait() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Wait
+}
+
 type GetOperatorAutopilotConfigurationResponse struct {
 	AutopilotConfiguration *shared.AutopilotConfiguration
 	// HTTP response content type for this operation
@@ -40,4 +110,32 @@ type GetOperatorAutopilotConfigurationResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *GetOperatorAutopilotConfigurationResponse) GetAutopilotConfiguration() *shared.AutopilotConfiguration {
+	if o == nil {
+		return nil
+	}
+	return o.AutopilotConfiguration
+}
+
+func (o *GetOperatorAutopilotConfigurationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetOperatorAutopilotConfigurationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetOperatorAutopilotConfigurationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

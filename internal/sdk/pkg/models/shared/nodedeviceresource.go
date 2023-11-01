@@ -9,3 +9,38 @@ type NodeDeviceResource struct {
 	Type       *string              `json:"Type,omitempty"`
 	Vendor     *string              `json:"Vendor,omitempty"`
 }
+
+func (o *NodeDeviceResource) GetAttributes() map[string]Attribute {
+	if o == nil {
+		return nil
+	}
+	return o.Attributes
+}
+
+func (o *NodeDeviceResource) GetInstances() []NodeDevice {
+	if o == nil {
+		return nil
+	}
+	return o.Instances
+}
+
+func (o *NodeDeviceResource) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *NodeDeviceResource) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *NodeDeviceResource) GetVendor() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Vendor
+}

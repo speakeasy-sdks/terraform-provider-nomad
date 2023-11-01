@@ -19,3 +19,108 @@ type FuzzySearchRequest struct {
 	WaitIndex  *int64            `json:"WaitIndex,omitempty"`
 	WaitTime   *int64            `json:"WaitTime,omitempty"`
 }
+
+func (o *FuzzySearchRequest) GetAllowStale() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AllowStale
+}
+
+func (o *FuzzySearchRequest) GetAuthToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AuthToken
+}
+
+func (o *FuzzySearchRequest) GetContext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Context
+}
+
+func (o *FuzzySearchRequest) GetFilter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Filter
+}
+
+func (o *FuzzySearchRequest) GetHeaders() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *FuzzySearchRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *FuzzySearchRequest) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *FuzzySearchRequest) GetParams() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Params
+}
+
+func (o *FuzzySearchRequest) GetPerPage() *int {
+	if o == nil {
+		return nil
+	}
+	return o.PerPage
+}
+
+func (o *FuzzySearchRequest) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *FuzzySearchRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *FuzzySearchRequest) GetReverse() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Reverse
+}
+
+func (o *FuzzySearchRequest) GetText() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Text
+}
+
+func (o *FuzzySearchRequest) GetWaitIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.WaitIndex
+}
+
+func (o *FuzzySearchRequest) GetWaitTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.WaitTime
+}

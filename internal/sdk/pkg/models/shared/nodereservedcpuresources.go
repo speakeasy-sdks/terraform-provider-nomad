@@ -5,3 +5,10 @@ package shared
 type NodeReservedCPUResources struct {
 	CPUShares *int64 `json:"CpuShares,omitempty"`
 }
+
+func (o *NodeReservedCPUResources) GetCPUShares() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CPUShares
+}

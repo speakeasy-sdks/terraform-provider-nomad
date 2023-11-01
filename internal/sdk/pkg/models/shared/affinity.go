@@ -8,3 +8,31 @@ type Affinity struct {
 	RTarget *string `json:"RTarget,omitempty"`
 	Weight  *int64  `json:"Weight,omitempty"`
 }
+
+func (o *Affinity) GetLTarget() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LTarget
+}
+
+func (o *Affinity) GetOperand() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Operand
+}
+
+func (o *Affinity) GetRTarget() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RTarget
+}
+
+func (o *Affinity) GetWeight() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Weight
+}

@@ -9,3 +9,38 @@ type PeriodicConfig struct {
 	SpecType        *string `json:"SpecType,omitempty"`
 	TimeZone        *string `json:"TimeZone,omitempty"`
 }
+
+func (o *PeriodicConfig) GetEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Enabled
+}
+
+func (o *PeriodicConfig) GetProhibitOverlap() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ProhibitOverlap
+}
+
+func (o *PeriodicConfig) GetSpec() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Spec
+}
+
+func (o *PeriodicConfig) GetSpecType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SpecType
+}
+
+func (o *PeriodicConfig) GetTimeZone() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TimeZone
+}

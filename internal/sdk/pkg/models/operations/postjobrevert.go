@@ -11,6 +11,13 @@ type PostJobRevertSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PostJobRevertSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PostJobRevertRequest struct {
 	JobRevertRequest shared.JobRevertRequest `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -25,6 +32,48 @@ type PostJobRevertRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *PostJobRevertRequest) GetJobRevertRequest() shared.JobRevertRequest {
+	if o == nil {
+		return shared.JobRevertRequest{}
+	}
+	return o.JobRevertRequest
+}
+
+func (o *PostJobRevertRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PostJobRevertRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PostJobRevertRequest) GetJobName() string {
+	if o == nil {
+		return ""
+	}
+	return o.JobName
+}
+
+func (o *PostJobRevertRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PostJobRevertRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type PostJobRevertResponse struct {
 	// HTTP response content type for this operation
 	ContentType         string
@@ -34,4 +83,39 @@ type PostJobRevertResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *PostJobRevertResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PostJobRevertResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *PostJobRevertResponse) GetJobRegisterResponse() *shared.JobRegisterResponse {
+	if o == nil {
+		return nil
+	}
+	return o.JobRegisterResponse
+}
+
+func (o *PostJobRevertResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PostJobRevertResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

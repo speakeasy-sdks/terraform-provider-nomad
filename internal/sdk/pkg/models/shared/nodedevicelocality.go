@@ -5,3 +5,10 @@ package shared
 type NodeDeviceLocality struct {
 	PciBusID *string `json:"PciBusID,omitempty"`
 }
+
+func (o *NodeDeviceLocality) GetPciBusID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PciBusID
+}

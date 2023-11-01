@@ -3,6 +3,7 @@
 package sdk
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -45,7 +46,7 @@ func Float64(f float64) *float64 { return &f }
 type sdkConfiguration struct {
 	DefaultClient     HTTPClient
 	SecurityClient    HTTPClient
-	Security          *shared.Security
+	Security          func(context.Context) (interface{}, error)
 	ServerURL         string
 	ServerIndex       int
 	ServerDefaults    []map[string]string
@@ -54,6 +55,7 @@ type sdkConfiguration struct {
 	SDKVersion        string
 	GenVersion        string
 	UserAgent         string
+	RetryConfig       *utils.RetryConfig
 }
 
 func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
@@ -64,7 +66,6 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 	return ServerList[c.ServerIndex], c.ServerDefaults[c.ServerIndex]
 }
 
-// Nomad
 type Nomad struct {
 	ACL         *acl
 	Allocations *allocations
@@ -119,7 +120,7 @@ func WithServerIndex(serverIndex int) SDKOption {
 	}
 }
 
-// WithAddress allows setting the $name variable for url substitution
+// WithAddress allows setting the address variable for url substitution
 func WithAddress(address string) SDKOption {
 	return func(sdk *Nomad) {
 		for idx := range sdk.sdkConfiguration.ServerDefaults {
@@ -132,7 +133,7 @@ func WithAddress(address string) SDKOption {
 	}
 }
 
-// WithPort allows setting the $name variable for url substitution
+// WithPort allows setting the port variable for url substitution
 func WithPort(port string) SDKOption {
 	return func(sdk *Nomad) {
 		for idx := range sdk.sdkConfiguration.ServerDefaults {
@@ -172,7 +173,7 @@ func (e *ServerScheme) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// WithScheme allows setting the $name variable for url substitution
+// WithScheme allows setting the scheme variable for url substitution
 func WithScheme(scheme ServerScheme) SDKOption {
 	return func(sdk *Nomad) {
 		for idx := range sdk.sdkConfiguration.ServerDefaults {
@@ -192,10 +193,31 @@ func WithClient(client HTTPClient) SDKOption {
 	}
 }
 
+func withSecurity(security interface{}) func(context.Context) (interface{}, error) {
+	return func(context.Context) (interface{}, error) {
+		return &security, nil
+	}
+}
+
 // WithSecurity configures the SDK to use the provided security details
 func WithSecurity(security shared.Security) SDKOption {
 	return func(sdk *Nomad) {
-		sdk.sdkConfiguration.Security = &security
+		sdk.sdkConfiguration.Security = withSecurity(security)
+	}
+}
+
+// WithSecuritySource configures the SDK to invoke the Security Source function on each method call to determine authentication
+func WithSecuritySource(security func(context.Context) (shared.Security, error)) SDKOption {
+	return func(sdk *Nomad) {
+		sdk.sdkConfiguration.Security = func(ctx context.Context) (interface{}, error) {
+			return security(ctx)
+		}
+	}
+}
+
+func WithRetryConfig(retryConfig utils.RetryConfig) SDKOption {
+	return func(sdk *Nomad) {
+		sdk.sdkConfiguration.RetryConfig = &retryConfig
 	}
 }
 
@@ -203,11 +225,11 @@ func WithSecurity(security shared.Security) SDKOption {
 func New(opts ...SDKOption) *Nomad {
 	sdk := &Nomad{
 		sdkConfiguration: sdkConfiguration{
-			Language:          "terraform",
+			Language:          "go",
 			OpenAPIDocVersion: "1.1.4",
-			SDKVersion:        "1.19.1",
-			GenVersion:        "2.150.0",
-			UserAgent:         "speakeasy-sdk/terraform 1.19.1 2.150.0 1.1.4 nomad",
+			SDKVersion:        "1.20.0",
+			GenVersion:        "2.173.0",
+			UserAgent:         "speakeasy-sdk/go 1.20.0 2.173.0 1.1.4 nomad",
 			ServerDefaults: []map[string]string{
 				{
 					"address": "127.0.0.1",

@@ -11,6 +11,13 @@ type CreateQuotaSpecSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *CreateQuotaSpecSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type CreateQuotaSpecRequest struct {
 	QuotaSpec shared.QuotaSpec `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -23,6 +30,41 @@ type CreateQuotaSpecRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *CreateQuotaSpecRequest) GetQuotaSpec() shared.QuotaSpec {
+	if o == nil {
+		return shared.QuotaSpec{}
+	}
+	return o.QuotaSpec
+}
+
+func (o *CreateQuotaSpecRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *CreateQuotaSpecRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *CreateQuotaSpecRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *CreateQuotaSpecRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type CreateQuotaSpecResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -31,4 +73,32 @@ type CreateQuotaSpecResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *CreateQuotaSpecResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateQuotaSpecResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *CreateQuotaSpecResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateQuotaSpecResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

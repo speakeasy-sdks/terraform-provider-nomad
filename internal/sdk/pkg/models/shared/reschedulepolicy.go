@@ -10,3 +10,45 @@ type ReschedulePolicy struct {
 	MaxDelay      *int64  `json:"MaxDelay,omitempty"`
 	Unlimited     *bool   `json:"Unlimited,omitempty"`
 }
+
+func (o *ReschedulePolicy) GetAttempts() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Attempts
+}
+
+func (o *ReschedulePolicy) GetDelay() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Delay
+}
+
+func (o *ReschedulePolicy) GetDelayFunction() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DelayFunction
+}
+
+func (o *ReschedulePolicy) GetInterval() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Interval
+}
+
+func (o *ReschedulePolicy) GetMaxDelay() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxDelay
+}
+
+func (o *ReschedulePolicy) GetUnlimited() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Unlimited
+}

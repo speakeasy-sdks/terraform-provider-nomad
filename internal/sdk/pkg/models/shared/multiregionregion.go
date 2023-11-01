@@ -8,3 +8,31 @@ type MultiregionRegion struct {
 	Meta        map[string]string `json:"Meta,omitempty"`
 	Name        *string           `json:"Name,omitempty"`
 }
+
+func (o *MultiregionRegion) GetCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Count
+}
+
+func (o *MultiregionRegion) GetDatacenters() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Datacenters
+}
+
+func (o *MultiregionRegion) GetMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}
+
+func (o *MultiregionRegion) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

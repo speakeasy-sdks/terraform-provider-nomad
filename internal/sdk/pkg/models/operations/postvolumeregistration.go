@@ -11,6 +11,13 @@ type PostVolumeRegistrationSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PostVolumeRegistrationSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PostVolumeRegistrationRequest struct {
 	CSIVolumeRegisterRequest shared.CSIVolumeRegisterRequest `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -25,6 +32,48 @@ type PostVolumeRegistrationRequest struct {
 	VolumeID string `pathParam:"style=simple,explode=false,name=volumeId"`
 }
 
+func (o *PostVolumeRegistrationRequest) GetCSIVolumeRegisterRequest() shared.CSIVolumeRegisterRequest {
+	if o == nil {
+		return shared.CSIVolumeRegisterRequest{}
+	}
+	return o.CSIVolumeRegisterRequest
+}
+
+func (o *PostVolumeRegistrationRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PostVolumeRegistrationRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PostVolumeRegistrationRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PostVolumeRegistrationRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *PostVolumeRegistrationRequest) GetVolumeID() string {
+	if o == nil {
+		return ""
+	}
+	return o.VolumeID
+}
+
 type PostVolumeRegistrationResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -33,4 +82,32 @@ type PostVolumeRegistrationResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *PostVolumeRegistrationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PostVolumeRegistrationResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *PostVolumeRegistrationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PostVolumeRegistrationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

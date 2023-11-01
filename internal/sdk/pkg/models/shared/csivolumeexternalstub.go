@@ -12,3 +12,59 @@ type CSIVolumeExternalStub struct {
 	Status                   *string           `json:"Status,omitempty"`
 	VolumeContext            map[string]string `json:"VolumeContext,omitempty"`
 }
+
+func (o *CSIVolumeExternalStub) GetCapacityBytes() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CapacityBytes
+}
+
+func (o *CSIVolumeExternalStub) GetCloneID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CloneID
+}
+
+func (o *CSIVolumeExternalStub) GetExternalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExternalID
+}
+
+func (o *CSIVolumeExternalStub) GetIsAbnormal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsAbnormal
+}
+
+func (o *CSIVolumeExternalStub) GetPublishedExternalNodeIDs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.PublishedExternalNodeIDs
+}
+
+func (o *CSIVolumeExternalStub) GetSnapshotID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SnapshotID
+}
+
+func (o *CSIVolumeExternalStub) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *CSIVolumeExternalStub) GetVolumeContext() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.VolumeContext
+}

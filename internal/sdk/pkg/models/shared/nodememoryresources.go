@@ -5,3 +5,10 @@ package shared
 type NodeMemoryResources struct {
 	MemoryMB *int64 `json:"MemoryMB,omitempty"`
 }
+
+func (o *NodeMemoryResources) GetMemoryMB() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MemoryMB
+}

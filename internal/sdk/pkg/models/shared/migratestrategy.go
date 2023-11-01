@@ -8,3 +8,31 @@ type MigrateStrategy struct {
 	MaxParallel     *int64  `json:"MaxParallel,omitempty"`
 	MinHealthyTime  *int64  `json:"MinHealthyTime,omitempty"`
 }
+
+func (o *MigrateStrategy) GetHealthCheck() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HealthCheck
+}
+
+func (o *MigrateStrategy) GetHealthyDeadline() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.HealthyDeadline
+}
+
+func (o *MigrateStrategy) GetMaxParallel() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxParallel
+}
+
+func (o *MigrateStrategy) GetMinHealthyTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MinHealthyTime
+}

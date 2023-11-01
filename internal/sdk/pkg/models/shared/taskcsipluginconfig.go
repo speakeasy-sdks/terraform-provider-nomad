@@ -9,3 +9,38 @@ type TaskCSIPluginConfig struct {
 	StagePublishBaseDir *string `json:"StagePublishBaseDir,omitempty"`
 	Type                *string `json:"Type,omitempty"`
 }
+
+func (o *TaskCSIPluginConfig) GetHealthTimeout() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.HealthTimeout
+}
+
+func (o *TaskCSIPluginConfig) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *TaskCSIPluginConfig) GetMountDir() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MountDir
+}
+
+func (o *TaskCSIPluginConfig) GetStagePublishBaseDir() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StagePublishBaseDir
+}
+
+func (o *TaskCSIPluginConfig) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}

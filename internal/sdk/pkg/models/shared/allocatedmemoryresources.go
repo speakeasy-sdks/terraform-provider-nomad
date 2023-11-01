@@ -6,3 +6,17 @@ type AllocatedMemoryResources struct {
 	MemoryMB    *int64 `json:"MemoryMB,omitempty"`
 	MemoryMaxMB *int64 `json:"MemoryMaxMB,omitempty"`
 }
+
+func (o *AllocatedMemoryResources) GetMemoryMB() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MemoryMB
+}
+
+func (o *AllocatedMemoryResources) GetMemoryMaxMB() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MemoryMaxMB
+}

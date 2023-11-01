@@ -10,3 +10,45 @@ type ACLPolicy struct {
 	Name        *string `json:"Name,omitempty"`
 	Rules       *string `json:"Rules,omitempty"`
 }
+
+func (o *ACLPolicy) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *ACLPolicy) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *ACLPolicy) GetJobACL() *JobACL {
+	if o == nil {
+		return nil
+	}
+	return o.JobACL
+}
+
+func (o *ACLPolicy) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *ACLPolicy) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *ACLPolicy) GetRules() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Rules
+}

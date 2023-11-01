@@ -11,6 +11,13 @@ type RegisterJobSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *RegisterJobSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type RegisterJobRequest struct {
 	JobRegisterRequest shared.JobRegisterRequest `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -23,6 +30,41 @@ type RegisterJobRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *RegisterJobRequest) GetJobRegisterRequest() shared.JobRegisterRequest {
+	if o == nil {
+		return shared.JobRegisterRequest{}
+	}
+	return o.JobRegisterRequest
+}
+
+func (o *RegisterJobRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *RegisterJobRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *RegisterJobRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *RegisterJobRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type RegisterJobResponse struct {
 	// HTTP response content type for this operation
 	ContentType         string
@@ -32,4 +74,39 @@ type RegisterJobResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *RegisterJobResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RegisterJobResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *RegisterJobResponse) GetJobRegisterResponse() *shared.JobRegisterResponse {
+	if o == nil {
+		return nil
+	}
+	return o.JobRegisterResponse
+}
+
+func (o *RegisterJobResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RegisterJobResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

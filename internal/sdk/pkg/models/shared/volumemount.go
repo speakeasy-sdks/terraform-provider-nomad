@@ -8,3 +8,31 @@ type VolumeMount struct {
 	ReadOnly        *bool   `json:"ReadOnly,omitempty"`
 	Volume          *string `json:"Volume,omitempty"`
 }
+
+func (o *VolumeMount) GetDestination() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Destination
+}
+
+func (o *VolumeMount) GetPropagationMode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PropagationMode
+}
+
+func (o *VolumeMount) GetReadOnly() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ReadOnly
+}
+
+func (o *VolumeMount) GetVolume() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Volume
+}

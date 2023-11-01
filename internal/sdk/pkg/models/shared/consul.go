@@ -5,3 +5,10 @@ package shared
 type Consul struct {
 	Namespace *string `json:"Namespace,omitempty"`
 }
+
+func (o *Consul) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}

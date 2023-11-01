@@ -10,3 +10,45 @@ type JobSummary struct {
 	Namespace   *string                     `json:"Namespace,omitempty"`
 	Summary     map[string]TaskGroupSummary `json:"Summary,omitempty"`
 }
+
+func (o *JobSummary) GetChildren() *JobChildrenSummary {
+	if o == nil {
+		return nil
+	}
+	return o.Children
+}
+
+func (o *JobSummary) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *JobSummary) GetJobID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.JobID
+}
+
+func (o *JobSummary) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *JobSummary) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *JobSummary) GetSummary() map[string]TaskGroupSummary {
+	if o == nil {
+		return nil
+	}
+	return o.Summary
+}

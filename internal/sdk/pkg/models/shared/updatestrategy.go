@@ -13,3 +13,66 @@ type UpdateStrategy struct {
 	ProgressDeadline *int64  `json:"ProgressDeadline,omitempty"`
 	Stagger          *int64  `json:"Stagger,omitempty"`
 }
+
+func (o *UpdateStrategy) GetAutoPromote() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AutoPromote
+}
+
+func (o *UpdateStrategy) GetAutoRevert() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AutoRevert
+}
+
+func (o *UpdateStrategy) GetCanary() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Canary
+}
+
+func (o *UpdateStrategy) GetHealthCheck() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HealthCheck
+}
+
+func (o *UpdateStrategy) GetHealthyDeadline() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.HealthyDeadline
+}
+
+func (o *UpdateStrategy) GetMaxParallel() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MaxParallel
+}
+
+func (o *UpdateStrategy) GetMinHealthyTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MinHealthyTime
+}
+
+func (o *UpdateStrategy) GetProgressDeadline() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ProgressDeadline
+}
+
+func (o *UpdateStrategy) GetStagger() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Stagger
+}

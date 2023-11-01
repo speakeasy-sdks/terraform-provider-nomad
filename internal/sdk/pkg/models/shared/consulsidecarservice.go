@@ -8,3 +8,31 @@ type ConsulSidecarService struct {
 	Proxy                  *ConsulProxy `json:"Proxy,omitempty"`
 	Tags                   []string     `json:"Tags,omitempty"`
 }
+
+func (o *ConsulSidecarService) GetDisableDefaultTCPCheck() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DisableDefaultTCPCheck
+}
+
+func (o *ConsulSidecarService) GetPort() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Port
+}
+
+func (o *ConsulSidecarService) GetProxy() *ConsulProxy {
+	if o == nil {
+		return nil
+	}
+	return o.Proxy
+}
+
+func (o *ConsulSidecarService) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}

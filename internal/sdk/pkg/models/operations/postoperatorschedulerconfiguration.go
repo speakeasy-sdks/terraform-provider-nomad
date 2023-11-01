@@ -11,6 +11,13 @@ type PostOperatorSchedulerConfigurationSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PostOperatorSchedulerConfigurationSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PostOperatorSchedulerConfigurationRequest struct {
 	SchedulerConfiguration shared.SchedulerConfiguration `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -23,6 +30,41 @@ type PostOperatorSchedulerConfigurationRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *PostOperatorSchedulerConfigurationRequest) GetSchedulerConfiguration() shared.SchedulerConfiguration {
+	if o == nil {
+		return shared.SchedulerConfiguration{}
+	}
+	return o.SchedulerConfiguration
+}
+
+func (o *PostOperatorSchedulerConfigurationRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PostOperatorSchedulerConfigurationRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PostOperatorSchedulerConfigurationRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PostOperatorSchedulerConfigurationRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type PostOperatorSchedulerConfigurationResponse struct {
 	// HTTP response content type for this operation
 	ContentType                       string
@@ -32,4 +74,39 @@ type PostOperatorSchedulerConfigurationResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *PostOperatorSchedulerConfigurationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PostOperatorSchedulerConfigurationResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *PostOperatorSchedulerConfigurationResponse) GetSchedulerSetConfigurationResponse() *shared.SchedulerSetConfigurationResponse {
+	if o == nil {
+		return nil
+	}
+	return o.SchedulerSetConfigurationResponse
+}
+
+func (o *PostOperatorSchedulerConfigurationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PostOperatorSchedulerConfigurationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -6,3 +6,17 @@ type DesiredTransition struct {
 	Migrate    *bool `json:"Migrate,omitempty"`
 	Reschedule *bool `json:"Reschedule,omitempty"`
 }
+
+func (o *DesiredTransition) GetMigrate() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Migrate
+}
+
+func (o *DesiredTransition) GetReschedule() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Reschedule
+}

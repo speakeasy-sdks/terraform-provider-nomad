@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"nomad/internal/sdk/pkg/utils"
 	"time"
 )
 
@@ -11,4 +12,43 @@ type DrainStrategy struct {
 	ForceDeadline    *time.Time `json:"ForceDeadline,omitempty"`
 	IgnoreSystemJobs *bool      `json:"IgnoreSystemJobs,omitempty"`
 	StartedAt        *time.Time `json:"StartedAt,omitempty"`
+}
+
+func (d DrainStrategy) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DrainStrategy) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DrainStrategy) GetDeadline() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Deadline
+}
+
+func (o *DrainStrategy) GetForceDeadline() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ForceDeadline
+}
+
+func (o *DrainStrategy) GetIgnoreSystemJobs() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoreSystemJobs
+}
+
+func (o *DrainStrategy) GetStartedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.StartedAt
 }

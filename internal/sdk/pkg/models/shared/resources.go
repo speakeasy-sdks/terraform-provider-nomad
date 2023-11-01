@@ -12,3 +12,59 @@ type Resources struct {
 	MemoryMaxMB *int64            `json:"MemoryMaxMB,omitempty"`
 	Networks    []NetworkResource `json:"Networks,omitempty"`
 }
+
+func (o *Resources) GetCPU() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CPU
+}
+
+func (o *Resources) GetCores() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Cores
+}
+
+func (o *Resources) GetDevices() []RequestedDevice {
+	if o == nil {
+		return nil
+	}
+	return o.Devices
+}
+
+func (o *Resources) GetDiskMB() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.DiskMB
+}
+
+func (o *Resources) GetIops() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Iops
+}
+
+func (o *Resources) GetMemoryMB() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MemoryMB
+}
+
+func (o *Resources) GetMemoryMaxMB() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MemoryMaxMB
+}
+
+func (o *Resources) GetNetworks() []NetworkResource {
+	if o == nil {
+		return nil
+	}
+	return o.Networks
+}

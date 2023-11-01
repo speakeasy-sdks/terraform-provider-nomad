@@ -9,3 +9,38 @@ type QuotaSpec struct {
 	ModifyIndex *int64       `json:"ModifyIndex,omitempty"`
 	Name        *string      `json:"Name,omitempty"`
 }
+
+func (o *QuotaSpec) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *QuotaSpec) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *QuotaSpec) GetLimits() []QuotaLimit {
+	if o == nil {
+		return nil
+	}
+	return o.Limits
+}
+
+func (o *QuotaSpec) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *QuotaSpec) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

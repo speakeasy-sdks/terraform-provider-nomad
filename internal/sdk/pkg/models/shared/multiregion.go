@@ -6,3 +6,17 @@ type Multiregion struct {
 	Regions  []MultiregionRegion  `json:"Regions,omitempty"`
 	Strategy *MultiregionStrategy `json:"Strategy,omitempty"`
 }
+
+func (o *Multiregion) GetRegions() []MultiregionRegion {
+	if o == nil {
+		return nil
+	}
+	return o.Regions
+}
+
+func (o *Multiregion) GetStrategy() *MultiregionStrategy {
+	if o == nil {
+		return nil
+	}
+	return o.Strategy
+}

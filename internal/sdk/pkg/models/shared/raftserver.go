@@ -10,3 +10,45 @@ type RaftServer struct {
 	RaftProtocol *string `json:"RaftProtocol,omitempty"`
 	Voter        *bool   `json:"Voter,omitempty"`
 }
+
+func (o *RaftServer) GetAddress() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Address
+}
+
+func (o *RaftServer) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *RaftServer) GetLeader() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Leader
+}
+
+func (o *RaftServer) GetNode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Node
+}
+
+func (o *RaftServer) GetRaftProtocol() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RaftProtocol
+}
+
+func (o *RaftServer) GetVoter() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Voter
+}

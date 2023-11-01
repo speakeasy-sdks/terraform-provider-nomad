@@ -11,6 +11,13 @@ type PostACLTokenSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PostACLTokenSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PostACLTokenRequest struct {
 	ACLToken shared.ACLToken `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -25,6 +32,48 @@ type PostACLTokenRequest struct {
 	TokenAccessor string `pathParam:"style=simple,explode=false,name=tokenAccessor"`
 }
 
+func (o *PostACLTokenRequest) GetACLToken() shared.ACLToken {
+	if o == nil {
+		return shared.ACLToken{}
+	}
+	return o.ACLToken
+}
+
+func (o *PostACLTokenRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PostACLTokenRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PostACLTokenRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PostACLTokenRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *PostACLTokenRequest) GetTokenAccessor() string {
+	if o == nil {
+		return ""
+	}
+	return o.TokenAccessor
+}
+
 type PostACLTokenResponse struct {
 	ACLToken *shared.ACLToken
 	// HTTP response content type for this operation
@@ -34,4 +83,39 @@ type PostACLTokenResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *PostACLTokenResponse) GetACLToken() *shared.ACLToken {
+	if o == nil {
+		return nil
+	}
+	return o.ACLToken
+}
+
+func (o *PostACLTokenResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PostACLTokenResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *PostACLTokenResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PostACLTokenResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

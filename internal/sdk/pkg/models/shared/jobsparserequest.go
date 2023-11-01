@@ -7,3 +7,24 @@ type JobsParseRequest struct {
 	JobHCL       *string `json:"JobHCL,omitempty"`
 	Hclv1        *bool   `json:"hclv1,omitempty"`
 }
+
+func (o *JobsParseRequest) GetCanonicalize() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Canonicalize
+}
+
+func (o *JobsParseRequest) GetJobHCL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.JobHCL
+}
+
+func (o *JobsParseRequest) GetHclv1() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Hclv1
+}

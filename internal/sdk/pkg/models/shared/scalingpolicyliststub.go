@@ -10,3 +10,45 @@ type ScalingPolicyListStub struct {
 	Target      map[string]string `json:"Target,omitempty"`
 	Type        *string           `json:"Type,omitempty"`
 }
+
+func (o *ScalingPolicyListStub) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *ScalingPolicyListStub) GetEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Enabled
+}
+
+func (o *ScalingPolicyListStub) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *ScalingPolicyListStub) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *ScalingPolicyListStub) GetTarget() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Target
+}
+
+func (o *ScalingPolicyListStub) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}

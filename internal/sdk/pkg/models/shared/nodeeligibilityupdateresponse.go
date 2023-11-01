@@ -9,3 +9,38 @@ type NodeEligibilityUpdateResponse struct {
 	NodeModifyIndex *int64   `json:"NodeModifyIndex,omitempty"`
 	RequestTime     *int64   `json:"RequestTime,omitempty"`
 }
+
+func (o *NodeEligibilityUpdateResponse) GetEvalCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EvalCreateIndex
+}
+
+func (o *NodeEligibilityUpdateResponse) GetEvalIDs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.EvalIDs
+}
+
+func (o *NodeEligibilityUpdateResponse) GetLastIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastIndex
+}
+
+func (o *NodeEligibilityUpdateResponse) GetNodeModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NodeModifyIndex
+}
+
+func (o *NodeEligibilityUpdateResponse) GetRequestTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RequestTime
+}

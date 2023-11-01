@@ -16,3 +16,87 @@ type ServiceRegistration struct {
 	ServiceName *string  `json:"ServiceName,omitempty"`
 	Tags        []string `json:"Tags,omitempty"`
 }
+
+func (o *ServiceRegistration) GetAddress() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Address
+}
+
+func (o *ServiceRegistration) GetAllocID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AllocID
+}
+
+func (o *ServiceRegistration) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *ServiceRegistration) GetDatacenter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Datacenter
+}
+
+func (o *ServiceRegistration) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *ServiceRegistration) GetJobID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.JobID
+}
+
+func (o *ServiceRegistration) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *ServiceRegistration) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *ServiceRegistration) GetNodeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NodeID
+}
+
+func (o *ServiceRegistration) GetPort() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Port
+}
+
+func (o *ServiceRegistration) GetServiceName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ServiceName
+}
+
+func (o *ServiceRegistration) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}

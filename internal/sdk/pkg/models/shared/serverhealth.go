@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"nomad/internal/sdk/pkg/utils"
 	"time"
 )
 
@@ -19,4 +20,99 @@ type ServerHealth struct {
 	StableSince *time.Time `json:"StableSince,omitempty"`
 	Version     *string    `json:"Version,omitempty"`
 	Voter       *bool      `json:"Voter,omitempty"`
+}
+
+func (s ServerHealth) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *ServerHealth) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ServerHealth) GetAddress() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Address
+}
+
+func (o *ServerHealth) GetHealthy() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Healthy
+}
+
+func (o *ServerHealth) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *ServerHealth) GetLastContact() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastContact
+}
+
+func (o *ServerHealth) GetLastIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastIndex
+}
+
+func (o *ServerHealth) GetLastTerm() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.LastTerm
+}
+
+func (o *ServerHealth) GetLeader() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Leader
+}
+
+func (o *ServerHealth) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *ServerHealth) GetSerfStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SerfStatus
+}
+
+func (o *ServerHealth) GetStableSince() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.StableSince
+}
+
+func (o *ServerHealth) GetVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Version
+}
+
+func (o *ServerHealth) GetVoter() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Voter
 }

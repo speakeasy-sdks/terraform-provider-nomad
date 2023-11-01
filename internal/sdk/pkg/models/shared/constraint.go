@@ -7,3 +7,24 @@ type Constraint struct {
 	Operand *string `json:"Operand,omitempty"`
 	RTarget *string `json:"RTarget,omitempty"`
 }
+
+func (o *Constraint) GetLTarget() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LTarget
+}
+
+func (o *Constraint) GetOperand() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Operand
+}
+
+func (o *Constraint) GetRTarget() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RTarget
+}

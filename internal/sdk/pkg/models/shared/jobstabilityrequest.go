@@ -10,3 +10,45 @@ type JobStabilityRequest struct {
 	SecretID   *string `json:"SecretID,omitempty"`
 	Stable     *bool   `json:"Stable,omitempty"`
 }
+
+func (o *JobStabilityRequest) GetJobID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.JobID
+}
+
+func (o *JobStabilityRequest) GetJobVersion() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobVersion
+}
+
+func (o *JobStabilityRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *JobStabilityRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *JobStabilityRequest) GetSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretID
+}
+
+func (o *JobStabilityRequest) GetStable() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Stable
+}

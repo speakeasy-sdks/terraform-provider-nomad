@@ -7,3 +7,24 @@ type NodeScoreMeta struct {
 	NormScore *float64           `json:"NormScore,omitempty"`
 	Scores    map[string]float64 `json:"Scores,omitempty"`
 }
+
+func (o *NodeScoreMeta) GetNodeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NodeID
+}
+
+func (o *NodeScoreMeta) GetNormScore() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.NormScore
+}
+
+func (o *NodeScoreMeta) GetScores() map[string]float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Scores
+}

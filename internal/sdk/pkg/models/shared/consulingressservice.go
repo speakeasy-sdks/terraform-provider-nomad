@@ -6,3 +6,17 @@ type ConsulIngressService struct {
 	Hosts []string `json:"Hosts,omitempty"`
 	Name  *string  `json:"Name,omitempty"`
 }
+
+func (o *ConsulIngressService) GetHosts() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Hosts
+}
+
+func (o *ConsulIngressService) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

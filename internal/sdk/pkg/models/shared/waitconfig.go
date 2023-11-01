@@ -6,3 +6,17 @@ type WaitConfig struct {
 	Max *int64 `json:"Max,omitempty"`
 	Min *int64 `json:"Min,omitempty"`
 }
+
+func (o *WaitConfig) GetMax() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Max
+}
+
+func (o *WaitConfig) GetMin() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Min
+}

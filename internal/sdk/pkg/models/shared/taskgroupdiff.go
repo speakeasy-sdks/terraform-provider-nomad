@@ -10,3 +10,45 @@ type TaskGroupDiff struct {
 	Type    *string          `json:"Type,omitempty"`
 	Updates map[string]int64 `json:"Updates,omitempty"`
 }
+
+func (o *TaskGroupDiff) GetFields() []FieldDiff {
+	if o == nil {
+		return nil
+	}
+	return o.Fields
+}
+
+func (o *TaskGroupDiff) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *TaskGroupDiff) GetObjects() []ObjectDiff {
+	if o == nil {
+		return nil
+	}
+	return o.Objects
+}
+
+func (o *TaskGroupDiff) GetTasks() []TaskDiff {
+	if o == nil {
+		return nil
+	}
+	return o.Tasks
+}
+
+func (o *TaskGroupDiff) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *TaskGroupDiff) GetUpdates() map[string]int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Updates
+}

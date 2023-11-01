@@ -10,3 +10,45 @@ type TaskGroupScaleStatus struct {
 	Running   *int64         `json:"Running,omitempty"`
 	Unhealthy *int64         `json:"Unhealthy,omitempty"`
 }
+
+func (o *TaskGroupScaleStatus) GetDesired() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Desired
+}
+
+func (o *TaskGroupScaleStatus) GetEvents() []ScalingEvent {
+	if o == nil {
+		return nil
+	}
+	return o.Events
+}
+
+func (o *TaskGroupScaleStatus) GetHealthy() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Healthy
+}
+
+func (o *TaskGroupScaleStatus) GetPlaced() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Placed
+}
+
+func (o *TaskGroupScaleStatus) GetRunning() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Running
+}
+
+func (o *TaskGroupScaleStatus) GetUnhealthy() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Unhealthy
+}

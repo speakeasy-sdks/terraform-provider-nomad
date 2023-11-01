@@ -6,3 +6,17 @@ type DrainSpec struct {
 	Deadline         *int64 `json:"Deadline,omitempty"`
 	IgnoreSystemJobs *bool  `json:"IgnoreSystemJobs,omitempty"`
 }
+
+func (o *DrainSpec) GetDeadline() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Deadline
+}
+
+func (o *DrainSpec) GetIgnoreSystemJobs() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoreSystemJobs
+}

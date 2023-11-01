@@ -5,3 +5,10 @@ package shared
 type NodeReservedNetworkResources struct {
 	ReservedHostPorts *string `json:"ReservedHostPorts,omitempty"`
 }
+
+func (o *NodeReservedNetworkResources) GetReservedHostPorts() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ReservedHostPorts
+}

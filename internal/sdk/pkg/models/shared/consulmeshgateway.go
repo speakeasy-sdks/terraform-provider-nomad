@@ -5,3 +5,10 @@ package shared
 type ConsulMeshGateway struct {
 	Mode *string `json:"Mode,omitempty"`
 }
+
+func (o *ConsulMeshGateway) GetMode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Mode
+}

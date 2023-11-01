@@ -7,3 +7,24 @@ type RescheduleEvent struct {
 	PrevNodeID     *string `json:"PrevNodeID,omitempty"`
 	RescheduleTime *int64  `json:"RescheduleTime,omitempty"`
 }
+
+func (o *RescheduleEvent) GetPrevAllocID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PrevAllocID
+}
+
+func (o *RescheduleEvent) GetPrevNodeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PrevNodeID
+}
+
+func (o *RescheduleEvent) GetRescheduleTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RescheduleTime
+}

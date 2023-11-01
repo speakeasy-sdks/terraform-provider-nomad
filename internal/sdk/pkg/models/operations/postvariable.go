@@ -11,6 +11,13 @@ type PostVariableSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PostVariableSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PostVariableRequest struct {
 	Variable shared.Variable `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -27,6 +34,55 @@ type PostVariableRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *PostVariableRequest) GetVariable() shared.Variable {
+	if o == nil {
+		return shared.Variable{}
+	}
+	return o.Variable
+}
+
+func (o *PostVariableRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PostVariableRequest) GetCas() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Cas
+}
+
+func (o *PostVariableRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PostVariableRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PostVariableRequest) GetPath() string {
+	if o == nil {
+		return ""
+	}
+	return o.Path
+}
+
+func (o *PostVariableRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type PostVariableResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -36,4 +92,39 @@ type PostVariableResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	Variable    *shared.Variable
+}
+
+func (o *PostVariableResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PostVariableResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *PostVariableResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PostVariableResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *PostVariableResponse) GetVariable() *shared.Variable {
+	if o == nil {
+		return nil
+	}
+	return o.Variable
 }

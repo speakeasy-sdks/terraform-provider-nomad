@@ -8,3 +8,31 @@ type ChangeScript struct {
 	FailOnError *bool    `json:"FailOnError,omitempty"`
 	Timeout     *int64   `json:"Timeout,omitempty"`
 }
+
+func (o *ChangeScript) GetArgs() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Args
+}
+
+func (o *ChangeScript) GetCommand() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Command
+}
+
+func (o *ChangeScript) GetFailOnError() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.FailOnError
+}
+
+func (o *ChangeScript) GetTimeout() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Timeout
+}

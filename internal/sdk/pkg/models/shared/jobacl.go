@@ -8,3 +8,31 @@ type JobACL struct {
 	Namespace *string `json:"Namespace,omitempty"`
 	Task      *string `json:"Task,omitempty"`
 }
+
+func (o *JobACL) GetGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Group
+}
+
+func (o *JobACL) GetJobID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.JobID
+}
+
+func (o *JobACL) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *JobACL) GetTask() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Task
+}

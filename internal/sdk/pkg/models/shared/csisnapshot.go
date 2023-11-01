@@ -14,3 +14,73 @@ type CSISnapshot struct {
 	SizeBytes              *int64            `json:"SizeBytes,omitempty"`
 	SourceVolumeID         *string           `json:"SourceVolumeID,omitempty"`
 }
+
+func (o *CSISnapshot) GetCreateTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateTime
+}
+
+func (o *CSISnapshot) GetExternalSourceVolumeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExternalSourceVolumeID
+}
+
+func (o *CSISnapshot) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *CSISnapshot) GetIsReady() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsReady
+}
+
+func (o *CSISnapshot) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *CSISnapshot) GetParameters() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Parameters
+}
+
+func (o *CSISnapshot) GetPluginID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PluginID
+}
+
+func (o *CSISnapshot) GetSecrets() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Secrets
+}
+
+func (o *CSISnapshot) GetSizeBytes() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.SizeBytes
+}
+
+func (o *CSISnapshot) GetSourceVolumeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceVolumeID
+}

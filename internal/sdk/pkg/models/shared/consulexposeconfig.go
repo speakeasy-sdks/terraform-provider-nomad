@@ -5,3 +5,10 @@ package shared
 type ConsulExposeConfig struct {
 	Path []ConsulExposePath `json:"Path,omitempty"`
 }
+
+func (o *ConsulExposeConfig) GetPath() []ConsulExposePath {
+	if o == nil {
+		return nil
+	}
+	return o.Path
+}

@@ -6,3 +6,17 @@ type TaskHandle struct {
 	DriverState *string `json:"DriverState,omitempty"`
 	Version     *int64  `json:"Version,omitempty"`
 }
+
+func (o *TaskHandle) GetDriverState() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DriverState
+}
+
+func (o *TaskHandle) GetVersion() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Version
+}

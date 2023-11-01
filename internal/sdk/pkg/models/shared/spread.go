@@ -7,3 +7,24 @@ type Spread struct {
 	SpreadTarget []SpreadTarget `json:"SpreadTarget,omitempty"`
 	Weight       *int64         `json:"Weight,omitempty"`
 }
+
+func (o *Spread) GetAttribute() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Attribute
+}
+
+func (o *Spread) GetSpreadTarget() []SpreadTarget {
+	if o == nil {
+		return nil
+	}
+	return o.SpreadTarget
+}
+
+func (o *Spread) GetWeight() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Weight
+}

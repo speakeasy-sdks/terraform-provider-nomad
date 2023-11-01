@@ -8,3 +8,31 @@ type ACLPolicyListStub struct {
 	ModifyIndex *int64  `json:"ModifyIndex,omitempty"`
 	Name        *string `json:"Name,omitempty"`
 }
+
+func (o *ACLPolicyListStub) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *ACLPolicyListStub) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *ACLPolicyListStub) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *ACLPolicyListStub) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

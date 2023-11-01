@@ -8,3 +8,31 @@ type CSISnapshotCreateRequest struct {
 	SecretID  *string       `json:"SecretID,omitempty"`
 	Snapshots []CSISnapshot `json:"Snapshots,omitempty"`
 }
+
+func (o *CSISnapshotCreateRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *CSISnapshotCreateRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *CSISnapshotCreateRequest) GetSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretID
+}
+
+func (o *CSISnapshotCreateRequest) GetSnapshots() []CSISnapshot {
+	if o == nil {
+		return nil
+	}
+	return o.Snapshots
+}

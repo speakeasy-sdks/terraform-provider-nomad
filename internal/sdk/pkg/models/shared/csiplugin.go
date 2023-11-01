@@ -17,3 +17,94 @@ type CSIPlugin struct {
 	Provider            *string              `json:"Provider,omitempty"`
 	Version             *string              `json:"Version,omitempty"`
 }
+
+func (o *CSIPlugin) GetAllocations() []AllocationListStub {
+	if o == nil {
+		return nil
+	}
+	return o.Allocations
+}
+
+func (o *CSIPlugin) GetControllerRequired() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ControllerRequired
+}
+
+func (o *CSIPlugin) GetControllers() map[string]CSIInfo {
+	if o == nil {
+		return nil
+	}
+	return o.Controllers
+}
+
+func (o *CSIPlugin) GetControllersExpected() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ControllersExpected
+}
+
+func (o *CSIPlugin) GetControllersHealthy() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ControllersHealthy
+}
+
+func (o *CSIPlugin) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *CSIPlugin) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *CSIPlugin) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *CSIPlugin) GetNodes() map[string]CSIInfo {
+	if o == nil {
+		return nil
+	}
+	return o.Nodes
+}
+
+func (o *CSIPlugin) GetNodesExpected() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NodesExpected
+}
+
+func (o *CSIPlugin) GetNodesHealthy() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NodesHealthy
+}
+
+func (o *CSIPlugin) GetProvider() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Provider
+}
+
+func (o *CSIPlugin) GetVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Version
+}

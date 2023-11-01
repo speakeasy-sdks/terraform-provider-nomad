@@ -9,3 +9,38 @@ type TaskDiff struct {
 	Objects     []ObjectDiff `json:"Objects,omitempty"`
 	Type        *string      `json:"Type,omitempty"`
 }
+
+func (o *TaskDiff) GetAnnotations() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Annotations
+}
+
+func (o *TaskDiff) GetFields() []FieldDiff {
+	if o == nil {
+		return nil
+	}
+	return o.Fields
+}
+
+func (o *TaskDiff) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *TaskDiff) GetObjects() []ObjectDiff {
+	if o == nil {
+		return nil
+	}
+	return o.Objects
+}
+
+func (o *TaskDiff) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}

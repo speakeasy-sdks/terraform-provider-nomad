@@ -29,3 +29,178 @@ type AllocationListStub struct {
 	TaskGroup             *string                `json:"TaskGroup,omitempty"`
 	TaskStates            map[string]TaskState   `json:"TaskStates,omitempty"`
 }
+
+func (o *AllocationListStub) GetAllocatedResources() *AllocatedResources {
+	if o == nil {
+		return nil
+	}
+	return o.AllocatedResources
+}
+
+func (o *AllocationListStub) GetClientDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ClientDescription
+}
+
+func (o *AllocationListStub) GetClientStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ClientStatus
+}
+
+func (o *AllocationListStub) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *AllocationListStub) GetCreateTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateTime
+}
+
+func (o *AllocationListStub) GetDeploymentStatus() *AllocDeploymentStatus {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentStatus
+}
+
+func (o *AllocationListStub) GetDesiredDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DesiredDescription
+}
+
+func (o *AllocationListStub) GetDesiredStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DesiredStatus
+}
+
+func (o *AllocationListStub) GetEvalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EvalID
+}
+
+func (o *AllocationListStub) GetFollowupEvalID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FollowupEvalID
+}
+
+func (o *AllocationListStub) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *AllocationListStub) GetJobID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.JobID
+}
+
+func (o *AllocationListStub) GetJobType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.JobType
+}
+
+func (o *AllocationListStub) GetJobVersion() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobVersion
+}
+
+func (o *AllocationListStub) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *AllocationListStub) GetModifyTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyTime
+}
+
+func (o *AllocationListStub) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *AllocationListStub) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *AllocationListStub) GetNodeID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NodeID
+}
+
+func (o *AllocationListStub) GetNodeName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NodeName
+}
+
+func (o *AllocationListStub) GetPreemptedAllocations() []string {
+	if o == nil {
+		return nil
+	}
+	return o.PreemptedAllocations
+}
+
+func (o *AllocationListStub) GetPreemptedByAllocation() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreemptedByAllocation
+}
+
+func (o *AllocationListStub) GetRescheduleTracker() *RescheduleTracker {
+	if o == nil {
+		return nil
+	}
+	return o.RescheduleTracker
+}
+
+func (o *AllocationListStub) GetTaskGroup() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TaskGroup
+}
+
+func (o *AllocationListStub) GetTaskStates() map[string]TaskState {
+	if o == nil {
+		return nil
+	}
+	return o.TaskStates
+}

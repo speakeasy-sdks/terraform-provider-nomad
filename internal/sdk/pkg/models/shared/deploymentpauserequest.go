@@ -9,3 +9,38 @@ type DeploymentPauseRequest struct {
 	Region       *string `json:"Region,omitempty"`
 	SecretID     *string `json:"SecretID,omitempty"`
 }
+
+func (o *DeploymentPauseRequest) GetDeploymentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentID
+}
+
+func (o *DeploymentPauseRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *DeploymentPauseRequest) GetPause() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Pause
+}
+
+func (o *DeploymentPauseRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *DeploymentPauseRequest) GetSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretID
+}

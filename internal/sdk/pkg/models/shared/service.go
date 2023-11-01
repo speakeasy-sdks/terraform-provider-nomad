@@ -20,3 +20,115 @@ type Service struct {
 	Tags              []string          `json:"Tags,omitempty"`
 	TaskName          *string           `json:"TaskName,omitempty"`
 }
+
+func (o *Service) GetAddress() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Address
+}
+
+func (o *Service) GetAddressMode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AddressMode
+}
+
+func (o *Service) GetCanaryMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.CanaryMeta
+}
+
+func (o *Service) GetCanaryTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.CanaryTags
+}
+
+func (o *Service) GetCheckRestart() *CheckRestart {
+	if o == nil {
+		return nil
+	}
+	return o.CheckRestart
+}
+
+func (o *Service) GetChecks() []ServiceCheck {
+	if o == nil {
+		return nil
+	}
+	return o.Checks
+}
+
+func (o *Service) GetConnect() *ConsulConnect {
+	if o == nil {
+		return nil
+	}
+	return o.Connect
+}
+
+func (o *Service) GetEnableTagOverride() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnableTagOverride
+}
+
+func (o *Service) GetMeta() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}
+
+func (o *Service) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *Service) GetOnUpdate() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OnUpdate
+}
+
+func (o *Service) GetPortLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PortLabel
+}
+
+func (o *Service) GetProvider() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Provider
+}
+
+func (o *Service) GetTaggedAddresses() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.TaggedAddresses
+}
+
+func (o *Service) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+func (o *Service) GetTaskName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TaskName
+}

@@ -5,3 +5,10 @@ package shared
 type NodeReservedDiskResources struct {
 	DiskMB *int64 `json:"DiskMB,omitempty"`
 }
+
+func (o *NodeReservedDiskResources) GetDiskMB() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.DiskMB
+}

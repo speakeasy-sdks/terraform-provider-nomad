@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"nomad/internal/sdk/pkg/utils"
 	"time"
 )
 
@@ -19,4 +20,99 @@ type ACLToken struct {
 	Roles          []ACLTokenRoleLink `json:"Roles,omitempty"`
 	SecretID       *string            `json:"SecretID,omitempty"`
 	Type           *string            `json:"Type,omitempty"`
+}
+
+func (a ACLToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *ACLToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ACLToken) GetAccessorID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AccessorID
+}
+
+func (o *ACLToken) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *ACLToken) GetCreateTime() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.CreateTime
+}
+
+func (o *ACLToken) GetExpirationTTL() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ExpirationTTL
+}
+
+func (o *ACLToken) GetExpirationTime() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ExpirationTime
+}
+
+func (o *ACLToken) GetGlobal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Global
+}
+
+func (o *ACLToken) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *ACLToken) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *ACLToken) GetPolicies() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Policies
+}
+
+func (o *ACLToken) GetRoles() []ACLTokenRoleLink {
+	if o == nil {
+		return nil
+	}
+	return o.Roles
+}
+
+func (o *ACLToken) GetSecretID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SecretID
+}
+
+func (o *ACLToken) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
 }

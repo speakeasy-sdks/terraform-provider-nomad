@@ -10,3 +10,45 @@ type ConsulGatewayProxy struct {
 	EnvoyGatewayBindTaggedAddresses *bool                               `json:"EnvoyGatewayBindTaggedAddresses,omitempty"`
 	EnvoyGatewayNoDefaultBind       *bool                               `json:"EnvoyGatewayNoDefaultBind,omitempty"`
 }
+
+func (o *ConsulGatewayProxy) GetConfig() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Config
+}
+
+func (o *ConsulGatewayProxy) GetConnectTimeout() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectTimeout
+}
+
+func (o *ConsulGatewayProxy) GetEnvoyDNSDiscoveryType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EnvoyDNSDiscoveryType
+}
+
+func (o *ConsulGatewayProxy) GetEnvoyGatewayBindAddresses() map[string]ConsulGatewayBindAddress {
+	if o == nil {
+		return nil
+	}
+	return o.EnvoyGatewayBindAddresses
+}
+
+func (o *ConsulGatewayProxy) GetEnvoyGatewayBindTaggedAddresses() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnvoyGatewayBindTaggedAddresses
+}
+
+func (o *ConsulGatewayProxy) GetEnvoyGatewayNoDefaultBind() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.EnvoyGatewayNoDefaultBind
+}

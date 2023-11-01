@@ -11,6 +11,13 @@ type PostDeploymentUnblockSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PostDeploymentUnblockSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PostDeploymentUnblockRequest struct {
 	DeploymentUnblockRequest shared.DeploymentUnblockRequest `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -25,6 +32,48 @@ type PostDeploymentUnblockRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *PostDeploymentUnblockRequest) GetDeploymentUnblockRequest() shared.DeploymentUnblockRequest {
+	if o == nil {
+		return shared.DeploymentUnblockRequest{}
+	}
+	return o.DeploymentUnblockRequest
+}
+
+func (o *PostDeploymentUnblockRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PostDeploymentUnblockRequest) GetDeploymentID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DeploymentID
+}
+
+func (o *PostDeploymentUnblockRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PostDeploymentUnblockRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PostDeploymentUnblockRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type PostDeploymentUnblockResponse struct {
 	// HTTP response content type for this operation
 	ContentType              string
@@ -33,4 +82,32 @@ type PostDeploymentUnblockResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *PostDeploymentUnblockResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PostDeploymentUnblockResponse) GetDeploymentUpdateResponse() *shared.DeploymentUpdateResponse {
+	if o == nil {
+		return nil
+	}
+	return o.DeploymentUpdateResponse
+}
+
+func (o *PostDeploymentUnblockResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PostDeploymentUnblockResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

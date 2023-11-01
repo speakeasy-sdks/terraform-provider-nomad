@@ -6,3 +6,17 @@ type AllocatedResources struct {
 	Shared *AllocatedSharedResources         `json:"Shared,omitempty"`
 	Tasks  map[string]AllocatedTaskResources `json:"Tasks,omitempty"`
 }
+
+func (o *AllocatedResources) GetShared() *AllocatedSharedResources {
+	if o == nil {
+		return nil
+	}
+	return o.Shared
+}
+
+func (o *AllocatedResources) GetTasks() map[string]AllocatedTaskResources {
+	if o == nil {
+		return nil
+	}
+	return o.Tasks
+}

@@ -9,3 +9,38 @@ type Vault struct {
 	Namespace    *string  `json:"Namespace,omitempty"`
 	Policies     []string `json:"Policies,omitempty"`
 }
+
+func (o *Vault) GetChangeMode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ChangeMode
+}
+
+func (o *Vault) GetChangeSignal() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ChangeSignal
+}
+
+func (o *Vault) GetEnv() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Env
+}
+
+func (o *Vault) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *Vault) GetPolicies() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Policies
+}

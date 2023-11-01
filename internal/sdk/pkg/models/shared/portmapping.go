@@ -8,3 +8,31 @@ type PortMapping struct {
 	To     *int64  `json:"To,omitempty"`
 	Value  *int64  `json:"Value,omitempty"`
 }
+
+func (o *PortMapping) GetHostIP() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HostIP
+}
+
+func (o *PortMapping) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *PortMapping) GetTo() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.To
+}
+
+func (o *PortMapping) GetValue() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

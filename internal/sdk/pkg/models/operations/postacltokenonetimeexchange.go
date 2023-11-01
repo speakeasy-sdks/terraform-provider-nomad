@@ -11,6 +11,13 @@ type PostACLTokenOnetimeExchangeSecurity struct {
 	XNomadToken string `security:"scheme,type=apiKey,subtype=header,name=X-Nomad-Token"`
 }
 
+func (o *PostACLTokenOnetimeExchangeSecurity) GetXNomadToken() string {
+	if o == nil {
+		return ""
+	}
+	return o.XNomadToken
+}
+
 type PostACLTokenOnetimeExchangeRequest struct {
 	OneTimeTokenExchangeRequest shared.OneTimeTokenExchangeRequest `request:"mediaType=application/json"`
 	// A Nomad ACL token.
@@ -23,6 +30,41 @@ type PostACLTokenOnetimeExchangeRequest struct {
 	Region *string `queryParam:"style=form,explode=true,name=region"`
 }
 
+func (o *PostACLTokenOnetimeExchangeRequest) GetOneTimeTokenExchangeRequest() shared.OneTimeTokenExchangeRequest {
+	if o == nil {
+		return shared.OneTimeTokenExchangeRequest{}
+	}
+	return o.OneTimeTokenExchangeRequest
+}
+
+func (o *PostACLTokenOnetimeExchangeRequest) GetXNomadToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XNomadToken
+}
+
+func (o *PostACLTokenOnetimeExchangeRequest) GetIdempotencyToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IdempotencyToken
+}
+
+func (o *PostACLTokenOnetimeExchangeRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *PostACLTokenOnetimeExchangeRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
 type PostACLTokenOnetimeExchangeResponse struct {
 	ACLToken *shared.ACLToken
 	// HTTP response content type for this operation
@@ -32,4 +74,39 @@ type PostACLTokenOnetimeExchangeResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+}
+
+func (o *PostACLTokenOnetimeExchangeResponse) GetACLToken() *shared.ACLToken {
+	if o == nil {
+		return nil
+	}
+	return o.ACLToken
+}
+
+func (o *PostACLTokenOnetimeExchangeResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PostACLTokenOnetimeExchangeResponse) GetHeaders() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *PostACLTokenOnetimeExchangeResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PostACLTokenOnetimeExchangeResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

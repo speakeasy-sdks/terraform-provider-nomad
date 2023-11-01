@@ -18,3 +18,101 @@ type SearchRequest struct {
 	WaitIndex  *int64            `json:"WaitIndex,omitempty"`
 	WaitTime   *int64            `json:"WaitTime,omitempty"`
 }
+
+func (o *SearchRequest) GetAllowStale() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AllowStale
+}
+
+func (o *SearchRequest) GetAuthToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AuthToken
+}
+
+func (o *SearchRequest) GetContext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Context
+}
+
+func (o *SearchRequest) GetFilter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Filter
+}
+
+func (o *SearchRequest) GetHeaders() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *SearchRequest) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *SearchRequest) GetNextToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NextToken
+}
+
+func (o *SearchRequest) GetParams() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Params
+}
+
+func (o *SearchRequest) GetPerPage() *int {
+	if o == nil {
+		return nil
+	}
+	return o.PerPage
+}
+
+func (o *SearchRequest) GetPrefix() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prefix
+}
+
+func (o *SearchRequest) GetRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Region
+}
+
+func (o *SearchRequest) GetReverse() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Reverse
+}
+
+func (o *SearchRequest) GetWaitIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.WaitIndex
+}
+
+func (o *SearchRequest) GetWaitTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.WaitTime
+}

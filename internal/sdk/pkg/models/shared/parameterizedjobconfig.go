@@ -7,3 +7,24 @@ type ParameterizedJobConfig struct {
 	MetaRequired []string `json:"MetaRequired,omitempty"`
 	Payload      *string  `json:"Payload,omitempty"`
 }
+
+func (o *ParameterizedJobConfig) GetMetaOptional() []string {
+	if o == nil {
+		return nil
+	}
+	return o.MetaOptional
+}
+
+func (o *ParameterizedJobConfig) GetMetaRequired() []string {
+	if o == nil {
+		return nil
+	}
+	return o.MetaRequired
+}
+
+func (o *ParameterizedJobConfig) GetPayload() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Payload
+}

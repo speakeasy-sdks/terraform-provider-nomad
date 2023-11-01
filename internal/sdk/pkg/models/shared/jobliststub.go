@@ -21,3 +21,122 @@ type JobListStub struct {
 	SubmitTime        *int64      `json:"SubmitTime,omitempty"`
 	Type              *string     `json:"Type,omitempty"`
 }
+
+func (o *JobListStub) GetCreateIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreateIndex
+}
+
+func (o *JobListStub) GetDatacenters() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Datacenters
+}
+
+func (o *JobListStub) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *JobListStub) GetJobModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.JobModifyIndex
+}
+
+func (o *JobListStub) GetJobSummary() *JobSummary {
+	if o == nil {
+		return nil
+	}
+	return o.JobSummary
+}
+
+func (o *JobListStub) GetModifyIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ModifyIndex
+}
+
+func (o *JobListStub) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *JobListStub) GetNamespace() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *JobListStub) GetParameterizedJob() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ParameterizedJob
+}
+
+func (o *JobListStub) GetParentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ParentID
+}
+
+func (o *JobListStub) GetPeriodic() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Periodic
+}
+
+func (o *JobListStub) GetPriority() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Priority
+}
+
+func (o *JobListStub) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *JobListStub) GetStatusDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StatusDescription
+}
+
+func (o *JobListStub) GetStop() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Stop
+}
+
+func (o *JobListStub) GetSubmitTime() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.SubmitTime
+}
+
+func (o *JobListStub) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}

@@ -5,3 +5,10 @@ package shared
 type JobStabilityResponse struct {
 	Index *int64 `json:"Index,omitempty"`
 }
+
+func (o *JobStabilityResponse) GetIndex() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
