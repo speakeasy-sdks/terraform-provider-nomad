@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type plugins struct {
+type Plugins struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newPlugins(sdkConfig sdkConfiguration) *plugins {
-	return &plugins{
+func newPlugins(sdkConfig sdkConfiguration) *Plugins {
+	return &Plugins{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *plugins) GetPluginCSI(ctx context.Context, request operations.GetPluginCSIRequest, security operations.GetPluginCSISecurity) (*operations.GetPluginCSIResponse, error) {
+func (s *Plugins) GetPluginCSI(ctx context.Context, request operations.GetPluginCSIRequest, security operations.GetPluginCSISecurity) (*operations.GetPluginCSIResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/plugin/csi/{pluginID}", request, nil)
 	if err != nil {
@@ -80,7 +80,7 @@ func (s *plugins) GetPluginCSI(ctx context.Context, request operations.GetPlugin
 				return nil, err
 			}
 
-			res.CSIPlugins = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -96,7 +96,7 @@ func (s *plugins) GetPluginCSI(ctx context.Context, request operations.GetPlugin
 	return res, nil
 }
 
-func (s *plugins) GetPlugins(ctx context.Context, request operations.GetPluginsRequest, security operations.GetPluginsSecurity) (*operations.GetPluginsResponse, error) {
+func (s *Plugins) GetPlugins(ctx context.Context, request operations.GetPluginsRequest, security operations.GetPluginsSecurity) (*operations.GetPluginsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/plugins"
 
@@ -146,7 +146,7 @@ func (s *plugins) GetPlugins(ctx context.Context, request operations.GetPluginsR
 				return nil, err
 			}
 
-			res.CSIPluginListStubs = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

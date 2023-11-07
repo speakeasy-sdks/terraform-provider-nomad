@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"nomad/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/models/shared"
 )
 
 type GetJobEvaluationsSecurity struct {
@@ -114,12 +114,12 @@ func (o *GetJobEvaluationsRequest) GetWait() *string {
 type GetJobEvaluationsResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
-	Evaluations []shared.Evaluation
 	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	Classes     []shared.Evaluation
 }
 
 func (o *GetJobEvaluationsResponse) GetContentType() string {
@@ -127,13 +127,6 @@ func (o *GetJobEvaluationsResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *GetJobEvaluationsResponse) GetEvaluations() []shared.Evaluation {
-	if o == nil {
-		return nil
-	}
-	return o.Evaluations
 }
 
 func (o *GetJobEvaluationsResponse) GetHeaders() map[string][]string {
@@ -155,4 +148,11 @@ func (o *GetJobEvaluationsResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetJobEvaluationsResponse) GetClasses() []shared.Evaluation {
+	if o == nil {
+		return nil
+	}
+	return o.Classes
 }

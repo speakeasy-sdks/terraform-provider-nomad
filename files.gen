@@ -1,7 +1,6 @@
 internal/sdk/acl.go
 internal/sdk/allocations.go
 internal/sdk/deployments.go
-internal/sdk/enterprise.go
 internal/sdk/evaluations.go
 internal/sdk/jobs.go
 internal/sdk/metrics.go
@@ -9,6 +8,7 @@ internal/sdk/namespaces.go
 internal/sdk/nodes.go
 internal/sdk/operator.go
 internal/sdk/plugins.go
+internal/sdk/enterprise.go
 internal/sdk/regions.go
 internal/sdk/scaling.go
 internal/sdk/search.go
@@ -92,11 +92,6 @@ internal/sdk/pkg/models/operations/postdeploymentfail.go
 internal/sdk/pkg/models/operations/postdeploymentpause.go
 internal/sdk/pkg/models/operations/postdeploymentpromote.go
 internal/sdk/pkg/models/operations/postdeploymentunblock.go
-internal/sdk/pkg/models/operations/createquotaspec.go
-internal/sdk/pkg/models/operations/deletequotaspec.go
-internal/sdk/pkg/models/operations/getquotaspec.go
-internal/sdk/pkg/models/operations/getquotas.go
-internal/sdk/pkg/models/operations/postquotaspec.go
 internal/sdk/pkg/models/operations/getevaluation.go
 internal/sdk/pkg/models/operations/getevaluationallocations.go
 internal/sdk/pkg/models/operations/getevaluations.go
@@ -142,6 +137,11 @@ internal/sdk/pkg/models/operations/postoperatorschedulerconfiguration.go
 internal/sdk/pkg/models/operations/putoperatorautopilotconfiguration.go
 internal/sdk/pkg/models/operations/getplugincsi.go
 internal/sdk/pkg/models/operations/getplugins.go
+internal/sdk/pkg/models/operations/createquotaspec.go
+internal/sdk/pkg/models/operations/deletequotaspec.go
+internal/sdk/pkg/models/operations/getquotaspec.go
+internal/sdk/pkg/models/operations/getquotas.go
+internal/sdk/pkg/models/operations/postquotaspec.go
 internal/sdk/pkg/models/operations/getregions.go
 internal/sdk/pkg/models/operations/getscalingpolicies.go
 internal/sdk/pkg/models/operations/getscalingpolicy.go
@@ -258,8 +258,6 @@ internal/sdk/pkg/models/shared/deploymentallochealthrequest.go
 internal/sdk/pkg/models/shared/deploymentpauserequest.go
 internal/sdk/pkg/models/shared/deploymentpromoterequest.go
 internal/sdk/pkg/models/shared/deploymentunblockrequest.go
-internal/sdk/pkg/models/shared/quotaspec.go
-internal/sdk/pkg/models/shared/quotalimit.go
 internal/sdk/pkg/models/shared/evaluation.go
 internal/sdk/pkg/models/shared/evaluationstub.go
 internal/sdk/pkg/models/shared/jobderegisterresponse.go
@@ -342,6 +340,8 @@ internal/sdk/pkg/models/shared/preemptionconfig.go
 internal/sdk/pkg/models/shared/schedulersetconfigurationresponse.go
 internal/sdk/pkg/models/shared/csiplugin.go
 internal/sdk/pkg/models/shared/csipluginliststub.go
+internal/sdk/pkg/models/shared/quotaspec.go
+internal/sdk/pkg/models/shared/quotalimit.go
 internal/sdk/pkg/models/shared/scalingpolicyliststub.go
 internal/sdk/pkg/models/shared/fuzzysearchresponse.go
 internal/sdk/pkg/models/shared/fuzzymatch.go

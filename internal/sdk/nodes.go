@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type nodes struct {
+type Nodes struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newNodes(sdkConfig sdkConfiguration) *nodes {
-	return &nodes{
+func newNodes(sdkConfig sdkConfiguration) *Nodes {
+	return &Nodes{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *nodes) GetNode(ctx context.Context, request operations.GetNodeRequest, security operations.GetNodeSecurity) (*operations.GetNodeResponse, error) {
+func (s *Nodes) GetNode(ctx context.Context, request operations.GetNodeRequest, security operations.GetNodeSecurity) (*operations.GetNodeResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/node/{nodeId}", request, nil)
 	if err != nil {
@@ -96,7 +96,7 @@ func (s *nodes) GetNode(ctx context.Context, request operations.GetNodeRequest, 
 	return res, nil
 }
 
-func (s *nodes) GetNodeAllocations(ctx context.Context, request operations.GetNodeAllocationsRequest, security operations.GetNodeAllocationsSecurity) (*operations.GetNodeAllocationsResponse, error) {
+func (s *Nodes) GetNodeAllocations(ctx context.Context, request operations.GetNodeAllocationsRequest, security operations.GetNodeAllocationsSecurity) (*operations.GetNodeAllocationsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/node/{nodeId}/allocations", request, nil)
 	if err != nil {
@@ -151,7 +151,7 @@ func (s *nodes) GetNodeAllocations(ctx context.Context, request operations.GetNo
 				return nil, err
 			}
 
-			res.AllocationListStubs = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -167,7 +167,7 @@ func (s *nodes) GetNodeAllocations(ctx context.Context, request operations.GetNo
 	return res, nil
 }
 
-func (s *nodes) GetNodes(ctx context.Context, request operations.GetNodesRequest, security operations.GetNodesSecurity) (*operations.GetNodesResponse, error) {
+func (s *Nodes) GetNodes(ctx context.Context, request operations.GetNodesRequest, security operations.GetNodesSecurity) (*operations.GetNodesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/nodes"
 
@@ -219,7 +219,7 @@ func (s *nodes) GetNodes(ctx context.Context, request operations.GetNodesRequest
 				return nil, err
 			}
 
-			res.NodeListStubs = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -235,7 +235,7 @@ func (s *nodes) GetNodes(ctx context.Context, request operations.GetNodesRequest
 	return res, nil
 }
 
-func (s *nodes) UpdateNodeDrain(ctx context.Context, request operations.UpdateNodeDrainRequest, security operations.UpdateNodeDrainSecurity) (*operations.UpdateNodeDrainResponse, error) {
+func (s *Nodes) UpdateNodeDrain(ctx context.Context, request operations.UpdateNodeDrainRequest, security operations.UpdateNodeDrainSecurity) (*operations.UpdateNodeDrainResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/node/{nodeId}/drain", request, nil)
 	if err != nil {
@@ -320,7 +320,7 @@ func (s *nodes) UpdateNodeDrain(ctx context.Context, request operations.UpdateNo
 	return res, nil
 }
 
-func (s *nodes) UpdateNodeEligibility(ctx context.Context, request operations.UpdateNodeEligibilityRequest, security operations.UpdateNodeEligibilitySecurity) (*operations.UpdateNodeEligibilityResponse, error) {
+func (s *Nodes) UpdateNodeEligibility(ctx context.Context, request operations.UpdateNodeEligibilityRequest, security operations.UpdateNodeEligibilitySecurity) (*operations.UpdateNodeEligibilityResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/node/{nodeId}/eligibility", request, nil)
 	if err != nil {
@@ -405,7 +405,7 @@ func (s *nodes) UpdateNodeEligibility(ctx context.Context, request operations.Up
 	return res, nil
 }
 
-func (s *nodes) UpdateNodePurge(ctx context.Context, request operations.UpdateNodePurgeRequest, security operations.UpdateNodePurgeSecurity) (*operations.UpdateNodePurgeResponse, error) {
+func (s *Nodes) UpdateNodePurge(ctx context.Context, request operations.UpdateNodePurgeRequest, security operations.UpdateNodePurgeSecurity) (*operations.UpdateNodePurgeResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/node/{nodeId}/purge", request, nil)
 	if err != nil {

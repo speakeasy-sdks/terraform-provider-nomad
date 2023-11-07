@@ -3,12 +3,12 @@
 package shared
 
 type TaskGroupDiff struct {
-	Fields  []FieldDiff      `json:"Fields,omitempty"`
-	Name    *string          `json:"Name,omitempty"`
-	Objects []ObjectDiff     `json:"Objects,omitempty"`
-	Tasks   []TaskDiff       `json:"Tasks,omitempty"`
-	Type    *string          `json:"Type,omitempty"`
-	Updates map[string]int64 `json:"Updates,omitempty"`
+	Fields  []FieldDiff       `json:"Fields,omitempty"`
+	Name    *string           `json:"Name,omitempty"`
+	Objects []ObjectDiffInput `json:"Objects,omitempty"`
+	Tasks   []TaskDiff        `json:"Tasks,omitempty"`
+	Type    *string           `json:"Type,omitempty"`
+	Updates map[string]int64  `json:"Updates,omitempty"`
 }
 
 func (o *TaskGroupDiff) GetFields() []FieldDiff {
@@ -25,7 +25,7 @@ func (o *TaskGroupDiff) GetName() *string {
 	return o.Name
 }
 
-func (o *TaskGroupDiff) GetObjects() []ObjectDiff {
+func (o *TaskGroupDiff) GetObjects() []ObjectDiffInput {
 	if o == nil {
 		return nil
 	}

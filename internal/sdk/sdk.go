@@ -7,8 +7,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"time"
 )
 
@@ -67,24 +67,24 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 }
 
 type Nomad struct {
-	ACL         *acl
-	Allocations *allocations
-	Deployments *deployments
-	Enterprise  *enterprise
-	Evaluations *evaluations
-	Jobs        *jobs
-	Metrics     *metrics
-	Namespaces  *namespaces
-	Nodes       *nodes
-	Operator    *operator
-	Plugins     *plugins
-	Regions     *regions
-	Scaling     *scaling
-	Search      *search
-	Status      *status
-	System      *system
-	Variables   *variables
-	Volumes     *volumes
+	ACL         *ACL
+	Allocations *Allocations
+	Deployments *Deployments
+	Evaluations *Evaluations
+	Jobs        *Jobs
+	Metrics     *Metrics
+	Namespaces  *Namespaces
+	Nodes       *Nodes
+	Operator    *Operator
+	Plugins     *Plugins
+	Enterprise  *Enterprise
+	Regions     *Regions
+	Scaling     *Scaling
+	Search      *Search
+	Status      *Status
+	System      *System
+	Variables   *Variables
+	Volumes     *Volumes
 
 	sdkConfiguration sdkConfiguration
 }
@@ -227,9 +227,9 @@ func New(opts ...SDKOption) *Nomad {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.1.4",
-			SDKVersion:        "1.20.0",
-			GenVersion:        "2.173.0",
-			UserAgent:         "speakeasy-sdk/go 1.20.0 2.173.0 1.1.4 nomad",
+			SDKVersion:        "2.0.0",
+			GenVersion:        "2.181.1",
+			UserAgent:         "speakeasy-sdk/go 2.0.0 2.181.1 1.1.4 nomad",
 			ServerDefaults: []map[string]string{
 				{
 					"address": "127.0.0.1",
@@ -266,8 +266,6 @@ func New(opts ...SDKOption) *Nomad {
 
 	sdk.Deployments = newDeployments(sdk.sdkConfiguration)
 
-	sdk.Enterprise = newEnterprise(sdk.sdkConfiguration)
-
 	sdk.Evaluations = newEvaluations(sdk.sdkConfiguration)
 
 	sdk.Jobs = newJobs(sdk.sdkConfiguration)
@@ -281,6 +279,8 @@ func New(opts ...SDKOption) *Nomad {
 	sdk.Operator = newOperator(sdk.sdkConfiguration)
 
 	sdk.Plugins = newPlugins(sdk.sdkConfiguration)
+
+	sdk.Enterprise = newEnterprise(sdk.sdkConfiguration)
 
 	sdk.Regions = newRegions(sdk.sdkConfiguration)
 

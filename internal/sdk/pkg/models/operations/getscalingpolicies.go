@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"nomad/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/models/shared"
 )
 
 type GetScalingPoliciesSecurity struct {
@@ -104,13 +104,13 @@ func (o *GetScalingPoliciesRequest) GetWait() *string {
 
 type GetScalingPoliciesResponse struct {
 	// HTTP response content type for this operation
-	ContentType            string
-	Headers                map[string][]string
-	ScalingPolicyListStubs []shared.ScalingPolicyListStub
+	ContentType string
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	Classes     []shared.ScalingPolicyListStub
 }
 
 func (o *GetScalingPoliciesResponse) GetContentType() string {
@@ -127,13 +127,6 @@ func (o *GetScalingPoliciesResponse) GetHeaders() map[string][]string {
 	return o.Headers
 }
 
-func (o *GetScalingPoliciesResponse) GetScalingPolicyListStubs() []shared.ScalingPolicyListStub {
-	if o == nil {
-		return nil
-	}
-	return o.ScalingPolicyListStubs
-}
-
 func (o *GetScalingPoliciesResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -146,4 +139,11 @@ func (o *GetScalingPoliciesResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetScalingPoliciesResponse) GetClasses() []shared.ScalingPolicyListStub {
+	if o == nil {
+		return nil
+	}
+	return o.Classes
 }

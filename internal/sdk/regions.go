@@ -8,23 +8,23 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type regions struct {
+type Regions struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newRegions(sdkConfig sdkConfiguration) *regions {
-	return &regions{
+func newRegions(sdkConfig sdkConfiguration) *Regions {
+	return &Regions{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *regions) GetRegions(ctx context.Context) (*operations.GetRegionsResponse, error) {
+func (s *Regions) GetRegions(ctx context.Context) (*operations.GetRegionsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/regions"
 
@@ -68,7 +68,7 @@ func (s *regions) GetRegions(ctx context.Context) (*operations.GetRegionsRespons
 				return nil, err
 			}
 
-			res.GetRegions200ApplicationJSONStrings = out
+			res.Strings = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

@@ -3,7 +3,7 @@
 package shared
 
 import (
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"time"
 )
 

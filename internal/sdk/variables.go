@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type variables struct {
+type Variables struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newVariables(sdkConfig sdkConfiguration) *variables {
-	return &variables{
+func newVariables(sdkConfig sdkConfiguration) *Variables {
+	return &Variables{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *variables) DeleteVariable(ctx context.Context, request operations.DeleteVariableRequest, security operations.DeleteVariableSecurity) (*operations.DeleteVariableResponse, error) {
+func (s *Variables) DeleteVariable(ctx context.Context, request operations.DeleteVariableRequest, security operations.DeleteVariableSecurity) (*operations.DeleteVariableResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/var/{path}", request, nil)
 	if err != nil {
@@ -99,7 +99,7 @@ func (s *variables) DeleteVariable(ctx context.Context, request operations.Delet
 	return res, nil
 }
 
-func (s *variables) GetVariableQuery(ctx context.Context, request operations.GetVariableQueryRequest, security operations.GetVariableQuerySecurity) (*operations.GetVariableQueryResponse, error) {
+func (s *Variables) GetVariableQuery(ctx context.Context, request operations.GetVariableQueryRequest, security operations.GetVariableQuerySecurity) (*operations.GetVariableQueryResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/var/{path}", request, nil)
 	if err != nil {
@@ -170,7 +170,7 @@ func (s *variables) GetVariableQuery(ctx context.Context, request operations.Get
 	return res, nil
 }
 
-func (s *variables) GetVariablesListRequest(ctx context.Context, request operations.GetVariablesListRequestRequest, security operations.GetVariablesListRequestSecurity) (*operations.GetVariablesListRequestResponse, error) {
+func (s *Variables) GetVariablesListRequest(ctx context.Context, request operations.GetVariablesListRequestRequest, security operations.GetVariablesListRequestSecurity) (*operations.GetVariablesListRequestResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/vars"
 
@@ -222,7 +222,7 @@ func (s *variables) GetVariablesListRequest(ctx context.Context, request operati
 				return nil, err
 			}
 
-			res.VariableMetadata = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -238,7 +238,7 @@ func (s *variables) GetVariablesListRequest(ctx context.Context, request operati
 	return res, nil
 }
 
-func (s *variables) PostVariable(ctx context.Context, request operations.PostVariableRequest, security operations.PostVariableSecurity) (*operations.PostVariableResponse, error) {
+func (s *Variables) PostVariable(ctx context.Context, request operations.PostVariableRequest, security operations.PostVariableSecurity) (*operations.PostVariableResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/var/{path}", request, nil)
 	if err != nil {
@@ -323,7 +323,7 @@ func (s *variables) PostVariable(ctx context.Context, request operations.PostVar
 	return res, nil
 }
 
-func (s *variables) PutVariable(ctx context.Context, request operations.PutVariableRequest, security operations.PutVariableSecurity) (*operations.PutVariableResponse, error) {
+func (s *Variables) PutVariable(ctx context.Context, request operations.PutVariableRequest, security operations.PutVariableSecurity) (*operations.PutVariableResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/var/{path}", request, nil)
 	if err != nil {

@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"nomad/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/models/shared"
 )
 
 type PutOperatorAutopilotConfigurationSecurity struct {
@@ -67,12 +67,12 @@ func (o *PutOperatorAutopilotConfigurationRequest) GetRegion() *string {
 
 type PutOperatorAutopilotConfigurationResponse struct {
 	// HTTP response content type for this operation
-	ContentType                                                string
-	PutOperatorAutopilotConfiguration200ApplicationJSONBoolean *bool
+	ContentType string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	Boolean     *bool
 }
 
 func (o *PutOperatorAutopilotConfigurationResponse) GetContentType() string {
@@ -80,13 +80,6 @@ func (o *PutOperatorAutopilotConfigurationResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *PutOperatorAutopilotConfigurationResponse) GetPutOperatorAutopilotConfiguration200ApplicationJSONBoolean() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.PutOperatorAutopilotConfiguration200ApplicationJSONBoolean
 }
 
 func (o *PutOperatorAutopilotConfigurationResponse) GetStatusCode() int {
@@ -101,4 +94,11 @@ func (o *PutOperatorAutopilotConfigurationResponse) GetRawResponse() *http.Respo
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *PutOperatorAutopilotConfigurationResponse) GetBoolean() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Boolean
 }

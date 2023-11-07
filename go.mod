@@ -1,4 +1,4 @@
-module nomad
+module nomad/v2
 
 go 1.18
 

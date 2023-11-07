@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"nomad/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/models/shared"
 )
 
 type GetVolumesSecurity struct {
@@ -130,7 +130,6 @@ func (o *GetVolumesRequest) GetWait() *string {
 }
 
 type GetVolumesResponse struct {
-	CSIVolumeListStubs []shared.CSIVolumeListStub
 	// HTTP response content type for this operation
 	ContentType string
 	Headers     map[string][]string
@@ -138,13 +137,7 @@ type GetVolumesResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-}
-
-func (o *GetVolumesResponse) GetCSIVolumeListStubs() []shared.CSIVolumeListStub {
-	if o == nil {
-		return nil
-	}
-	return o.CSIVolumeListStubs
+	Classes     []shared.CSIVolumeListStub
 }
 
 func (o *GetVolumesResponse) GetContentType() string {
@@ -173,4 +166,11 @@ func (o *GetVolumesResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetVolumesResponse) GetClasses() []shared.CSIVolumeListStub {
+	if o == nil {
+		return nil
+	}
+	return o.Classes
 }

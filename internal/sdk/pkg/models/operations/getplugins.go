@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"nomad/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/models/shared"
 )
 
 type GetPluginsSecurity struct {
@@ -103,20 +103,13 @@ func (o *GetPluginsRequest) GetWait() *string {
 }
 
 type GetPluginsResponse struct {
-	CSIPluginListStubs []shared.CSIPluginListStub
 	// HTTP response content type for this operation
 	ContentType string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-}
-
-func (o *GetPluginsResponse) GetCSIPluginListStubs() []shared.CSIPluginListStub {
-	if o == nil {
-		return nil
-	}
-	return o.CSIPluginListStubs
+	Classes     []shared.CSIPluginListStub
 }
 
 func (o *GetPluginsResponse) GetContentType() string {
@@ -138,4 +131,11 @@ func (o *GetPluginsResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetPluginsResponse) GetClasses() []shared.CSIPluginListStub {
+	if o == nil {
+		return nil
+	}
+	return o.Classes
 }

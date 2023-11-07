@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type deployments struct {
+type Deployments struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newDeployments(sdkConfig sdkConfiguration) *deployments {
-	return &deployments{
+func newDeployments(sdkConfig sdkConfiguration) *Deployments {
+	return &Deployments{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *deployments) GetDeployment(ctx context.Context, request operations.GetDeploymentRequest, security operations.GetDeploymentSecurity) (*operations.GetDeploymentResponse, error) {
+func (s *Deployments) GetDeployment(ctx context.Context, request operations.GetDeploymentRequest, security operations.GetDeploymentSecurity) (*operations.GetDeploymentResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/deployment/{deploymentID}", request, nil)
 	if err != nil {
@@ -96,7 +96,7 @@ func (s *deployments) GetDeployment(ctx context.Context, request operations.GetD
 	return res, nil
 }
 
-func (s *deployments) GetDeploymentAllocations(ctx context.Context, request operations.GetDeploymentAllocationsRequest, security operations.GetDeploymentAllocationsSecurity) (*operations.GetDeploymentAllocationsResponse, error) {
+func (s *Deployments) GetDeploymentAllocations(ctx context.Context, request operations.GetDeploymentAllocationsRequest, security operations.GetDeploymentAllocationsSecurity) (*operations.GetDeploymentAllocationsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/deployment/allocations/{deploymentID}", request, nil)
 	if err != nil {
@@ -151,7 +151,7 @@ func (s *deployments) GetDeploymentAllocations(ctx context.Context, request oper
 				return nil, err
 			}
 
-			res.AllocationListStubs = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -167,7 +167,7 @@ func (s *deployments) GetDeploymentAllocations(ctx context.Context, request oper
 	return res, nil
 }
 
-func (s *deployments) GetDeployments(ctx context.Context, request operations.GetDeploymentsRequest, security operations.GetDeploymentsSecurity) (*operations.GetDeploymentsResponse, error) {
+func (s *Deployments) GetDeployments(ctx context.Context, request operations.GetDeploymentsRequest, security operations.GetDeploymentsSecurity) (*operations.GetDeploymentsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/deployments"
 
@@ -219,7 +219,7 @@ func (s *deployments) GetDeployments(ctx context.Context, request operations.Get
 				return nil, err
 			}
 
-			res.Deployments = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -235,7 +235,7 @@ func (s *deployments) GetDeployments(ctx context.Context, request operations.Get
 	return res, nil
 }
 
-func (s *deployments) PostDeploymentAllocationHealth(ctx context.Context, request operations.PostDeploymentAllocationHealthRequest, security operations.PostDeploymentAllocationHealthSecurity) (*operations.PostDeploymentAllocationHealthResponse, error) {
+func (s *Deployments) PostDeploymentAllocationHealth(ctx context.Context, request operations.PostDeploymentAllocationHealthRequest, security operations.PostDeploymentAllocationHealthSecurity) (*operations.PostDeploymentAllocationHealthResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/deployment/allocation-health/{deploymentID}", request, nil)
 	if err != nil {
@@ -318,7 +318,7 @@ func (s *deployments) PostDeploymentAllocationHealth(ctx context.Context, reques
 	return res, nil
 }
 
-func (s *deployments) PostDeploymentFail(ctx context.Context, request operations.PostDeploymentFailRequest, security operations.PostDeploymentFailSecurity) (*operations.PostDeploymentFailResponse, error) {
+func (s *Deployments) PostDeploymentFail(ctx context.Context, request operations.PostDeploymentFailRequest, security operations.PostDeploymentFailSecurity) (*operations.PostDeploymentFailResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/deployment/fail/{deploymentID}", request, nil)
 	if err != nil {
@@ -387,7 +387,7 @@ func (s *deployments) PostDeploymentFail(ctx context.Context, request operations
 	return res, nil
 }
 
-func (s *deployments) PostDeploymentPause(ctx context.Context, request operations.PostDeploymentPauseRequest, security operations.PostDeploymentPauseSecurity) (*operations.PostDeploymentPauseResponse, error) {
+func (s *Deployments) PostDeploymentPause(ctx context.Context, request operations.PostDeploymentPauseRequest, security operations.PostDeploymentPauseSecurity) (*operations.PostDeploymentPauseResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/deployment/pause/{deploymentID}", request, nil)
 	if err != nil {
@@ -470,7 +470,7 @@ func (s *deployments) PostDeploymentPause(ctx context.Context, request operation
 	return res, nil
 }
 
-func (s *deployments) PostDeploymentPromote(ctx context.Context, request operations.PostDeploymentPromoteRequest, security operations.PostDeploymentPromoteSecurity) (*operations.PostDeploymentPromoteResponse, error) {
+func (s *Deployments) PostDeploymentPromote(ctx context.Context, request operations.PostDeploymentPromoteRequest, security operations.PostDeploymentPromoteSecurity) (*operations.PostDeploymentPromoteResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/deployment/promote/{deploymentID}", request, nil)
 	if err != nil {
@@ -553,7 +553,7 @@ func (s *deployments) PostDeploymentPromote(ctx context.Context, request operati
 	return res, nil
 }
 
-func (s *deployments) PostDeploymentUnblock(ctx context.Context, request operations.PostDeploymentUnblockRequest, security operations.PostDeploymentUnblockSecurity) (*operations.PostDeploymentUnblockResponse, error) {
+func (s *Deployments) PostDeploymentUnblock(ctx context.Context, request operations.PostDeploymentUnblockRequest, security operations.PostDeploymentUnblockSecurity) (*operations.PostDeploymentUnblockResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/deployment/unblock/{deploymentID}", request, nil)
 	if err != nil {

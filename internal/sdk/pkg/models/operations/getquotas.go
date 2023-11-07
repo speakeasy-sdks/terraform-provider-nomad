@@ -103,13 +103,13 @@ func (o *GetQuotasRequest) GetWait() *string {
 
 type GetQuotasResponse struct {
 	// HTTP response content type for this operation
-	ContentType                      string
-	GetQuotas200ApplicationJSONAnies []interface{}
-	Headers                          map[string][]string
+	ContentType string
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	Anies       []interface{}
 }
 
 func (o *GetQuotasResponse) GetContentType() string {
@@ -117,13 +117,6 @@ func (o *GetQuotasResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *GetQuotasResponse) GetGetQuotas200ApplicationJSONAnies() []interface{} {
-	if o == nil {
-		return nil
-	}
-	return o.GetQuotas200ApplicationJSONAnies
 }
 
 func (o *GetQuotasResponse) GetHeaders() map[string][]string {
@@ -145,4 +138,11 @@ func (o *GetQuotasResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetQuotasResponse) GetAnies() []interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Anies
 }

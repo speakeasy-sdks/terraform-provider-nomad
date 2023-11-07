@@ -8,22 +8,22 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type system struct {
+type System struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newSystem(sdkConfig sdkConfiguration) *system {
-	return &system{
+func newSystem(sdkConfig sdkConfiguration) *System {
+	return &System{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *system) PutSystemGC(ctx context.Context, request operations.PutSystemGCRequest, security operations.PutSystemGCSecurity) (*operations.PutSystemGCResponse, error) {
+func (s *System) PutSystemGC(ctx context.Context, request operations.PutSystemGCRequest, security operations.PutSystemGCSecurity) (*operations.PutSystemGCResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/system/gc"
 
@@ -79,7 +79,7 @@ func (s *system) PutSystemGC(ctx context.Context, request operations.PutSystemGC
 	return res, nil
 }
 
-func (s *system) PutSystemReconcileSummaries(ctx context.Context, request operations.PutSystemReconcileSummariesRequest, security operations.PutSystemReconcileSummariesSecurity) (*operations.PutSystemReconcileSummariesResponse, error) {
+func (s *System) PutSystemReconcileSummaries(ctx context.Context, request operations.PutSystemReconcileSummariesRequest, security operations.PutSystemReconcileSummariesSecurity) (*operations.PutSystemReconcileSummariesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/system/reconcile/summaries"
 

@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type operator struct {
+type Operator struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newOperator(sdkConfig sdkConfiguration) *operator {
-	return &operator{
+func newOperator(sdkConfig sdkConfiguration) *Operator {
+	return &Operator{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *operator) DeleteOperatorRaftPeer(ctx context.Context, request operations.DeleteOperatorRaftPeerRequest, security operations.DeleteOperatorRaftPeerSecurity) (*operations.DeleteOperatorRaftPeerResponse, error) {
+func (s *Operator) DeleteOperatorRaftPeer(ctx context.Context, request operations.DeleteOperatorRaftPeerRequest, security operations.DeleteOperatorRaftPeerSecurity) (*operations.DeleteOperatorRaftPeerResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/operator/raft/peer"
 
@@ -81,7 +81,7 @@ func (s *operator) DeleteOperatorRaftPeer(ctx context.Context, request operation
 	return res, nil
 }
 
-func (s *operator) GetOperatorAutopilotConfiguration(ctx context.Context, request operations.GetOperatorAutopilotConfigurationRequest, security operations.GetOperatorAutopilotConfigurationSecurity) (*operations.GetOperatorAutopilotConfigurationResponse, error) {
+func (s *Operator) GetOperatorAutopilotConfiguration(ctx context.Context, request operations.GetOperatorAutopilotConfigurationRequest, security operations.GetOperatorAutopilotConfigurationSecurity) (*operations.GetOperatorAutopilotConfigurationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/operator/autopilot/configuration"
 
@@ -147,7 +147,7 @@ func (s *operator) GetOperatorAutopilotConfiguration(ctx context.Context, reques
 	return res, nil
 }
 
-func (s *operator) GetOperatorAutopilotHealth(ctx context.Context, request operations.GetOperatorAutopilotHealthRequest, security operations.GetOperatorAutopilotHealthSecurity) (*operations.GetOperatorAutopilotHealthResponse, error) {
+func (s *Operator) GetOperatorAutopilotHealth(ctx context.Context, request operations.GetOperatorAutopilotHealthRequest, security operations.GetOperatorAutopilotHealthSecurity) (*operations.GetOperatorAutopilotHealthResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/operator/autopilot/health"
 
@@ -213,7 +213,7 @@ func (s *operator) GetOperatorAutopilotHealth(ctx context.Context, request opera
 	return res, nil
 }
 
-func (s *operator) GetOperatorRaftConfiguration(ctx context.Context, request operations.GetOperatorRaftConfigurationRequest, security operations.GetOperatorRaftConfigurationSecurity) (*operations.GetOperatorRaftConfigurationResponse, error) {
+func (s *Operator) GetOperatorRaftConfiguration(ctx context.Context, request operations.GetOperatorRaftConfigurationRequest, security operations.GetOperatorRaftConfigurationSecurity) (*operations.GetOperatorRaftConfigurationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/operator/raft/configuration"
 
@@ -279,7 +279,7 @@ func (s *operator) GetOperatorRaftConfiguration(ctx context.Context, request ope
 	return res, nil
 }
 
-func (s *operator) GetOperatorSchedulerConfiguration(ctx context.Context, request operations.GetOperatorSchedulerConfigurationRequest, security operations.GetOperatorSchedulerConfigurationSecurity) (*operations.GetOperatorSchedulerConfigurationResponse, error) {
+func (s *Operator) GetOperatorSchedulerConfiguration(ctx context.Context, request operations.GetOperatorSchedulerConfigurationRequest, security operations.GetOperatorSchedulerConfigurationSecurity) (*operations.GetOperatorSchedulerConfigurationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/operator/scheduler/configuration"
 
@@ -347,7 +347,7 @@ func (s *operator) GetOperatorSchedulerConfiguration(ctx context.Context, reques
 	return res, nil
 }
 
-func (s *operator) PostOperatorSchedulerConfiguration(ctx context.Context, request operations.PostOperatorSchedulerConfigurationRequest, security operations.PostOperatorSchedulerConfigurationSecurity) (*operations.PostOperatorSchedulerConfigurationResponse, error) {
+func (s *Operator) PostOperatorSchedulerConfiguration(ctx context.Context, request operations.PostOperatorSchedulerConfigurationRequest, security operations.PostOperatorSchedulerConfigurationSecurity) (*operations.PostOperatorSchedulerConfigurationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/operator/scheduler/configuration"
 
@@ -429,7 +429,7 @@ func (s *operator) PostOperatorSchedulerConfiguration(ctx context.Context, reque
 	return res, nil
 }
 
-func (s *operator) PutOperatorAutopilotConfiguration(ctx context.Context, request operations.PutOperatorAutopilotConfigurationRequest, security operations.PutOperatorAutopilotConfigurationSecurity) (*operations.PutOperatorAutopilotConfigurationResponse, error) {
+func (s *Operator) PutOperatorAutopilotConfiguration(ctx context.Context, request operations.PutOperatorAutopilotConfigurationRequest, security operations.PutOperatorAutopilotConfigurationSecurity) (*operations.PutOperatorAutopilotConfigurationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/operator/autopilot/configuration"
 
@@ -493,7 +493,7 @@ func (s *operator) PutOperatorAutopilotConfiguration(ctx context.Context, reques
 				return nil, err
 			}
 
-			res.PutOperatorAutopilotConfiguration200ApplicationJSONBoolean = &out
+			res.Boolean = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

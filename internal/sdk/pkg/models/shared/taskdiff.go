@@ -3,11 +3,11 @@
 package shared
 
 type TaskDiff struct {
-	Annotations []string     `json:"Annotations,omitempty"`
-	Fields      []FieldDiff  `json:"Fields,omitempty"`
-	Name        *string      `json:"Name,omitempty"`
-	Objects     []ObjectDiff `json:"Objects,omitempty"`
-	Type        *string      `json:"Type,omitempty"`
+	Annotations []string          `json:"Annotations,omitempty"`
+	Fields      []FieldDiff       `json:"Fields,omitempty"`
+	Name        *string           `json:"Name,omitempty"`
+	Objects     []ObjectDiffInput `json:"Objects,omitempty"`
+	Type        *string           `json:"Type,omitempty"`
 }
 
 func (o *TaskDiff) GetAnnotations() []string {
@@ -31,7 +31,7 @@ func (o *TaskDiff) GetName() *string {
 	return o.Name
 }
 
-func (o *TaskDiff) GetObjects() []ObjectDiff {
+func (o *TaskDiff) GetObjects() []ObjectDiffInput {
 	if o == nil {
 		return nil
 	}

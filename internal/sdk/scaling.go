@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type scaling struct {
+type Scaling struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newScaling(sdkConfig sdkConfiguration) *scaling {
-	return &scaling{
+func newScaling(sdkConfig sdkConfiguration) *Scaling {
+	return &Scaling{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *scaling) GetScalingPolicies(ctx context.Context, request operations.GetScalingPoliciesRequest, security operations.GetScalingPoliciesSecurity) (*operations.GetScalingPoliciesResponse, error) {
+func (s *Scaling) GetScalingPolicies(ctx context.Context, request operations.GetScalingPoliciesRequest, security operations.GetScalingPoliciesSecurity) (*operations.GetScalingPoliciesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/scaling/policies"
 
@@ -77,7 +77,7 @@ func (s *scaling) GetScalingPolicies(ctx context.Context, request operations.Get
 				return nil, err
 			}
 
-			res.ScalingPolicyListStubs = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -93,7 +93,7 @@ func (s *scaling) GetScalingPolicies(ctx context.Context, request operations.Get
 	return res, nil
 }
 
-func (s *scaling) GetScalingPolicy(ctx context.Context, request operations.GetScalingPolicyRequest, security operations.GetScalingPolicySecurity) (*operations.GetScalingPolicyResponse, error) {
+func (s *Scaling) GetScalingPolicy(ctx context.Context, request operations.GetScalingPolicyRequest, security operations.GetScalingPolicySecurity) (*operations.GetScalingPolicyResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/scaling/policy/{policyID}", request, nil)
 	if err != nil {

@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type search struct {
+type Search struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newSearch(sdkConfig sdkConfiguration) *search {
-	return &search{
+func newSearch(sdkConfig sdkConfiguration) *Search {
+	return &Search{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *search) GetFuzzySearch(ctx context.Context, request operations.GetFuzzySearchRequest, security operations.GetFuzzySearchSecurity) (*operations.GetFuzzySearchResponse, error) {
+func (s *Search) GetFuzzySearch(ctx context.Context, request operations.GetFuzzySearchRequest, security operations.GetFuzzySearchSecurity) (*operations.GetFuzzySearchResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/search/fuzzy"
 
@@ -107,7 +107,7 @@ func (s *search) GetFuzzySearch(ctx context.Context, request operations.GetFuzzy
 	return res, nil
 }
 
-func (s *search) GetSearch(ctx context.Context, request operations.GetSearchRequest, security operations.GetSearchSecurity) (*operations.GetSearchResponse, error) {
+func (s *Search) GetSearch(ctx context.Context, request operations.GetSearchRequest, security operations.GetSearchSecurity) (*operations.GetSearchResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/search"
 

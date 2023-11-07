@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type namespaces struct {
+type Namespaces struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newNamespaces(sdkConfig sdkConfiguration) *namespaces {
-	return &namespaces{
+func newNamespaces(sdkConfig sdkConfiguration) *Namespaces {
+	return &Namespaces{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *namespaces) CreateNamespace(ctx context.Context, request operations.CreateNamespaceRequest, security operations.CreateNamespaceSecurity) (*operations.CreateNamespaceResponse, error) {
+func (s *Namespaces) CreateNamespace(ctx context.Context, request operations.CreateNamespaceRequest, security operations.CreateNamespaceSecurity) (*operations.CreateNamespaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/namespace"
 
@@ -82,7 +82,7 @@ func (s *namespaces) CreateNamespace(ctx context.Context, request operations.Cre
 	return res, nil
 }
 
-func (s *namespaces) DeleteNamespace(ctx context.Context, request operations.DeleteNamespaceRequest, security operations.DeleteNamespaceSecurity) (*operations.DeleteNamespaceResponse, error) {
+func (s *Namespaces) DeleteNamespace(ctx context.Context, request operations.DeleteNamespaceRequest, security operations.DeleteNamespaceSecurity) (*operations.DeleteNamespaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/namespace/{namespaceName}", request, nil)
 	if err != nil {
@@ -142,7 +142,7 @@ func (s *namespaces) DeleteNamespace(ctx context.Context, request operations.Del
 	return res, nil
 }
 
-func (s *namespaces) GetNamespace(ctx context.Context, request operations.GetNamespaceRequest, security operations.GetNamespaceSecurity) (*operations.GetNamespaceResponse, error) {
+func (s *Namespaces) GetNamespace(ctx context.Context, request operations.GetNamespaceRequest, security operations.GetNamespaceSecurity) (*operations.GetNamespaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/namespace/{namespaceName}", request, nil)
 	if err != nil {
@@ -213,7 +213,7 @@ func (s *namespaces) GetNamespace(ctx context.Context, request operations.GetNam
 	return res, nil
 }
 
-func (s *namespaces) GetNamespaces(ctx context.Context, request operations.GetNamespacesRequest, security operations.GetNamespacesSecurity) (*operations.GetNamespacesResponse, error) {
+func (s *Namespaces) GetNamespaces(ctx context.Context, request operations.GetNamespacesRequest, security operations.GetNamespacesSecurity) (*operations.GetNamespacesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/namespaces"
 
@@ -265,7 +265,7 @@ func (s *namespaces) GetNamespaces(ctx context.Context, request operations.GetNa
 				return nil, err
 			}
 
-			res.Namespaces = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -281,7 +281,7 @@ func (s *namespaces) GetNamespaces(ctx context.Context, request operations.GetNa
 	return res, nil
 }
 
-func (s *namespaces) PostNamespace(ctx context.Context, request operations.PostNamespaceRequest, security operations.PostNamespaceSecurity) (*operations.PostNamespaceResponse, error) {
+func (s *Namespaces) PostNamespace(ctx context.Context, request operations.PostNamespaceRequest, security operations.PostNamespaceSecurity) (*operations.PostNamespaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/namespace/{namespaceName}", request, nil)
 	if err != nil {

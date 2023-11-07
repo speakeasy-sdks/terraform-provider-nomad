@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type allocations struct {
+type Allocations struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newAllocations(sdkConfig sdkConfiguration) *allocations {
-	return &allocations{
+func newAllocations(sdkConfig sdkConfiguration) *Allocations {
+	return &Allocations{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *allocations) GetAllocation(ctx context.Context, request operations.GetAllocationRequest, security operations.GetAllocationSecurity) (*operations.GetAllocationResponse, error) {
+func (s *Allocations) GetAllocation(ctx context.Context, request operations.GetAllocationRequest, security operations.GetAllocationSecurity) (*operations.GetAllocationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/allocation/{allocID}", request, nil)
 	if err != nil {
@@ -96,7 +96,7 @@ func (s *allocations) GetAllocation(ctx context.Context, request operations.GetA
 	return res, nil
 }
 
-func (s *allocations) GetAllocationServices(ctx context.Context, request operations.GetAllocationServicesRequest, security operations.GetAllocationServicesSecurity) (*operations.GetAllocationServicesResponse, error) {
+func (s *Allocations) GetAllocationServices(ctx context.Context, request operations.GetAllocationServicesRequest, security operations.GetAllocationServicesSecurity) (*operations.GetAllocationServicesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/allocation/{allocID}/services", request, nil)
 	if err != nil {
@@ -151,7 +151,7 @@ func (s *allocations) GetAllocationServices(ctx context.Context, request operati
 				return nil, err
 			}
 
-			res.ServiceRegistrations = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -167,7 +167,7 @@ func (s *allocations) GetAllocationServices(ctx context.Context, request operati
 	return res, nil
 }
 
-func (s *allocations) GetAllocations(ctx context.Context, request operations.GetAllocationsRequest, security operations.GetAllocationsSecurity) (*operations.GetAllocationsResponse, error) {
+func (s *Allocations) GetAllocations(ctx context.Context, request operations.GetAllocationsRequest, security operations.GetAllocationsSecurity) (*operations.GetAllocationsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/allocations"
 
@@ -219,7 +219,7 @@ func (s *allocations) GetAllocations(ctx context.Context, request operations.Get
 				return nil, err
 			}
 
-			res.AllocationListStubs = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -235,7 +235,7 @@ func (s *allocations) GetAllocations(ctx context.Context, request operations.Get
 	return res, nil
 }
 
-func (s *allocations) PostAllocationStop(ctx context.Context, request operations.PostAllocationStopRequest, security operations.PostAllocationStopSecurity) (*operations.PostAllocationStopResponse, error) {
+func (s *Allocations) PostAllocationStop(ctx context.Context, request operations.PostAllocationStopRequest, security operations.PostAllocationStopSecurity) (*operations.PostAllocationStopResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/allocation/{allocID}/stop", request, nil)
 	if err != nil {

@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"nomad/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/models/shared"
 )
 
 type GetACLTokensSecurity struct {
@@ -103,7 +103,6 @@ func (o *GetACLTokensRequest) GetWait() *string {
 }
 
 type GetACLTokensResponse struct {
-	ACLTokenListStubs []shared.ACLTokenListStub
 	// HTTP response content type for this operation
 	ContentType string
 	Headers     map[string][]string
@@ -111,13 +110,7 @@ type GetACLTokensResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-}
-
-func (o *GetACLTokensResponse) GetACLTokenListStubs() []shared.ACLTokenListStub {
-	if o == nil {
-		return nil
-	}
-	return o.ACLTokenListStubs
+	Classes     []shared.ACLTokenListStub
 }
 
 func (o *GetACLTokensResponse) GetContentType() string {
@@ -146,4 +139,11 @@ func (o *GetACLTokensResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetACLTokensResponse) GetClasses() []shared.ACLTokenListStub {
+	if o == nil {
+		return nil
+	}
+	return o.Classes
 }

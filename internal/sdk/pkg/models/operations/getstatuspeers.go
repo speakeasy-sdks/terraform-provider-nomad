@@ -103,12 +103,12 @@ func (o *GetStatusPeersRequest) GetWait() *string {
 
 type GetStatusPeersResponse struct {
 	// HTTP response content type for this operation
-	ContentType                             string
-	GetStatusPeers200ApplicationJSONStrings []string
+	ContentType string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	Strings     []string
 }
 
 func (o *GetStatusPeersResponse) GetContentType() string {
@@ -116,13 +116,6 @@ func (o *GetStatusPeersResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *GetStatusPeersResponse) GetGetStatusPeers200ApplicationJSONStrings() []string {
-	if o == nil {
-		return nil
-	}
-	return o.GetStatusPeers200ApplicationJSONStrings
 }
 
 func (o *GetStatusPeersResponse) GetStatusCode() int {
@@ -137,4 +130,11 @@ func (o *GetStatusPeersResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetStatusPeersResponse) GetStrings() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Strings
 }

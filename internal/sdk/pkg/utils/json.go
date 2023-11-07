@@ -12,7 +12,7 @@ import (
 	"time"
 	"unsafe"
 
-	"nomad/internal/sdk/pkg/types"
+	"nomad/v2/internal/sdk/pkg/types"
 
 	"github.com/ericlagergren/decimal"
 )

@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type metrics struct {
+type Metrics struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newMetrics(sdkConfig sdkConfiguration) *metrics {
-	return &metrics{
+func newMetrics(sdkConfig sdkConfiguration) *Metrics {
+	return &Metrics{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *metrics) GetMetricsSummary(ctx context.Context, request operations.GetMetricsSummaryRequest) (*operations.GetMetricsSummaryResponse, error) {
+func (s *Metrics) GetMetricsSummary(ctx context.Context, request operations.GetMetricsSummaryRequest) (*operations.GetMetricsSummaryResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/metrics"
 

@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type jobs struct {
+type Jobs struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newJobs(sdkConfig sdkConfiguration) *jobs {
-	return &jobs{
+func newJobs(sdkConfig sdkConfiguration) *Jobs {
+	return &Jobs{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *jobs) DeleteJob(ctx context.Context, request operations.DeleteJobRequest, security operations.DeleteJobSecurity) (*operations.DeleteJobResponse, error) {
+func (s *Jobs) DeleteJob(ctx context.Context, request operations.DeleteJobRequest, security operations.DeleteJobSecurity) (*operations.DeleteJobResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}", request, nil)
 	if err != nil {
@@ -96,7 +96,7 @@ func (s *jobs) DeleteJob(ctx context.Context, request operations.DeleteJobReques
 	return res, nil
 }
 
-func (s *jobs) GetJob(ctx context.Context, request operations.GetJobRequest, security operations.GetJobSecurity) (*operations.GetJobResponse, error) {
+func (s *Jobs) GetJob(ctx context.Context, request operations.GetJobRequest, security operations.GetJobSecurity) (*operations.GetJobResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}", request, nil)
 	if err != nil {
@@ -167,7 +167,7 @@ func (s *jobs) GetJob(ctx context.Context, request operations.GetJobRequest, sec
 	return res, nil
 }
 
-func (s *jobs) GetJobAllocations(ctx context.Context, request operations.GetJobAllocationsRequest, security operations.GetJobAllocationsSecurity) (*operations.GetJobAllocationsResponse, error) {
+func (s *Jobs) GetJobAllocations(ctx context.Context, request operations.GetJobAllocationsRequest, security operations.GetJobAllocationsSecurity) (*operations.GetJobAllocationsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/allocations", request, nil)
 	if err != nil {
@@ -222,7 +222,7 @@ func (s *jobs) GetJobAllocations(ctx context.Context, request operations.GetJobA
 				return nil, err
 			}
 
-			res.AllocationListStubs = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -238,7 +238,7 @@ func (s *jobs) GetJobAllocations(ctx context.Context, request operations.GetJobA
 	return res, nil
 }
 
-func (s *jobs) GetJobDeployment(ctx context.Context, request operations.GetJobDeploymentRequest, security operations.GetJobDeploymentSecurity) (*operations.GetJobDeploymentResponse, error) {
+func (s *Jobs) GetJobDeployment(ctx context.Context, request operations.GetJobDeploymentRequest, security operations.GetJobDeploymentSecurity) (*operations.GetJobDeploymentResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/deployment", request, nil)
 	if err != nil {
@@ -309,7 +309,7 @@ func (s *jobs) GetJobDeployment(ctx context.Context, request operations.GetJobDe
 	return res, nil
 }
 
-func (s *jobs) GetJobDeployments(ctx context.Context, request operations.GetJobDeploymentsRequest, security operations.GetJobDeploymentsSecurity) (*operations.GetJobDeploymentsResponse, error) {
+func (s *Jobs) GetJobDeployments(ctx context.Context, request operations.GetJobDeploymentsRequest, security operations.GetJobDeploymentsSecurity) (*operations.GetJobDeploymentsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/deployments", request, nil)
 	if err != nil {
@@ -364,7 +364,7 @@ func (s *jobs) GetJobDeployments(ctx context.Context, request operations.GetJobD
 				return nil, err
 			}
 
-			res.Deployments = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -380,7 +380,7 @@ func (s *jobs) GetJobDeployments(ctx context.Context, request operations.GetJobD
 	return res, nil
 }
 
-func (s *jobs) GetJobEvaluations(ctx context.Context, request operations.GetJobEvaluationsRequest, security operations.GetJobEvaluationsSecurity) (*operations.GetJobEvaluationsResponse, error) {
+func (s *Jobs) GetJobEvaluations(ctx context.Context, request operations.GetJobEvaluationsRequest, security operations.GetJobEvaluationsSecurity) (*operations.GetJobEvaluationsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/evaluations", request, nil)
 	if err != nil {
@@ -435,7 +435,7 @@ func (s *jobs) GetJobEvaluations(ctx context.Context, request operations.GetJobE
 				return nil, err
 			}
 
-			res.Evaluations = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -451,7 +451,7 @@ func (s *jobs) GetJobEvaluations(ctx context.Context, request operations.GetJobE
 	return res, nil
 }
 
-func (s *jobs) GetJobScaleStatus(ctx context.Context, request operations.GetJobScaleStatusRequest, security operations.GetJobScaleStatusSecurity) (*operations.GetJobScaleStatusResponse, error) {
+func (s *Jobs) GetJobScaleStatus(ctx context.Context, request operations.GetJobScaleStatusRequest, security operations.GetJobScaleStatusSecurity) (*operations.GetJobScaleStatusResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/scale", request, nil)
 	if err != nil {
@@ -522,7 +522,7 @@ func (s *jobs) GetJobScaleStatus(ctx context.Context, request operations.GetJobS
 	return res, nil
 }
 
-func (s *jobs) GetJobSummary(ctx context.Context, request operations.GetJobSummaryRequest, security operations.GetJobSummarySecurity) (*operations.GetJobSummaryResponse, error) {
+func (s *Jobs) GetJobSummary(ctx context.Context, request operations.GetJobSummaryRequest, security operations.GetJobSummarySecurity) (*operations.GetJobSummaryResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/summary", request, nil)
 	if err != nil {
@@ -593,7 +593,7 @@ func (s *jobs) GetJobSummary(ctx context.Context, request operations.GetJobSumma
 	return res, nil
 }
 
-func (s *jobs) GetJobVersions(ctx context.Context, request operations.GetJobVersionsRequest, security operations.GetJobVersionsSecurity) (*operations.GetJobVersionsResponse, error) {
+func (s *Jobs) GetJobVersions(ctx context.Context, request operations.GetJobVersionsRequest, security operations.GetJobVersionsSecurity) (*operations.GetJobVersionsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/versions", request, nil)
 	if err != nil {
@@ -664,7 +664,7 @@ func (s *jobs) GetJobVersions(ctx context.Context, request operations.GetJobVers
 	return res, nil
 }
 
-func (s *jobs) GetJobs(ctx context.Context, request operations.GetJobsRequest, security operations.GetJobsSecurity) (*operations.GetJobsResponse, error) {
+func (s *Jobs) GetJobs(ctx context.Context, request operations.GetJobsRequest, security operations.GetJobsSecurity) (*operations.GetJobsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/jobs"
 
@@ -716,7 +716,7 @@ func (s *jobs) GetJobs(ctx context.Context, request operations.GetJobsRequest, s
 				return nil, err
 			}
 
-			res.JobListStubs = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -732,7 +732,7 @@ func (s *jobs) GetJobs(ctx context.Context, request operations.GetJobsRequest, s
 	return res, nil
 }
 
-func (s *jobs) PostJob(ctx context.Context, request operations.PostJobRequest, security operations.PostJobSecurity) (*operations.PostJobResponse, error) {
+func (s *Jobs) PostJob(ctx context.Context, request operations.PostJobRequest, security operations.PostJobSecurity) (*operations.PostJobResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}", request, nil)
 	if err != nil {
@@ -817,7 +817,7 @@ func (s *jobs) PostJob(ctx context.Context, request operations.PostJobRequest, s
 	return res, nil
 }
 
-func (s *jobs) PostJobDispatch(ctx context.Context, request operations.PostJobDispatchRequest, security operations.PostJobDispatchSecurity) (*operations.PostJobDispatchResponse, error) {
+func (s *Jobs) PostJobDispatch(ctx context.Context, request operations.PostJobDispatchRequest, security operations.PostJobDispatchSecurity) (*operations.PostJobDispatchResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/dispatch", request, nil)
 	if err != nil {
@@ -902,7 +902,7 @@ func (s *jobs) PostJobDispatch(ctx context.Context, request operations.PostJobDi
 	return res, nil
 }
 
-func (s *jobs) PostJobEvaluate(ctx context.Context, request operations.PostJobEvaluateRequest, security operations.PostJobEvaluateSecurity) (*operations.PostJobEvaluateResponse, error) {
+func (s *Jobs) PostJobEvaluate(ctx context.Context, request operations.PostJobEvaluateRequest, security operations.PostJobEvaluateSecurity) (*operations.PostJobEvaluateResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/evaluate", request, nil)
 	if err != nil {
@@ -987,7 +987,7 @@ func (s *jobs) PostJobEvaluate(ctx context.Context, request operations.PostJobEv
 	return res, nil
 }
 
-func (s *jobs) PostJobParse(ctx context.Context, request shared.JobsParseRequest) (*operations.PostJobParseResponse, error) {
+func (s *Jobs) PostJobParse(ctx context.Context, request shared.JobsParseRequest) (*operations.PostJobParseResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/jobs/parse"
 
@@ -1061,7 +1061,7 @@ func (s *jobs) PostJobParse(ctx context.Context, request shared.JobsParseRequest
 	return res, nil
 }
 
-func (s *jobs) PostJobPeriodicForce(ctx context.Context, request operations.PostJobPeriodicForceRequest, security operations.PostJobPeriodicForceSecurity) (*operations.PostJobPeriodicForceResponse, error) {
+func (s *Jobs) PostJobPeriodicForce(ctx context.Context, request operations.PostJobPeriodicForceRequest, security operations.PostJobPeriodicForceSecurity) (*operations.PostJobPeriodicForceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/periodic/force", request, nil)
 	if err != nil {
@@ -1132,7 +1132,7 @@ func (s *jobs) PostJobPeriodicForce(ctx context.Context, request operations.Post
 	return res, nil
 }
 
-func (s *jobs) PostJobPlan(ctx context.Context, request operations.PostJobPlanRequest, security operations.PostJobPlanSecurity) (*operations.PostJobPlanResponse, error) {
+func (s *Jobs) PostJobPlan(ctx context.Context, request operations.PostJobPlanRequest, security operations.PostJobPlanSecurity) (*operations.PostJobPlanResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/plan", request, nil)
 	if err != nil {
@@ -1217,7 +1217,7 @@ func (s *jobs) PostJobPlan(ctx context.Context, request operations.PostJobPlanRe
 	return res, nil
 }
 
-func (s *jobs) PostJobRevert(ctx context.Context, request operations.PostJobRevertRequest, security operations.PostJobRevertSecurity) (*operations.PostJobRevertResponse, error) {
+func (s *Jobs) PostJobRevert(ctx context.Context, request operations.PostJobRevertRequest, security operations.PostJobRevertSecurity) (*operations.PostJobRevertResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/revert", request, nil)
 	if err != nil {
@@ -1302,7 +1302,7 @@ func (s *jobs) PostJobRevert(ctx context.Context, request operations.PostJobReve
 	return res, nil
 }
 
-func (s *jobs) PostJobScalingRequest(ctx context.Context, request operations.PostJobScalingRequestRequest, security operations.PostJobScalingRequestSecurity) (*operations.PostJobScalingRequestResponse, error) {
+func (s *Jobs) PostJobScalingRequest(ctx context.Context, request operations.PostJobScalingRequestRequest, security operations.PostJobScalingRequestSecurity) (*operations.PostJobScalingRequestResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/scale", request, nil)
 	if err != nil {
@@ -1387,7 +1387,7 @@ func (s *jobs) PostJobScalingRequest(ctx context.Context, request operations.Pos
 	return res, nil
 }
 
-func (s *jobs) PostJobStability(ctx context.Context, request operations.PostJobStabilityRequest, security operations.PostJobStabilitySecurity) (*operations.PostJobStabilityResponse, error) {
+func (s *Jobs) PostJobStability(ctx context.Context, request operations.PostJobStabilityRequest, security operations.PostJobStabilitySecurity) (*operations.PostJobStabilityResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/job/{jobName}/stable", request, nil)
 	if err != nil {
@@ -1472,7 +1472,7 @@ func (s *jobs) PostJobStability(ctx context.Context, request operations.PostJobS
 	return res, nil
 }
 
-func (s *jobs) PostJobValidateRequest(ctx context.Context, request operations.PostJobValidateRequestRequest, security operations.PostJobValidateRequestSecurity) (*operations.PostJobValidateRequestResponse, error) {
+func (s *Jobs) PostJobValidateRequest(ctx context.Context, request operations.PostJobValidateRequestRequest, security operations.PostJobValidateRequestSecurity) (*operations.PostJobValidateRequestResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/validate/job"
 
@@ -1554,7 +1554,7 @@ func (s *jobs) PostJobValidateRequest(ctx context.Context, request operations.Po
 	return res, nil
 }
 
-func (s *jobs) RegisterJob(ctx context.Context, request operations.RegisterJobRequest, security operations.RegisterJobSecurity) (*operations.RegisterJobResponse, error) {
+func (s *Jobs) RegisterJob(ctx context.Context, request operations.RegisterJobRequest, security operations.RegisterJobSecurity) (*operations.RegisterJobResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/jobs"
 

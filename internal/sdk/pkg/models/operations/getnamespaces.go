@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"nomad/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/models/shared"
 )
 
 type GetNamespacesSecurity struct {
@@ -106,11 +106,11 @@ type GetNamespacesResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
 	Headers     map[string][]string
-	Namespaces  []shared.Namespace
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	Classes     []shared.Namespace
 }
 
 func (o *GetNamespacesResponse) GetContentType() string {
@@ -127,13 +127,6 @@ func (o *GetNamespacesResponse) GetHeaders() map[string][]string {
 	return o.Headers
 }
 
-func (o *GetNamespacesResponse) GetNamespaces() []shared.Namespace {
-	if o == nil {
-		return nil
-	}
-	return o.Namespaces
-}
-
 func (o *GetNamespacesResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -146,4 +139,11 @@ func (o *GetNamespacesResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetNamespacesResponse) GetClasses() []shared.Namespace {
+	if o == nil {
+		return nil
+	}
+	return o.Classes
 }

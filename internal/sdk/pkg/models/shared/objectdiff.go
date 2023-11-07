@@ -36,3 +36,38 @@ func (o *ObjectDiff) GetType() *string {
 	}
 	return o.Type
 }
+
+type ObjectDiffInput struct {
+	Fields  []FieldDiff  `json:"Fields,omitempty"`
+	Name    *string      `json:"Name,omitempty"`
+	Objects []ObjectDiff `json:"Objects,omitempty"`
+	Type    *string      `json:"Type,omitempty"`
+}
+
+func (o *ObjectDiffInput) GetFields() []FieldDiff {
+	if o == nil {
+		return nil
+	}
+	return o.Fields
+}
+
+func (o *ObjectDiffInput) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *ObjectDiffInput) GetObjects() []ObjectDiff {
+	if o == nil {
+		return nil
+	}
+	return o.Objects
+}
+
+func (o *ObjectDiffInput) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}

@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type evaluations struct {
+type Evaluations struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newEvaluations(sdkConfig sdkConfiguration) *evaluations {
-	return &evaluations{
+func newEvaluations(sdkConfig sdkConfiguration) *Evaluations {
+	return &Evaluations{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *evaluations) GetEvaluation(ctx context.Context, request operations.GetEvaluationRequest, security operations.GetEvaluationSecurity) (*operations.GetEvaluationResponse, error) {
+func (s *Evaluations) GetEvaluation(ctx context.Context, request operations.GetEvaluationRequest, security operations.GetEvaluationSecurity) (*operations.GetEvaluationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/evaluation/{evalID}", request, nil)
 	if err != nil {
@@ -96,7 +96,7 @@ func (s *evaluations) GetEvaluation(ctx context.Context, request operations.GetE
 	return res, nil
 }
 
-func (s *evaluations) GetEvaluationAllocations(ctx context.Context, request operations.GetEvaluationAllocationsRequest, security operations.GetEvaluationAllocationsSecurity) (*operations.GetEvaluationAllocationsResponse, error) {
+func (s *Evaluations) GetEvaluationAllocations(ctx context.Context, request operations.GetEvaluationAllocationsRequest, security operations.GetEvaluationAllocationsSecurity) (*operations.GetEvaluationAllocationsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/evaluation/{evalID}/allocations", request, nil)
 	if err != nil {
@@ -151,7 +151,7 @@ func (s *evaluations) GetEvaluationAllocations(ctx context.Context, request oper
 				return nil, err
 			}
 
-			res.AllocationListStubs = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -167,7 +167,7 @@ func (s *evaluations) GetEvaluationAllocations(ctx context.Context, request oper
 	return res, nil
 }
 
-func (s *evaluations) GetEvaluations(ctx context.Context, request operations.GetEvaluationsRequest, security operations.GetEvaluationsSecurity) (*operations.GetEvaluationsResponse, error) {
+func (s *Evaluations) GetEvaluations(ctx context.Context, request operations.GetEvaluationsRequest, security operations.GetEvaluationsSecurity) (*operations.GetEvaluationsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/evaluations"
 
@@ -219,7 +219,7 @@ func (s *evaluations) GetEvaluations(ctx context.Context, request operations.Get
 				return nil, err
 			}
 
-			res.Evaluations = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

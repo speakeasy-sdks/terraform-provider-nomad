@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type enterprise struct {
+type Enterprise struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newEnterprise(sdkConfig sdkConfiguration) *enterprise {
-	return &enterprise{
+func newEnterprise(sdkConfig sdkConfiguration) *Enterprise {
+	return &Enterprise{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *enterprise) CreateQuotaSpec(ctx context.Context, request operations.CreateQuotaSpecRequest, security operations.CreateQuotaSpecSecurity) (*operations.CreateQuotaSpecResponse, error) {
+func (s *Enterprise) CreateQuotaSpec(ctx context.Context, request operations.CreateQuotaSpecRequest, security operations.CreateQuotaSpecSecurity) (*operations.CreateQuotaSpecResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/quota"
 
@@ -96,7 +96,7 @@ func (s *enterprise) CreateQuotaSpec(ctx context.Context, request operations.Cre
 	return res, nil
 }
 
-func (s *enterprise) DeleteQuotaSpec(ctx context.Context, request operations.DeleteQuotaSpecRequest, security operations.DeleteQuotaSpecSecurity) (*operations.DeleteQuotaSpecResponse, error) {
+func (s *Enterprise) DeleteQuotaSpec(ctx context.Context, request operations.DeleteQuotaSpecRequest, security operations.DeleteQuotaSpecSecurity) (*operations.DeleteQuotaSpecResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/quota/{specName}", request, nil)
 	if err != nil {
@@ -156,7 +156,7 @@ func (s *enterprise) DeleteQuotaSpec(ctx context.Context, request operations.Del
 	return res, nil
 }
 
-func (s *enterprise) GetQuotaSpec(ctx context.Context, request operations.GetQuotaSpecRequest, security operations.GetQuotaSpecSecurity) (*operations.GetQuotaSpecResponse, error) {
+func (s *Enterprise) GetQuotaSpec(ctx context.Context, request operations.GetQuotaSpecRequest, security operations.GetQuotaSpecSecurity) (*operations.GetQuotaSpecResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/quota/{specName}", request, nil)
 	if err != nil {
@@ -227,7 +227,7 @@ func (s *enterprise) GetQuotaSpec(ctx context.Context, request operations.GetQuo
 	return res, nil
 }
 
-func (s *enterprise) GetQuotas(ctx context.Context, request operations.GetQuotasRequest, security operations.GetQuotasSecurity) (*operations.GetQuotasResponse, error) {
+func (s *Enterprise) GetQuotas(ctx context.Context, request operations.GetQuotasRequest, security operations.GetQuotasSecurity) (*operations.GetQuotasResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/quotas"
 
@@ -279,7 +279,7 @@ func (s *enterprise) GetQuotas(ctx context.Context, request operations.GetQuotas
 				return nil, err
 			}
 
-			res.GetQuotas200ApplicationJSONAnies = out
+			res.Anies = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -295,7 +295,7 @@ func (s *enterprise) GetQuotas(ctx context.Context, request operations.GetQuotas
 	return res, nil
 }
 
-func (s *enterprise) PostQuotaSpec(ctx context.Context, request operations.PostQuotaSpecRequest, security operations.PostQuotaSpecSecurity) (*operations.PostQuotaSpecResponse, error) {
+func (s *Enterprise) PostQuotaSpec(ctx context.Context, request operations.PostQuotaSpecRequest, security operations.PostQuotaSpecSecurity) (*operations.PostQuotaSpecResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/quota/{specName}", request, nil)
 	if err != nil {

@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"nomad/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/models/shared"
 )
 
 type GetNodesSecurity struct {
@@ -113,13 +113,13 @@ func (o *GetNodesRequest) GetWait() *string {
 
 type GetNodesResponse struct {
 	// HTTP response content type for this operation
-	ContentType   string
-	Headers       map[string][]string
-	NodeListStubs []shared.NodeListStub
+	ContentType string
+	Headers     map[string][]string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	Classes     []shared.NodeListStub
 }
 
 func (o *GetNodesResponse) GetContentType() string {
@@ -136,13 +136,6 @@ func (o *GetNodesResponse) GetHeaders() map[string][]string {
 	return o.Headers
 }
 
-func (o *GetNodesResponse) GetNodeListStubs() []shared.NodeListStub {
-	if o == nil {
-		return nil
-	}
-	return o.NodeListStubs
-}
-
 func (o *GetNodesResponse) GetStatusCode() int {
 	if o == nil {
 		return 0
@@ -155,4 +148,11 @@ func (o *GetNodesResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetNodesResponse) GetClasses() []shared.NodeListStub {
+	if o == nil {
+		return nil
+	}
+	return o.Classes
 }

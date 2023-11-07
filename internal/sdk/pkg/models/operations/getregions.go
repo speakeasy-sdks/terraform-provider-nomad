@@ -8,12 +8,12 @@ import (
 
 type GetRegionsResponse struct {
 	// HTTP response content type for this operation
-	ContentType                         string
-	GetRegions200ApplicationJSONStrings []string
+	ContentType string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	Strings     []string
 }
 
 func (o *GetRegionsResponse) GetContentType() string {
@@ -21,13 +21,6 @@ func (o *GetRegionsResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *GetRegionsResponse) GetGetRegions200ApplicationJSONStrings() []string {
-	if o == nil {
-		return nil
-	}
-	return o.GetRegions200ApplicationJSONStrings
 }
 
 func (o *GetRegionsResponse) GetStatusCode() int {
@@ -42,4 +35,11 @@ func (o *GetRegionsResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetRegionsResponse) GetStrings() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Strings
 }

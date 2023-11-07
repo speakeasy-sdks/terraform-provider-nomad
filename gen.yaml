@@ -2,26 +2,30 @@ configVersion: 1.0.0
 management:
   docChecksum: bdeef570b0419e1bea21741ccac9ae77
   docVersion: 1.1.4
-  speakeasyVersion: 1.109.2
-  generationVersion: 2.173.0
+  speakeasyVersion: 1.114.1
+  generationVersion: 2.181.1
 generation:
-  comments:
-    disableComments: false
-    omitDescriptionIfSummaryPresent: false
-  baseServerURL: ""
-  repoURL: https://github.com/speakeasy-sdks/terraform-provider-nomad.git
+  comments: {}
   sdkClassName: nomad
-  singleTagPerOp: false
-  tagNamespacingDisabled: false
+  repoURL: https://github.com/speakeasy-sdks/terraform-provider-nomad.git
 features:
   terraform:
-    core: 2.93.3
+    core: 3.2.1
     globalSecurity: 2.81.1
     globalServerURLs: 2.82.0
+    inputOutputModels: 2.81.1
     methodSecurity: 2.82.0
 terraform:
-  version: 1.20.0
+  version: 2.0.0
   author: hashicorp
+  imports:
+    option: openapi
+    paths:
+      callbacks: callbacks
+      errors: sdkerrors
+      operations: operations
+      shared: shared
+      webhooks: webhooks
   packageName: nomad
   published: true
   repoSubDirectory: .

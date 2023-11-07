@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type volumes struct {
+type Volumes struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newVolumes(sdkConfig sdkConfiguration) *volumes {
-	return &volumes{
+func newVolumes(sdkConfig sdkConfiguration) *Volumes {
+	return &Volumes{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *volumes) CreateVolume(ctx context.Context, request operations.CreateVolumeRequest, security operations.CreateVolumeSecurity) (*operations.CreateVolumeResponse, error) {
+func (s *Volumes) CreateVolume(ctx context.Context, request operations.CreateVolumeRequest, security operations.CreateVolumeSecurity) (*operations.CreateVolumeResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/volume/csi/{volumeId}/{action}", request, nil)
 	if err != nil {
@@ -99,7 +99,7 @@ func (s *volumes) CreateVolume(ctx context.Context, request operations.CreateVol
 	return res, nil
 }
 
-func (s *volumes) DeleteSnapshot(ctx context.Context, request operations.DeleteSnapshotRequest, security operations.DeleteSnapshotSecurity) (*operations.DeleteSnapshotResponse, error) {
+func (s *Volumes) DeleteSnapshot(ctx context.Context, request operations.DeleteSnapshotRequest, security operations.DeleteSnapshotSecurity) (*operations.DeleteSnapshotResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/volumes/snapshot"
 
@@ -156,7 +156,7 @@ func (s *volumes) DeleteSnapshot(ctx context.Context, request operations.DeleteS
 	return res, nil
 }
 
-func (s *volumes) DeleteVolumeRegistration(ctx context.Context, request operations.DeleteVolumeRegistrationRequest, security operations.DeleteVolumeRegistrationSecurity) (*operations.DeleteVolumeRegistrationResponse, error) {
+func (s *Volumes) DeleteVolumeRegistration(ctx context.Context, request operations.DeleteVolumeRegistrationRequest, security operations.DeleteVolumeRegistrationSecurity) (*operations.DeleteVolumeRegistrationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/volume/csi/{volumeId}", request, nil)
 	if err != nil {
@@ -216,7 +216,7 @@ func (s *volumes) DeleteVolumeRegistration(ctx context.Context, request operatio
 	return res, nil
 }
 
-func (s *volumes) DetachOrDeleteVolume(ctx context.Context, request operations.DetachOrDeleteVolumeRequest, security operations.DetachOrDeleteVolumeSecurity) (*operations.DetachOrDeleteVolumeResponse, error) {
+func (s *Volumes) DetachOrDeleteVolume(ctx context.Context, request operations.DetachOrDeleteVolumeRequest, security operations.DetachOrDeleteVolumeSecurity) (*operations.DetachOrDeleteVolumeResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/volume/csi/{volumeId}/{action}", request, nil)
 	if err != nil {
@@ -276,7 +276,7 @@ func (s *volumes) DetachOrDeleteVolume(ctx context.Context, request operations.D
 	return res, nil
 }
 
-func (s *volumes) GetExternalVolumes(ctx context.Context, request operations.GetExternalVolumesRequest, security operations.GetExternalVolumesSecurity) (*operations.GetExternalVolumesResponse, error) {
+func (s *Volumes) GetExternalVolumes(ctx context.Context, request operations.GetExternalVolumesRequest, security operations.GetExternalVolumesSecurity) (*operations.GetExternalVolumesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/volumes/external"
 
@@ -344,7 +344,7 @@ func (s *volumes) GetExternalVolumes(ctx context.Context, request operations.Get
 	return res, nil
 }
 
-func (s *volumes) GetSnapshots(ctx context.Context, request operations.GetSnapshotsRequest, security operations.GetSnapshotsSecurity) (*operations.GetSnapshotsResponse, error) {
+func (s *Volumes) GetSnapshots(ctx context.Context, request operations.GetSnapshotsRequest, security operations.GetSnapshotsSecurity) (*operations.GetSnapshotsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/volumes/snapshot"
 
@@ -412,7 +412,7 @@ func (s *volumes) GetSnapshots(ctx context.Context, request operations.GetSnapsh
 	return res, nil
 }
 
-func (s *volumes) GetVolume(ctx context.Context, request operations.GetVolumeRequest, security operations.GetVolumeSecurity) (*operations.GetVolumeResponse, error) {
+func (s *Volumes) GetVolume(ctx context.Context, request operations.GetVolumeRequest, security operations.GetVolumeSecurity) (*operations.GetVolumeResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/volume/csi/{volumeId}", request, nil)
 	if err != nil {
@@ -483,7 +483,7 @@ func (s *volumes) GetVolume(ctx context.Context, request operations.GetVolumeReq
 	return res, nil
 }
 
-func (s *volumes) GetVolumes(ctx context.Context, request operations.GetVolumesRequest, security operations.GetVolumesSecurity) (*operations.GetVolumesResponse, error) {
+func (s *Volumes) GetVolumes(ctx context.Context, request operations.GetVolumesRequest, security operations.GetVolumesSecurity) (*operations.GetVolumesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/volumes"
 
@@ -535,7 +535,7 @@ func (s *volumes) GetVolumes(ctx context.Context, request operations.GetVolumesR
 				return nil, err
 			}
 
-			res.CSIVolumeListStubs = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -551,7 +551,7 @@ func (s *volumes) GetVolumes(ctx context.Context, request operations.GetVolumesR
 	return res, nil
 }
 
-func (s *volumes) PostSnapshot(ctx context.Context, request operations.PostSnapshotRequest, security operations.PostSnapshotSecurity) (*operations.PostSnapshotResponse, error) {
+func (s *Volumes) PostSnapshot(ctx context.Context, request operations.PostSnapshotRequest, security operations.PostSnapshotSecurity) (*operations.PostSnapshotResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/volumes/snapshot"
 
@@ -633,7 +633,7 @@ func (s *volumes) PostSnapshot(ctx context.Context, request operations.PostSnaps
 	return res, nil
 }
 
-func (s *volumes) PostVolume(ctx context.Context, request operations.PostVolumeRequest, security operations.PostVolumeSecurity) (*operations.PostVolumeResponse, error) {
+func (s *Volumes) PostVolume(ctx context.Context, request operations.PostVolumeRequest, security operations.PostVolumeSecurity) (*operations.PostVolumeResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/volumes"
 
@@ -704,7 +704,7 @@ func (s *volumes) PostVolume(ctx context.Context, request operations.PostVolumeR
 	return res, nil
 }
 
-func (s *volumes) PostVolumeRegistration(ctx context.Context, request operations.PostVolumeRegistrationRequest, security operations.PostVolumeRegistrationSecurity) (*operations.PostVolumeRegistrationResponse, error) {
+func (s *Volumes) PostVolumeRegistration(ctx context.Context, request operations.PostVolumeRegistrationRequest, security operations.PostVolumeRegistrationSecurity) (*operations.PostVolumeRegistrationResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/volume/csi/{volumeId}", request, nil)
 	if err != nil {

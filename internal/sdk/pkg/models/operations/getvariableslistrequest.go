@@ -4,7 +4,7 @@ package operations
 
 import (
 	"net/http"
-	"nomad/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/models/shared"
 )
 
 type GetVariablesListRequestSecurity struct {
@@ -109,8 +109,8 @@ type GetVariablesListRequestResponse struct {
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
-	RawResponse      *http.Response
-	VariableMetadata []shared.VariableMetadata
+	RawResponse *http.Response
+	Classes     []shared.VariableMetadata
 }
 
 func (o *GetVariablesListRequestResponse) GetContentType() string {
@@ -141,9 +141,9 @@ func (o *GetVariablesListRequestResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *GetVariablesListRequestResponse) GetVariableMetadata() []shared.VariableMetadata {
+func (o *GetVariablesListRequestResponse) GetClasses() []shared.VariableMetadata {
 	if o == nil {
 		return nil
 	}
-	return o.VariableMetadata
+	return o.Classes
 }

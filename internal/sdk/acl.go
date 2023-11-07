@@ -8,24 +8,24 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/models/shared"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/models/shared"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type acl struct {
+type ACL struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newACL(sdkConfig sdkConfiguration) *acl {
-	return &acl{
+func newACL(sdkConfig sdkConfiguration) *ACL {
+	return &ACL{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *acl) DeleteACLPolicy(ctx context.Context, request operations.DeleteACLPolicyRequest, security operations.DeleteACLPolicySecurity) (*operations.DeleteACLPolicyResponse, error) {
+func (s *ACL) DeleteACLPolicy(ctx context.Context, request operations.DeleteACLPolicyRequest, security operations.DeleteACLPolicySecurity) (*operations.DeleteACLPolicyResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/acl/policy/{policyName}", request, nil)
 	if err != nil {
@@ -85,7 +85,7 @@ func (s *acl) DeleteACLPolicy(ctx context.Context, request operations.DeleteACLP
 	return res, nil
 }
 
-func (s *acl) DeleteACLToken(ctx context.Context, request operations.DeleteACLTokenRequest, security operations.DeleteACLTokenSecurity) (*operations.DeleteACLTokenResponse, error) {
+func (s *ACL) DeleteACLToken(ctx context.Context, request operations.DeleteACLTokenRequest, security operations.DeleteACLTokenSecurity) (*operations.DeleteACLTokenResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/acl/token/{tokenAccessor}", request, nil)
 	if err != nil {
@@ -145,7 +145,7 @@ func (s *acl) DeleteACLToken(ctx context.Context, request operations.DeleteACLTo
 	return res, nil
 }
 
-func (s *acl) GetACLPolicies(ctx context.Context, request operations.GetACLPoliciesRequest, security operations.GetACLPoliciesSecurity) (*operations.GetACLPoliciesResponse, error) {
+func (s *ACL) GetACLPolicies(ctx context.Context, request operations.GetACLPoliciesRequest, security operations.GetACLPoliciesSecurity) (*operations.GetACLPoliciesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/acl/policies"
 
@@ -197,7 +197,7 @@ func (s *acl) GetACLPolicies(ctx context.Context, request operations.GetACLPolic
 				return nil, err
 			}
 
-			res.ACLPolicyListStubs = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -213,7 +213,7 @@ func (s *acl) GetACLPolicies(ctx context.Context, request operations.GetACLPolic
 	return res, nil
 }
 
-func (s *acl) GetACLPolicy(ctx context.Context, request operations.GetACLPolicyRequest, security operations.GetACLPolicySecurity) (*operations.GetACLPolicyResponse, error) {
+func (s *ACL) GetACLPolicy(ctx context.Context, request operations.GetACLPolicyRequest, security operations.GetACLPolicySecurity) (*operations.GetACLPolicyResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/acl/policy/{policyName}", request, nil)
 	if err != nil {
@@ -284,7 +284,7 @@ func (s *acl) GetACLPolicy(ctx context.Context, request operations.GetACLPolicyR
 	return res, nil
 }
 
-func (s *acl) GetACLToken(ctx context.Context, request operations.GetACLTokenRequest, security operations.GetACLTokenSecurity) (*operations.GetACLTokenResponse, error) {
+func (s *ACL) GetACLToken(ctx context.Context, request operations.GetACLTokenRequest, security operations.GetACLTokenSecurity) (*operations.GetACLTokenResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/acl/token/{tokenAccessor}", request, nil)
 	if err != nil {
@@ -355,7 +355,7 @@ func (s *acl) GetACLToken(ctx context.Context, request operations.GetACLTokenReq
 	return res, nil
 }
 
-func (s *acl) GetACLTokenSelf(ctx context.Context, request operations.GetACLTokenSelfRequest, security operations.GetACLTokenSelfSecurity) (*operations.GetACLTokenSelfResponse, error) {
+func (s *ACL) GetACLTokenSelf(ctx context.Context, request operations.GetACLTokenSelfRequest, security operations.GetACLTokenSelfSecurity) (*operations.GetACLTokenSelfResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/acl/token"
 
@@ -423,7 +423,7 @@ func (s *acl) GetACLTokenSelf(ctx context.Context, request operations.GetACLToke
 	return res, nil
 }
 
-func (s *acl) GetACLTokens(ctx context.Context, request operations.GetACLTokensRequest, security operations.GetACLTokensSecurity) (*operations.GetACLTokensResponse, error) {
+func (s *ACL) GetACLTokens(ctx context.Context, request operations.GetACLTokensRequest, security operations.GetACLTokensSecurity) (*operations.GetACLTokensResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/acl/tokens"
 
@@ -475,7 +475,7 @@ func (s *acl) GetACLTokens(ctx context.Context, request operations.GetACLTokensR
 				return nil, err
 			}
 
-			res.ACLTokenListStubs = out
+			res.Classes = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -491,7 +491,7 @@ func (s *acl) GetACLTokens(ctx context.Context, request operations.GetACLTokensR
 	return res, nil
 }
 
-func (s *acl) PostACLBootstrap(ctx context.Context, request operations.PostACLBootstrapRequest, security operations.PostACLBootstrapSecurity) (*operations.PostACLBootstrapResponse, error) {
+func (s *ACL) PostACLBootstrap(ctx context.Context, request operations.PostACLBootstrapRequest, security operations.PostACLBootstrapSecurity) (*operations.PostACLBootstrapResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/acl/bootstrap"
 
@@ -559,7 +559,7 @@ func (s *acl) PostACLBootstrap(ctx context.Context, request operations.PostACLBo
 	return res, nil
 }
 
-func (s *acl) PostACLPolicy(ctx context.Context, request operations.PostACLPolicyRequest, security operations.PostACLPolicySecurity) (*operations.PostACLPolicyResponse, error) {
+func (s *ACL) PostACLPolicy(ctx context.Context, request operations.PostACLPolicyRequest, security operations.PostACLPolicySecurity) (*operations.PostACLPolicyResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/acl/policy/{policyName}", request, nil)
 	if err != nil {
@@ -633,7 +633,7 @@ func (s *acl) PostACLPolicy(ctx context.Context, request operations.PostACLPolic
 	return res, nil
 }
 
-func (s *acl) PostACLToken(ctx context.Context, request operations.PostACLTokenRequest, security operations.PostACLTokenSecurity) (*operations.PostACLTokenResponse, error) {
+func (s *ACL) PostACLToken(ctx context.Context, request operations.PostACLTokenRequest, security operations.PostACLTokenSecurity) (*operations.PostACLTokenResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/acl/token/{tokenAccessor}", request, nil)
 	if err != nil {
@@ -718,7 +718,7 @@ func (s *acl) PostACLToken(ctx context.Context, request operations.PostACLTokenR
 	return res, nil
 }
 
-func (s *acl) PostACLTokenOnetime(ctx context.Context, request operations.PostACLTokenOnetimeRequest, security operations.PostACLTokenOnetimeSecurity) (*operations.PostACLTokenOnetimeResponse, error) {
+func (s *ACL) PostACLTokenOnetime(ctx context.Context, request operations.PostACLTokenOnetimeRequest, security operations.PostACLTokenOnetimeSecurity) (*operations.PostACLTokenOnetimeResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/acl/token/onetime"
 
@@ -786,7 +786,7 @@ func (s *acl) PostACLTokenOnetime(ctx context.Context, request operations.PostAC
 	return res, nil
 }
 
-func (s *acl) PostACLTokenOnetimeExchange(ctx context.Context, request operations.PostACLTokenOnetimeExchangeRequest, security operations.PostACLTokenOnetimeExchangeSecurity) (*operations.PostACLTokenOnetimeExchangeResponse, error) {
+func (s *ACL) PostACLTokenOnetimeExchange(ctx context.Context, request operations.PostACLTokenOnetimeExchangeRequest, security operations.PostACLTokenOnetimeExchangeSecurity) (*operations.PostACLTokenOnetimeExchangeResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/acl/token/onetime/exchange"
 

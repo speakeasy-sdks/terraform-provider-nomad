@@ -8,23 +8,23 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nomad/internal/sdk/pkg/models/operations"
-	"nomad/internal/sdk/pkg/models/sdkerrors"
-	"nomad/internal/sdk/pkg/utils"
+	"nomad/v2/internal/sdk/pkg/models/operations"
+	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 
-type status struct {
+type Status struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newStatus(sdkConfig sdkConfiguration) *status {
-	return &status{
+func newStatus(sdkConfig sdkConfiguration) *Status {
+	return &Status{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-func (s *status) GetStatusLeader(ctx context.Context, request operations.GetStatusLeaderRequest, security operations.GetStatusLeaderSecurity) (*operations.GetStatusLeaderResponse, error) {
+func (s *Status) GetStatusLeader(ctx context.Context, request operations.GetStatusLeaderRequest, security operations.GetStatusLeaderSecurity) (*operations.GetStatusLeaderResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/status/leader"
 
@@ -70,7 +70,7 @@ func (s *status) GetStatusLeader(ctx context.Context, request operations.GetStat
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			out := string(rawBody)
-			res.GetStatusLeader200ApplicationJSONString = &out
+			res.Res = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -86,7 +86,7 @@ func (s *status) GetStatusLeader(ctx context.Context, request operations.GetStat
 	return res, nil
 }
 
-func (s *status) GetStatusPeers(ctx context.Context, request operations.GetStatusPeersRequest, security operations.GetStatusPeersSecurity) (*operations.GetStatusPeersResponse, error) {
+func (s *Status) GetStatusPeers(ctx context.Context, request operations.GetStatusPeersRequest, security operations.GetStatusPeersSecurity) (*operations.GetStatusPeersResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/status/peers"
 
@@ -136,7 +136,7 @@ func (s *status) GetStatusPeers(ctx context.Context, request operations.GetStatu
 				return nil, err
 			}
 
-			res.GetStatusPeers200ApplicationJSONStrings = out
+			res.Strings = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
