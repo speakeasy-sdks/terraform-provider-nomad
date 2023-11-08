@@ -4,7 +4,7 @@ package setplanmodifier
 
 import (
 	"context"
-	"nomad/v2/internal/planmodifiers/utils"
+	"github.com/hashicorp/terraform-provider-nomad/v2/internal/planmodifiers/utils"
 
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 )

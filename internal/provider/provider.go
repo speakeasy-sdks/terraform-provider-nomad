@@ -4,8 +4,8 @@ package provider
 
 import (
 	"context"
-	"nomad/v2/internal/sdk"
-	"nomad/v2/internal/sdk/pkg/models/shared"
+	"github.com/hashicorp/terraform-provider-nomad/v2/internal/sdk"
+	"github.com/hashicorp/terraform-provider-nomad/v2/internal/sdk/pkg/models/shared"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/provider"

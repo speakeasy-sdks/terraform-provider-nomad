@@ -8,7 +8,7 @@ import (
 	"log"
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
-	"nomad/v2/internal/provider"
+	"github.com/hashicorp/terraform-provider-nomad/v2/internal/provider"
 )
 
 // Run "go generate" to format example terraform files and generate the docs for the registry/website

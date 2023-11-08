@@ -6,11 +6,11 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/hashicorp/terraform-provider-nomad/v2/internal/sdk/pkg/models/operations"
+	"github.com/hashicorp/terraform-provider-nomad/v2/internal/sdk/pkg/models/sdkerrors"
+	"github.com/hashicorp/terraform-provider-nomad/v2/internal/sdk/pkg/utils"
 	"io"
 	"net/http"
-	"nomad/v2/internal/sdk/pkg/models/operations"
-	"nomad/v2/internal/sdk/pkg/models/sdkerrors"
-	"nomad/v2/internal/sdk/pkg/utils"
 	"strings"
 )
 

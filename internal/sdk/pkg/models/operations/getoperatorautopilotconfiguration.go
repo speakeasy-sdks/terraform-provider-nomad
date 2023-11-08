@@ -3,8 +3,8 @@
 package operations
 
 import (
+	"github.com/hashicorp/terraform-provider-nomad/v2/internal/sdk/pkg/models/shared"
 	"net/http"
-	"nomad/v2/internal/sdk/pkg/models/shared"
 )
 
 type GetOperatorAutopilotConfigurationSecurity struct {

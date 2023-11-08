@@ -2,21 +2,21 @@ configVersion: 1.0.0
 management:
   docChecksum: bdeef570b0419e1bea21741ccac9ae77
   docVersion: 1.1.4
-  speakeasyVersion: 1.114.1
-  generationVersion: 2.181.1
+  speakeasyVersion: 1.115.0
+  generationVersion: 2.183.0
 generation:
   comments: {}
   sdkClassName: nomad
   repoURL: https://github.com/speakeasy-sdks/terraform-provider-nomad.git
 features:
   terraform:
-    core: 3.2.1
+    core: 3.3.0
     globalSecurity: 2.81.1
     globalServerURLs: 2.82.0
     inputOutputModels: 2.81.1
     methodSecurity: 2.82.0
 terraform:
-  version: 2.0.0
+  version: 2.1.0
   author: hashicorp
   imports:
     option: openapi
