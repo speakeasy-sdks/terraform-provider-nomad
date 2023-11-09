@@ -271,6 +271,7 @@ internal/sdk/pkg/models/shared/jobversionsresponse.go
 internal/sdk/pkg/models/shared/jobdiff.go
 internal/sdk/pkg/models/shared/taskgroupdiff.go
 internal/sdk/pkg/models/shared/taskdiff.go
+internal/sdk/pkg/models/shared/objectdiffinput.go
 internal/sdk/pkg/models/shared/objectdiff.go
 internal/sdk/pkg/models/shared/fielddiff.go
 internal/sdk/pkg/models/shared/jobliststub.go
