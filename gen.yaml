@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: bdeef570b0419e1bea21741ccac9ae77
   docVersion: 1.1.4
-  speakeasyVersion: 1.119.0
-  generationVersion: 2.188.1
+  speakeasyVersion: 1.120.1
+  generationVersion: 2.189.1
 generation:
   comments: {}
   sdkClassName: nomad
@@ -12,13 +12,13 @@ generation:
     optionalPropertyRendering: withExample
 features:
   terraform:
-    core: 3.4.3
+    core: 3.4.4
     globalSecurity: 2.81.1
     globalServerURLs: 2.82.0
     inputOutputModels: 2.82.0
     methodSecurity: 2.82.0
 terraform:
-  version: 2.3.1
+  version: 2.3.2
   author: hashicorp
   imports:
     option: openapi
