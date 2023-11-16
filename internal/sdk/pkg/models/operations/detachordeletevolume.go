@@ -102,7 +102,7 @@ func (o *DetachOrDeleteVolumeResponse) GetContentType() string {
 
 func (o *DetachOrDeleteVolumeResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

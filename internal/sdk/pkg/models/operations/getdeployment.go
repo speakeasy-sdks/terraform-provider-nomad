@@ -138,7 +138,7 @@ func (o *GetDeploymentResponse) GetDeployment() *shared.Deployment {
 
 func (o *GetDeploymentResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

@@ -130,7 +130,7 @@ func (o *GetSearchResponse) GetContentType() string {
 
 func (o *GetSearchResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

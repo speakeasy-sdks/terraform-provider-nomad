@@ -122,7 +122,7 @@ func (o *GetScalingPoliciesResponse) GetContentType() string {
 
 func (o *GetScalingPoliciesResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

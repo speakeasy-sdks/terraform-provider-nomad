@@ -122,7 +122,7 @@ func (o *GetACLPoliciesResponse) GetContentType() string {
 
 func (o *GetACLPoliciesResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

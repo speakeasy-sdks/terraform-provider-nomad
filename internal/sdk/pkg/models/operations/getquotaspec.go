@@ -131,7 +131,7 @@ func (o *GetQuotaSpecResponse) GetContentType() string {
 
 func (o *GetQuotaSpecResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

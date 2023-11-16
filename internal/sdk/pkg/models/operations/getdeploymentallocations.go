@@ -131,7 +131,7 @@ func (o *GetDeploymentAllocationsResponse) GetContentType() string {
 
 func (o *GetDeploymentAllocationsResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

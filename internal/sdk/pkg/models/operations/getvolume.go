@@ -138,7 +138,7 @@ func (o *GetVolumeResponse) GetContentType() string {
 
 func (o *GetVolumeResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

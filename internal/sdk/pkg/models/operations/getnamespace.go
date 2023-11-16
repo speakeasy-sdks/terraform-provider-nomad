@@ -131,7 +131,7 @@ func (o *GetNamespaceResponse) GetContentType() string {
 
 func (o *GetNamespaceResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

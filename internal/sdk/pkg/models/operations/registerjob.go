@@ -85,7 +85,7 @@ func (o *RegisterJobResponse) GetContentType() string {
 
 func (o *RegisterJobResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

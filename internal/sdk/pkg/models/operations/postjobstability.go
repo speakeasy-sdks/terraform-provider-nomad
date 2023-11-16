@@ -94,7 +94,7 @@ func (o *PostJobStabilityResponse) GetContentType() string {
 
 func (o *PostJobStabilityResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

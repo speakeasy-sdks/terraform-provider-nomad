@@ -93,7 +93,7 @@ func (o *PostACLPolicyResponse) GetContentType() string {
 
 func (o *PostACLPolicyResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

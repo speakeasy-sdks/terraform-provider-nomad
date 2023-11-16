@@ -85,7 +85,7 @@ func (o *PostOperatorSchedulerConfigurationResponse) GetContentType() string {
 
 func (o *PostOperatorSchedulerConfigurationResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

@@ -137,7 +137,7 @@ func (o *GetFuzzySearchResponse) GetFuzzySearchResponse() *shared.FuzzySearchRes
 
 func (o *GetFuzzySearchResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

@@ -104,7 +104,7 @@ func (o *DeleteJobResponse) GetContentType() string {
 
 func (o *DeleteJobResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

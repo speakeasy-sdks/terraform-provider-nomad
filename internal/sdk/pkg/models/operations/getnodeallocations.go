@@ -131,7 +131,7 @@ func (o *GetNodeAllocationsResponse) GetContentType() string {
 
 func (o *GetNodeAllocationsResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

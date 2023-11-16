@@ -122,7 +122,7 @@ func (o *GetOperatorSchedulerConfigurationResponse) GetContentType() string {
 
 func (o *GetOperatorSchedulerConfigurationResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

@@ -138,7 +138,7 @@ func (o *GetAllocationResponse) GetContentType() string {
 
 func (o *GetAllocationResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

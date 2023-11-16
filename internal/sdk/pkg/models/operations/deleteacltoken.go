@@ -84,7 +84,7 @@ func (o *DeleteACLTokenResponse) GetContentType() string {
 
 func (o *DeleteACLTokenResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

@@ -131,7 +131,7 @@ func (o *GetJobScaleStatusResponse) GetContentType() string {
 
 func (o *GetJobScaleStatusResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

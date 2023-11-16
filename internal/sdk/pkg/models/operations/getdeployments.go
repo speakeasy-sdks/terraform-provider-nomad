@@ -122,7 +122,7 @@ func (o *GetDeploymentsResponse) GetContentType() string {
 
 func (o *GetDeploymentsResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

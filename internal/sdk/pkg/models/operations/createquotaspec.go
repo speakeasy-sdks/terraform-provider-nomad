@@ -84,7 +84,7 @@ func (o *CreateQuotaSpecResponse) GetContentType() string {
 
 func (o *CreateQuotaSpecResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

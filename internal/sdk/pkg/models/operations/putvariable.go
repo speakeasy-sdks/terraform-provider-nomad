@@ -103,7 +103,7 @@ func (o *PutVariableResponse) GetContentType() string {
 
 func (o *PutVariableResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

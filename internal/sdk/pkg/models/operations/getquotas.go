@@ -121,7 +121,7 @@ func (o *GetQuotasResponse) GetContentType() string {
 
 func (o *GetQuotasResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

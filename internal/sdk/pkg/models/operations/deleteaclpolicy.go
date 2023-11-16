@@ -84,7 +84,7 @@ func (o *DeleteACLPolicyResponse) GetContentType() string {
 
 func (o *DeleteACLPolicyResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

@@ -85,7 +85,7 @@ func (o *PostJobValidateRequestResponse) GetContentType() string {
 
 func (o *PostJobValidateRequestResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

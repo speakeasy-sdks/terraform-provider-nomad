@@ -84,7 +84,7 @@ func (o *DeleteNamespaceResponse) GetContentType() string {
 
 func (o *DeleteNamespaceResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

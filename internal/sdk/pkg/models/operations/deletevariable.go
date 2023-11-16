@@ -102,7 +102,7 @@ func (o *DeleteVariableResponse) GetContentType() string {
 
 func (o *DeleteVariableResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

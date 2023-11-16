@@ -84,7 +84,7 @@ func (o *PostVolumeResponse) GetContentType() string {
 
 func (o *PostVolumeResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }

@@ -94,7 +94,7 @@ func (o *PostJobPlanResponse) GetContentType() string {
 
 func (o *PostJobPlanResponse) GetHeaders() map[string][]string {
 	if o == nil {
-		return nil
+		return map[string][]string{}
 	}
 	return o.Headers
 }
