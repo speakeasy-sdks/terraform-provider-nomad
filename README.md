@@ -10,7 +10,7 @@ terraform {
   required_providers {
     nomad = {
       source  = "hashicorp/nomad"
-      version = "2.4.1"
+      version = "2.5.0"
     }
   }
 }
@@ -44,6 +44,8 @@ TF_REATTACH_PROVIDERS=... terraform apply
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
+
+
 <!-- End Available Resources and Operations [operations] -->
 
 
