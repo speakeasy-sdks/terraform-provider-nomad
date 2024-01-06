@@ -4,14 +4,13 @@ package provider
 
 import (
 	"context"
-	"github.com/hashicorp/terraform-provider-nomad/v2/internal/sdk"
-	"github.com/hashicorp/terraform-provider-nomad/v2/internal/sdk/pkg/models/shared"
-
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-provider-nomad/v3/internal/sdk"
+	"github.com/hashicorp/terraform-provider-nomad/v3/internal/sdk/pkg/models/shared"
 )
 
 var _ provider.Provider = &NomadProvider{}

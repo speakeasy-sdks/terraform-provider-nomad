@@ -1,4 +1,4 @@
-module github.com/hashicorp/terraform-provider-nomad/v2
+module github.com/hashicorp/terraform-provider-nomad/v3
 
 go 1.18
 

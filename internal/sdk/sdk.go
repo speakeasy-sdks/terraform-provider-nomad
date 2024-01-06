@@ -6,8 +6,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/hashicorp/terraform-provider-nomad/v2/internal/sdk/pkg/models/shared"
-	"github.com/hashicorp/terraform-provider-nomad/v2/internal/sdk/pkg/utils"
+	"github.com/hashicorp/terraform-provider-nomad/v3/internal/sdk/pkg/models/shared"
+	"github.com/hashicorp/terraform-provider-nomad/v3/internal/sdk/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -227,9 +227,9 @@ func New(opts ...SDKOption) *Nomad {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.1.4",
-			SDKVersion:        "2.5.0",
-			GenVersion:        "2.213.3",
-			UserAgent:         "speakeasy-sdk/go 2.5.0 2.213.3 1.1.4 nomad",
+			SDKVersion:        "3.0.0",
+			GenVersion:        "2.228.1",
+			UserAgent:         "speakeasy-sdk/go 3.0.0 2.228.1 1.1.4 nomad",
 			ServerDefaults: []map[string]string{
 				{
 					"address": "127.0.0.1",

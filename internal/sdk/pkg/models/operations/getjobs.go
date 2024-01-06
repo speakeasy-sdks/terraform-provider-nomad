@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/hashicorp/terraform-provider-nomad/v2/internal/sdk/pkg/models/shared"
+	"github.com/hashicorp/terraform-provider-nomad/v3/internal/sdk/pkg/models/shared"
 	"net/http"
 )
 
