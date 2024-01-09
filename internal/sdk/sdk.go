@@ -227,9 +227,9 @@ func New(opts ...SDKOption) *Nomad {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.1.4",
-			SDKVersion:        "3.0.0",
-			GenVersion:        "2.228.1",
-			UserAgent:         "speakeasy-sdk/go 3.0.0 2.228.1 1.1.4 nomad",
+			SDKVersion:        "3.0.1",
+			GenVersion:        "2.230.1",
+			UserAgent:         "speakeasy-sdk/go 3.0.1 2.230.1 1.1.4 nomad",
 			ServerDefaults: []map[string]string{
 				{
 					"address": "127.0.0.1",
