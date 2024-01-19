@@ -4,19 +4,19 @@ management:
   docChecksum: bdeef570b0419e1bea21741ccac9ae77
   docVersion: 1.1.4
   speakeasyVersion: internal
-  generationVersion: 2.234.3
-  releaseVersion: 3.0.3
-  configChecksum: 7170a006cf8465565f54ea294b211145
+  generationVersion: 2.237.2
+  releaseVersion: 3.0.4
+  configChecksum: 2387987750a92d53772a514aa239e8c1
   repoURL: https://github.com/speakeasy-sdks/terraform-provider-nomad.git
   repoSubDirectory: .
   published: true
 features:
   terraform:
     core: 3.8.4
-    globalSecurity: 2.81.2
+    globalSecurity: 2.81.3
     globalServerURLs: 2.82.1
     inputOutputModels: 2.83.0
-    methodSecurity: 2.82.0
+    methodSecurity: 2.82.1
 generatedFiles:
   - internal/sdk/acl.go
   - internal/sdk/allocations.go
