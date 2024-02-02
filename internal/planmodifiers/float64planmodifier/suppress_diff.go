@@ -4,7 +4,7 @@ package float64planmodifier
 
 import (
 	"context"
-	"github.com/hashicorp/terraform-provider-nomad/v3/internal/planmodifiers/utils"
+	"github.com/hashicorp/terraform-provider-nomad/v4/internal/planmodifiers/utils"
 
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 )
