@@ -9,8 +9,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-provider-nomad/v4/internal/sdk"
-	"github.com/hashicorp/terraform-provider-nomad/v4/internal/sdk/pkg/models/shared"
+	"github.com/hashicorp/terraform-provider-nomad/v5/internal/sdk"
+	"github.com/hashicorp/terraform-provider-nomad/v5/internal/sdk/pkg/models/shared"
 )
 
 var _ provider.Provider = &NomadProvider{}

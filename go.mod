@@ -1,4 +1,4 @@
-module github.com/hashicorp/terraform-provider-nomad/v4
+module github.com/hashicorp/terraform-provider-nomad/v5
 
 go 1.20
 

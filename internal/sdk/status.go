@@ -6,9 +6,9 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/hashicorp/terraform-provider-nomad/v4/internal/sdk/pkg/models/operations"
-	"github.com/hashicorp/terraform-provider-nomad/v4/internal/sdk/pkg/models/sdkerrors"
-	"github.com/hashicorp/terraform-provider-nomad/v4/internal/sdk/pkg/utils"
+	"github.com/hashicorp/terraform-provider-nomad/v5/internal/sdk/pkg/models/operations"
+	"github.com/hashicorp/terraform-provider-nomad/v5/internal/sdk/pkg/models/sdkerrors"
+	"github.com/hashicorp/terraform-provider-nomad/v5/internal/sdk/pkg/utils"
 	"io"
 	"net/http"
 	"strings"
@@ -70,7 +70,7 @@ func (s *Status) GetStatusLeader(ctx context.Context, request operations.GetStat
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			out := string(rawBody)
-			res.Res = &out
+			res.GetStatusLeaderResponse = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

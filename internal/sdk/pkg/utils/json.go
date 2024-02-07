@@ -12,7 +12,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/hashicorp/terraform-provider-nomad/v4/internal/sdk/pkg/types"
+	"github.com/hashicorp/terraform-provider-nomad/v5/internal/sdk/pkg/types"
 
 	"github.com/ericlagergren/decimal"
 )

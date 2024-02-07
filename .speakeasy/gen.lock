@@ -4,9 +4,9 @@ management:
   docChecksum: bdeef570b0419e1bea21741ccac9ae77
   docVersion: 1.1.4
   speakeasyVersion: internal
-  generationVersion: 2.250.2
-  releaseVersion: 4.0.1
-  configChecksum: 90b689c3eb20726a7c3a4718a5b5be40
+  generationVersion: 2.250.12
+  releaseVersion: 5.0.0
+  configChecksum: aa1ad1a1f46cb192d86ab03547cba875
   repoURL: https://github.com/speakeasy-sdks/terraform-provider-nomad.git
   repoSubDirectory: .
   published: true

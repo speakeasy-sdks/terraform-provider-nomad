@@ -3,7 +3,7 @@
 package shared
 
 import (
-	"github.com/hashicorp/terraform-provider-nomad/v4/internal/sdk/pkg/utils"
+	"github.com/hashicorp/terraform-provider-nomad/v5/internal/sdk/pkg/utils"
 	"time"
 )
 
