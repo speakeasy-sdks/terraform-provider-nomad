@@ -103,12 +103,12 @@ func (o *GetStatusLeaderRequest) GetWait() *string {
 
 type GetStatusLeaderResponse struct {
 	// HTTP response content type for this operation
-	ContentType             string
-	GetStatusLeaderResponse *string
+	ContentType string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
+	String      *string
 }
 
 func (o *GetStatusLeaderResponse) GetContentType() string {
@@ -116,13 +116,6 @@ func (o *GetStatusLeaderResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *GetStatusLeaderResponse) GetGetStatusLeaderResponse() *string {
-	if o == nil {
-		return nil
-	}
-	return o.GetStatusLeaderResponse
 }
 
 func (o *GetStatusLeaderResponse) GetStatusCode() int {
@@ -137,4 +130,11 @@ func (o *GetStatusLeaderResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
+}
+
+func (o *GetStatusLeaderResponse) GetString() *string {
+	if o == nil {
+		return nil
+	}
+	return o.String
 }
