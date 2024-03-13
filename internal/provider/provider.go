@@ -11,6 +11,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-provider-nomad/v5/internal/sdk"
 	"github.com/hashicorp/terraform-provider-nomad/v5/internal/sdk/pkg/models/shared"
+	"net/http"
 )
 
 var _ provider.Provider = &NomadProvider{}
@@ -72,6 +73,7 @@ func (p *NomadProvider) Configure(ctx context.Context, req provider.ConfigureReq
 	opts := []sdk.SDKOption{
 		sdk.WithServerURL(ServerURL),
 		sdk.WithSecurity(security),
+		sdk.WithClient(http.DefaultClient),
 	}
 	client := sdk.New(opts...)
 
