@@ -229,8 +229,8 @@ func New(opts ...SDKOption) *Nomad {
 			Language:          "go",
 			OpenAPIDocVersion: "1.1.4",
 			SDKVersion:        "0.0.1",
-			GenVersion:        "2.286.4",
-			UserAgent:         "speakeasy-sdk/go 0.0.1 2.286.4 1.1.4 github.com/hashicorp/terraform-provider-nomad/v5/internal/sdk",
+			GenVersion:        "2.291.0",
+			UserAgent:         "speakeasy-sdk/go 0.0.1 2.291.0 1.1.4 github.com/hashicorp/terraform-provider-nomad/v5/internal/sdk",
 			ServerDefaults: []map[string]string{
 				{
 					"address": "127.0.0.1",

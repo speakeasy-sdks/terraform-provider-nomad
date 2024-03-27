@@ -3,16 +3,16 @@ id: e2d8e9e7-c29a-4012-a94a-ca6865c7839d
 management:
   docChecksum: bdeef570b0419e1bea21741ccac9ae77
   docVersion: 1.1.4
-  speakeasyVersion: 1.215.1
-  generationVersion: 2.286.4
-  releaseVersion: 5.2.0
-  configChecksum: 49d227ced5714c7abc50db92c5e41d22
+  speakeasyVersion: 1.227.0
+  generationVersion: 2.291.0
+  releaseVersion: 5.3.0
+  configChecksum: da1a3a3e13275daeee968522c61b1305
   repoURL: https://github.com/speakeasy-sdks/terraform-provider-nomad.git
   repoSubDirectory: .
   published: true
 features:
   terraform:
-    core: 3.11.1
+    core: 3.12.1
     globalSecurity: 2.81.6
     globalServerURLs: 2.82.1
     inputOutputModels: 2.83.0
